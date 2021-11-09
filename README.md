@@ -22,7 +22,7 @@ The shell script takes a few command line arguments:
 -t  (required) url/host to scan
 -p  (optional) report directory, defaults to ./reports
 -c  (optional) nuclei config, defaults to nuclei/config.yaml
--v  (optional) waf version, used for reporting
+-w  (optional) waf version, used for reporting
 -b  (optional) google cloud storage bucket name
 ```
 Only `-t`  is required which is the url/host to test against. 
@@ -35,7 +35,7 @@ This project tracks the payload version, waf version, and nuclei version used du
 
 `payload version` - This corresponds to the release version of this repository, defaults to 0 if not set. We suggest creating a new release version every time you add or remove test payloads.
 
-`waf version` - This corresponds to vendor versioning and/or when changes have been made to your WAF. This is a user supplied argument (cli argument -v) and is specific to your setup. We recommend tracking this in which ever way best suits your needs.   
+`waf version` - This corresponds to vendor versioning and/or when changes have been made to your WAF. This is a user supplied argument (cli argument -w) and is specific to your setup. We recommend tracking this in which ever way best suits your needs.   
 
 `nuclei version` - This corresponds to the version of nuclei used when the test is performed. 
 
