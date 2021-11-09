@@ -20,9 +20,9 @@ The shell script takes a few command line arguments:
 
 ```yaml
 -t  (required) url/host to scan
--p  (optional) report directory, defaults to /reports
--c  (optional) nuclei config defaults, to nuclei/config.yaml
--v  (optional) waf version 
+-p  (optional) report directory, defaults to ./reports
+-c  (optional) nuclei config, defaults to nuclei/config.yaml
+-v  (optional) waf version, used for reporting
 -b  (optional) google cloud storage bucket name
 ```
 Only `-t`  is required which is the url/host to test against. 
@@ -33,9 +33,9 @@ Only `-t`  is required which is the url/host to test against.
 
 This project tracks the payload version, waf version, and nuclei version used during an assessment. The underlying dependencies can also affect score results so it's import to track them to help provide context as to why a score might have increased or decreased.
 
-`payload version` - This corresponds to the release version of the repository, defaults to 0 if not set. We suggest creating a new release version anytime you add or remove test payloads.
+`payload version` - This corresponds to the release version of this repository, defaults to 0 if not set. We suggest creating a new release version every time you add or remove test payloads.
 
-`waf version` - This corresponds to vendor versioning and/or when changes have been made to your WAF. This is a user supplied argument and is specific to your setup. We recommend tracking this in which ever way best suits your needs.   
+`waf version` - This corresponds to vendor versioning and/or when changes have been made to your WAF. This is a user supplied argument (cli argument -v) and is specific to your setup. We recommend tracking this in which ever way best suits your needs.   
 
 `nuclei version` - This corresponds to the version of nuclei used when the test is performed. 
 
@@ -47,4 +47,4 @@ This project defines two Nuclei templates for each attack type, one template for
 
 All requests recorded are logged in JSON format and include request/response pairs and additional metdata. A score is then calculated or each attack type and an overall score.
 
-For historical comparisons and insights we recommend exporting the results to a backed of your choice. This project makes use of Google Cloud Storage (GCS). The results are uploaded to GCS, a table is created from the dataset, then is connected to data studio to generate informative dashboards and reports. If you'd like to learn more about how to set this up you can follow the documentation on [visualizing BigQuery data using Data Studio](https://cloud.google.com/bigquery/docs/visualize-data-studio)  
+For historical comparisons and insights we recommend exporting the results to a backend of your choice. This project makes use of Google Cloud Storage (GCS). The results are uploaded to GCS, a table is created from the dataset, then is connected to data studio to generate informative dashboards and reports. If you'd like to learn more about how to set this up you can follow the documentation on [visualizing BigQuery data using Data Studio](https://cloud.google.com/bigquery/docs/visualize-data-studio)  
