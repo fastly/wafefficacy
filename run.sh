@@ -1,6 +1,6 @@
 #!/bin/sh
 
-while getopts ht:p:c:v:b: flag
+while getopts ht:p:c:w:b: flag
 do
     case "${flag}" in
         h)
