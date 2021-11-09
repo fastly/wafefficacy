@@ -10,7 +10,6 @@ The WAF efficacy framework provides a standardized way to measure the effectiven
 ## Dependencies
 
 * [Nuclei](https://nuclei.projectdiscovery.io/)
-* [jq](https://stedolan.github.io/jq/)
 * [python3](https://www.python.org/downloads/)
 
 ## Usage

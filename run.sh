@@ -36,10 +36,7 @@ filename=$directory"/report_$(date +%s).json"
 
 nuclei -no-interactsh -no-update-templates -config $config -u $target -irr -json > $filename
 sed -i '' 's/}$/,"wafVersion":"'${wafVersion:="0"}'","nucleiVersion":"'${nucleiVersion:="0"}'","payloadVersion":"'${payloadVersion:="0"}'"}/g' $filename
-report=$directory"/report_$(date +%s).json"
-jq -s '.' $filename > $report
-rm $filename
-python3 score.py -f $report -a xss sqli traversal cmdexe
+python3 score.py -f $filename -a xss sqli traversal cmdexe
 
 # upload to GCS
 if [ $bucket ]; then

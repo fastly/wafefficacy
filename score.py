@@ -4,17 +4,18 @@ import argparse
 
 def waf_efficacy_scores(filename: str, attack_types: list):
 
+    results = []
     with open(filename, 'r') as f:
-        input_data = json.load(f)
-    
+        results = [json.loads(line) for line in f]
+
     true_positives = 0
     false_negatives = 0
     true_negatives = 0
     false_positives = 0
 
     for attack_type in attack_types:
-        tp, fn = true_positives_false_negatives(attack_type, input_data)
-        tn, fp = true_negatives_false_positives(attack_type, input_data)
+        tp, fn = true_positives_false_negatives(attack_type, results)
+        tn, fp = true_negatives_false_positives(attack_type, results)
         true_positives += tp
         false_negatives += fn
         true_negatives += tn
