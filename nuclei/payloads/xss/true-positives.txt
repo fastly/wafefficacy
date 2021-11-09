@@ -1,0 +1,3 @@
+<script>alert('XSS')</script>
+<script onerror=alert(1) src=/></script>
+<div onmousedown="alert(1)">test</div>

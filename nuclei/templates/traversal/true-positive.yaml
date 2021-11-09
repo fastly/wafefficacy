@@ -1,0 +1,33 @@
+id: traversal-true-positive
+
+info:
+  name: Traversal
+  author: wafefficacy
+  severity: info
+  tags: traversal,true-positive
+
+requests:
+  - payloads:
+      traversal: nuclei/payloads/traversal/true-positives.txt
+      
+    attack: sniper
+
+    raw:
+      - |
+        GET /anything?p={{traversal}} HTTP/1.1
+        Host: {{Hostname}}
+        Connection: close
+      
+      - |
+        POST /anything HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/x-www-form-urlencoded
+        Connection: close
+
+        p={{url_encode(traversal)}}
+
+    matchers:
+      - type: status
+        status:
+          - 1
+        negative: true

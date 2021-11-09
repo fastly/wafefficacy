@@ -1,0 +1,3 @@
+alert(1)
+<b>XSS</b>
+#simple style=) hee hee

@@ -1,0 +1,33 @@
+id: sqli-true-positive
+
+info:
+  name: SQL Injection (SQLi)
+  author: wafefficacy
+  severity: info
+  tags: sqli,true-positive
+
+requests:
+  - payloads:
+      sqli: nuclei/payloads/sqli/true-positives.txt
+      
+    attack: sniper
+
+    raw:
+      - |
+        GET /anything?p={{url_encode(sqli)}} HTTP/1.1
+        Host: {{Hostname}}
+        Connection: close
+
+      - |
+        POST /anything HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/x-www-form-urlencoded
+        Connection: close
+
+        p={{url_encode(sqli)}}
+
+    matchers:
+      - type: status
+        status:
+          - 1
+        negative: true

@@ -1,0 +1,33 @@
+id: xss-false-positive
+
+info:
+  name: Cross Site Scripting (XSS)
+  author: wafefficacy
+  severity: info
+  tags: xss,false-positive
+
+requests:
+  - payloads:
+      xss: nuclei/payloads/xss/false-positives.txt
+      
+    attack: sniper
+
+    raw:
+      - |
+        GET /anything?p={{url_encode(xss)}} HTTP/1.1
+        Host: {{Hostname}}
+        Connection: close
+      
+      - |
+        POST /anything HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/x-www-form-urlencoded
+        Connection: close
+
+        p={{url_encode(xss)}}
+
+    matchers:
+      - type: status
+        status:
+          - 1
+        negative: true
