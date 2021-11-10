@@ -24,6 +24,7 @@ The shell script takes a few command line arguments:
 -c  (optional) nuclei config, defaults to nuclei/config.yaml
 -w  (optional) waf version, used for reporting
 -b  (optional) google cloud storage bucket name
+-r  (optional) custom waf response, defaults to 406 Not Acceptable
 ```
 Only `-t`  is required which is the url/host to test against. 
 
@@ -38,6 +39,8 @@ This project tracks the payload version, waf version, and nuclei version used du
 `waf version` - This corresponds to vendor versioning and/or when changes have been made to your WAF. This is a user supplied argument (cli argument -w) and is specific to your setup. We recommend tracking this in which ever way best suits your needs.   
 
 `nuclei version` - This corresponds to the version of nuclei used when the test is performed. 
+
+In order to determine whether the WAF correctly identified a request as malicious or not we examine the response code. Most WAF solutions should be able to support creating a custom response code for blocked requests. If you’re unable to create a custom response code you can key off of the vendor provided response code. However, within the context of our framework we currently look for the receipt of an HTTP 406 response code and message "406 Not Acceptable" when a request is blocked. If you use something other than "406 Not Acceptable" you can use the command line argument `-r`
 
 ## How it works
 
