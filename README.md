@@ -40,17 +40,23 @@ This project tracks the payload version, waf version, and nuclei version used du
 
 `nuclei version` - This corresponds to the version of nuclei used when the test is performed. 
 
-In order to determine whether the WAF correctly identified a request as malicious or not we examine the response code. Most WAF solutions should be able to support creating a custom response code for blocked requests. If you’re unable to create a custom response code you can key off of the vendor provided response code. However, within the context of our framework we currently look for the receipt of an HTTP 406 response code and message "406 Not Acceptable" when a request is blocked. If you use something other than "406 Not Acceptable" you can use the command line argument `-r`
-
 ## How it works
 
 This project utilizes [Nuclei](https://nuclei.projectdiscovery.io/) to augment the manual, repetitive process of simulating attacks through the use of YAML-based templates. 
 
 The project contains a directory called `nuclei` that has two subdirectories. One for `payloads` and one for `templates`. For each attack type we define two templates and two sets of payloads. One template and corresponding payload list for **true positives** and another template and corresponding payload list for **false positives**. A true positive template will test if a legitimate attack was correctly identified as malicious and a false positive template will test if an acceptable payload is incorrectly identified as malicious. 
 
-Each payload will be injected into the payload positions of requests as defined in the templates. All requests recorded are logged in JSON format and include request/response pairs and additional metadata. Then an efficacy score is calculated or each attack type and overall. 
-
 The project provides examples for Command Execution `cmdexe`, SQL Injection `sqli`, Traversal `traversal`, and Cross-Site Scripting `xss`. 
+
+Each payload is injected into the payload positions of requests as defined in the templates. All requests are recorded and logged in JSON format. The logs include request/response pairs and additional metadata. 
+
+In order to determine whether the WAF correctly identified a request as malicious or not, we key off of the response code. Most WAF solutions should be able to support creating a custom response code for blocked requests. If you’re unable to create a custom response code you can key off of the vendor provided response code. However, within the context of our framework we currently look for the receipt of "406 Not Acceptable" when a request is blocked.
+
+In the case of a true positive test, if a 406 response is received, that is counted as a true positive. If the response doesn't contain a 406 response then it's counted as a false negative. 
+
+In the case of a false positive test, if a 406 response is received, that is counted as a false positive. If the response doesn't contain a 406 response then it's counted as a true negative.
+
+The results are then calculated to provide efficacy scores for each attack type and overall. 
 
 ## Adding a New Attack Type
 
