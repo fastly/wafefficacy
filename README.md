@@ -62,7 +62,7 @@ The results are then calculated to provide efficacy scores for each attack type 
 
 If you would like to add a new attack types to the testing framework you can start by creating new subdirectory with the abbreviated attack name under `nuclei/templates` and `nuclei/payloads`. 
 
-For instance if you want to include tests for Server-side request forgery (SSRF) attacks you add `ssrf` as a sub directory.
+For instance if you want to include tests for Server-side request forgery (SSRF) you'll add `ssrf` as a sub directory.
 
 ```
 mkdir nuclei/templates/ssrf && mkdir nuclei/payloads/ssrf
@@ -96,7 +96,7 @@ info:
   severity: info
   tags: ssrf,true-positive
 ```
-Payloads are defined under the payloads field beneath the info block and the actual requests are placed below. Each template can contain multiple requests and the template is iterated and one by one the requests are made to the target site. Let’s build out our template a bit more using this information: 
+Payloads are defined under the payloads field beneath the info block and the actual requests are placed below. Each template can contain multiple requests that test payloads in various ways. Let’s build out our template a bit more using this information: 
 
 ```yaml
 id: ssrf-true-positive
@@ -125,9 +125,9 @@ requests:
 
         p={{url_encode(ssrf)}}
 ```
-In order to validate tests, Nuclei makes use of something called matchers. Matchers allow for flexible comparison of responses that determine whether a test passed or failed. However, for our purposes we want to match everything. This is because the Nuclei logs include request/response pairs and additional metadata. So in our use case, we’ll match every request that doesn’t contain a status code of 1. Since 1 is not a valid server response code we’ll never receive that response, and as a result match every request.  
+In order to validate tests, Nuclei makes use of something called matchers. Matchers allow for flexible comparison of responses that determine whether a test passed or failed. However, for our purposes we want to match everything. This is because the Nuclei logs include request/response pairs and additional metadata. So in our use case, we’ll match every request that doesn’t contain a status code of 1. Since 1 is not a valid server response code we’ll never receive that response, and as a result match every request. 
 
-So the final template for ssrf true positive tests will be as followed:
+The complete template will be as followed:
 
 ```yaml
 id: ssrf-true-positive
