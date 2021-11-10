@@ -71,7 +71,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(prog='score')
     parser.add_argument('-f', '--filename', dest='filename', required=True, help='filename of json formatted waf efficacy results', type=str)
     parser.add_argument('-a', '--attack-types', dest='attack_types', required=False, help='list of one or more attack types', nargs='+', type=str)
-    parser.add_argument('-r', '--waf-response', dest='waf_response', required=False, help='list of one or more attack types', nargs='+', type=str)
+    parser.add_argument('-r', '--waf-response', dest='waf_response', required=False, help='list of one or more attack types', type=str)
     args = parser.parse_args()
     
     waf_efficacy = WAFEfficacy(args.filename, args.waf_response, args.attack_types)
