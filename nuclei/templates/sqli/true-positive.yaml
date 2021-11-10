@@ -9,8 +9,6 @@ info:
 requests:
   - payloads:
       sqli: nuclei/payloads/sqli/true-positives.txt
-      
-    attack: sniper
 
     raw:
       - |

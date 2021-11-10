@@ -9,8 +9,6 @@ info:
 requests:
   - payloads:
       cmdexe: nuclei/payloads/cmdexe/false-positives.txt
-      
-    attack: sniper
 
     raw:
       - |

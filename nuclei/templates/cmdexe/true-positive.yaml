@@ -10,8 +10,6 @@ requests:
   - payloads:
       cmdexe: nuclei/payloads/cmdexe/true-positives.txt
       
-    attack: sniper
-
     raw:
       - |
         GET /?p={{url_encode(cmdexe)}} HTTP/1.1

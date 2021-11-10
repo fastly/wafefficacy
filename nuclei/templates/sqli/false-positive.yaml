@@ -10,8 +10,6 @@ requests:
   - payloads:
       sqli: nuclei/payloads/sqli/false-positives.txt
       
-    attack: sniper
-
     raw:
       - |
         GET /anything?p={{url_encode(sqli)}} HTTP/1.1

@@ -9,8 +9,6 @@ info:
 requests:
   - payloads:
       traversal: nuclei/payloads/traversal/false-positives.txt
-      
-    attack: sniper
 
     raw:
       - |

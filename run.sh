@@ -51,9 +51,9 @@ fi
 # add timestamp to filename
 filename=$directory"/report_$(date +%s).json"
 
-nuclei -no-interactsh -no-update-templates -config $config -u $target -irr -json > $filename
+nuclei -no-interactsh -disable-update-check -config $config -u $target -irr -json > $filename
 sed -i '' 's/}$/,"wafVersion":"'${wafVersion}'","nucleiVersion":"'${nucleiVersion}'","payloadVersion":"'${payloadVersion:="0"}'"}/g' $filename
-python3 score.py -f $filename -a xss sqli traversal cmdexe
+python3 score.py -f $filename
 
 # upload to GCS
 if [ $bucket ]; then

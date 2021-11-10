@@ -9,8 +9,6 @@ info:
 requests:
   - payloads:
       xss: nuclei/payloads/xss/true-positives.txt
-      
-    attack: sniper
 
     raw:
       - |
