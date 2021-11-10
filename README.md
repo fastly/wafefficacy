@@ -56,7 +56,7 @@ The project provides examples for Command Execution `cmdexe`, SQL Injection `sql
 
 If you would like to add a new attack types to the testing framework you can start by creating new subdirectory with the abbreviated attack name under `nuclei/templates` and `nuclei/payloads`. 
 
-For instance if you want to add include tests for Server-side request forgery (SSRF) attacks you add `ssrf` as a sub directory.
+For instance if you want to include tests for Server-side request forgery (SSRF) attacks you add `ssrf` as a sub directory.
 
 ```
 mkdir nuclei/templates/ssrf && mkdir nuclei/payloads/ssrf
