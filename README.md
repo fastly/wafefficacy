@@ -7,9 +7,11 @@
 ---
 The WAF efficacy framework provides a standardized way to measure the effectiveness of a WAF’s detection capabilities. It provides the ability to perform continuous assessments of simulated attacks to test different attack types and distills the results into an overall score that can be used for point in time knowledge or trends of effectiveness. This project contains some initial code and templates to get started.
 
-## Dependencies
+## Prerequisites
 
-Before performing an efficacy test you’ll need to ensure the WAF you’re testing against is configured to block attacks and a response status code set that is used for blocked requests. By default, it checks for the receipt of “406 Not Acceptable” when a request is blocked. 
+Before performing an efficacy test you’ll need to ensure the WAF you’re testing against is configured to block attacks and a response status code is set that is used for blocked requests. By default, it checks for the receipt of “406 Not Acceptable” when a request is blocked. 
+
+## Dependencies
 
 * [Nuclei 2.5.3](https://nuclei.projectdiscovery.io/)
 * [python3](https://www.python.org/downloads/)
