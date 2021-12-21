@@ -55,8 +55,7 @@ filename=$directory"/report_$(date +%s).json"
 
 nuclei -no-interactsh -disable-update-check -config $config -u $target -irr -json > $filename
 
-# check if we are using gnu sed
-# if not, then -i requires passing an empty extension
+# check if using GNU sed, if not then -i requires passing an empty extension
 if sed v < /dev/null 2> /dev/null;  then
     sed -i 's/}$/,"wafVersion":"'${wafVersion}'","nucleiVersion":"'${nucleiVersion}'","payloadVersion":"'${payloadVersion:="0"}'"}/g' $filename
 else
