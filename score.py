@@ -7,11 +7,12 @@ class WAFEfficacy:
     """
     Calculates WAF Efficacy Score
     """
-    def __init__(self, filename: str, waf_response: str, attack_types: List[str]) -> None:
+    def __init__(self, filename: str, waf_response: str, attack_types: List[str], errors: str) -> None:
         with open(filename, 'r') as f:
             self.results = [json.loads(line) for line in f]
         self.attack_types = attack_types if attack_types else ['cmdexe', 'sqli', 'traversal', 'xss']
         self.waf_response = waf_response if waf_response else "406 Not Acceptable"
+        self.errors = errors
     
     def __true_positives_false_negatives(self, attack_type: str) -> Tuple[int, int]:
         true_positives = 0
@@ -55,8 +56,16 @@ class WAFEfficacy:
             print("False Negatives", fn)
             print("True Negatives", tn)
             print("False Positives", fp)
-            sensitivity = tp / (tp + fn)
-            specificity = tn / (tn + fp)
+            try:
+                sensitivity = tp / (tp + fn)
+            except ZeroDivisionError:
+                print(f"Could not calculate sensitivity for {attack_type.upper()} tests. Encountered the following errors when Nuclei ran:\n{self.errors}")
+                sys.exit(1)
+            try:
+                specificity = tn / (tn + fp)
+            except ZeroDivisionError:
+                print(f"Could not calculate specificity for {attack_type.upper()} tests. Encountered the following errors when Nuclei ran:\n{self.errors}")
+                sys.exit(1)
             balanced_accuracy = (sensitivity + specificity) / 2
             print("Efficacy", "{0:.1f}%".format(balanced_accuracy * 100))
         
@@ -69,12 +78,13 @@ class WAFEfficacy:
 
 def main() -> None:
     parser = argparse.ArgumentParser(prog='score')
-    parser.add_argument('-f', '--filename', dest='filename', required=True, help='filename of json formatted waf efficacy results', type=str)
     parser.add_argument('-a', '--attack-types', dest='attack_types', required=False, help='list of one or more attack types', nargs='+', type=str)
+    parser.add_argument('-e', '--errors', dest='errors', required=False, help='error output from Nuclei', type=str)
+    parser.add_argument('-f', '--filename', dest='filename', required=True, help='filename of json formatted waf efficacy results', type=str)
     parser.add_argument('-r', '--waf-response', dest='waf_response', required=False, help='HTTP status code the WAF uses for blocking requests', type=str)
     args = parser.parse_args()
     
-    waf_efficacy = WAFEfficacy(args.filename, args.waf_response, args.attack_types)
+    waf_efficacy = WAFEfficacy(args.filename, args.waf_response, args.attack_types, args.errors)
     waf_efficacy.score()
 
 if __name__ == '__main__':

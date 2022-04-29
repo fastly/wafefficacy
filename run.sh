@@ -53,7 +53,7 @@ fi
 # add timestamp to filename
 filename=$directory"/report_$(date +%s).json"
 
-nuclei -no-interactsh -disable-update-check -config $config -u $target -irr -json > $filename
+errors=`nuclei -no-interactsh -disable-update-check -config $config -u $target -irr -json --debug  2> >(grep '33mWRN') > $filename`
 
 # check if using GNU sed, if not then -i requires passing an empty extension
 if sed v < /dev/null 2> /dev/null;  then
@@ -63,9 +63,9 @@ else
 fi
 
 if [ "$wafResponse" ]; then
-    python3 score.py -f $filename -r "$wafResponse"
+    python3 score.py -f $filename -r "$wafResponse" -e "$errors"
 else
-    python3 score.py -f $filename
+    python3 score.py -f $filename -e "$errors"
 fi
 
 # upload to GCS
