@@ -55,8 +55,14 @@ class WAFEfficacy:
             print("False Negatives", fn)
             print("True Negatives", tn)
             print("False Positives", fp)
-            sensitivity = tp / (tp + fn)
-            specificity = tn / (tn + fp)
+            try:
+                    sensitivity = tp / (tp + fn)
+            except ZeroDivisionError:
+                    sensitivity = 0
+            try:
+                    specificity = tn / (tn + fp)
+            except ZeroDivisionError:
+                    specificity = 0
             balanced_accuracy = (sensitivity + specificity) / 2
             print("Efficacy", "{0:.1f}%".format(balanced_accuracy * 100))
         
