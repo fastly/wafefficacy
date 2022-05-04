@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while getopts ht:p:c:w:b:r: flag
+while getopts ht:p:c:w:b:r:H: flag
 do
     case "${flag}" in
         h)
@@ -10,7 +10,8 @@ do
             -c  (optional) nuclei config, defaults to nuclei/config.yaml
             -w  (optional) waf version, used for reporting
             -b  (optional) google cloud storage bucket name
-            -r  (optional) custom waf response, defaults to 406 Not Acceptable"""
+            -r  (optional) custom waf response, defaults to 406 Not Acceptable
+            -H  (optional) http header to add"""
             exit 0;;
         t) target=${OPTARG};;
         p) reportPath=${OPTARG};;
@@ -18,6 +19,8 @@ do
         w) wafVersion=${OPTARG};;
         b) bucket=${OPTARG};;
         r) wafResponse=${OPTARG};;
+        H) header="${OPTARG}";;
+        *) exit 1;;
     esac
 done
 
@@ -53,7 +56,11 @@ fi
 # add timestamp to filename
 filename=$directory"/report_$(date +%s).json"
 
-nuclei -no-interactsh -disable-update-check -config $config -u $target -irr -json > $filename
+if [ "$header" ]; then
+    nuclei -no-interactsh -disable-update-check -config $config -u $target -irr -json -H "$header" > $filename
+else
+    nuclei -no-interactsh -disable-update-check -config $config -u $target -irr -json > $filename
+fi
 
 # check if using GNU sed, if not then -i requires passing an empty extension
 if sed v < /dev/null 2> /dev/null;  then
