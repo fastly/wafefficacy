@@ -27,6 +27,8 @@ then
     exit 1
 fi
 
+SRCDIR="$(cd "$(dirname $0)"; pwd)"
+
 # sets the payload version which corresponds to the release version of the repository, defaults to 0 if not set. 
 payloadVersion=`git describe --abbrev=0 2>/dev/null | sed s'/v//'`
 payloadVersion=${payloadVersion:="0"}
@@ -63,9 +65,9 @@ else
 fi
 
 if [ "$wafResponse" ]; then
-    python3 score.py -f $filename -r "$wafResponse"
+    python3 "${SRCDIR}"/score.py -f $filename -r "$wafResponse"
 else
-    python3 score.py -f $filename
+    python3 "${SRCDIR}"/score.py -f $filename
 fi
 
 # upload to GCS
