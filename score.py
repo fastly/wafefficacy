@@ -44,7 +44,7 @@ class WAFEfficacy:
         true_negatives = 0
         false_positives = 0
 
-        fmt = "{0:." + str(self.precision) + "f}%"
+        percentage = "{0:." + str(self.precision) + "f}%"
 
         for attack_type in self.attack_types:
             tp, fn = self.__true_positives_false_negatives(attack_type)
@@ -61,13 +61,13 @@ class WAFEfficacy:
             sensitivity = tp / (tp + fn)
             specificity = tn / (tn + fp)
             balanced_accuracy = (sensitivity + specificity) / 2
-            print("Efficacy", fmt.format(balanced_accuracy * 100))
+            print("Efficacy", percentage.format(balanced_accuracy * 100))
         
         print("------------- WAF Efficacy -------------" )
         sensitivity = true_positives / (true_positives + false_negatives)
         specificity = true_negatives / (true_negatives + false_positives)
         balanced_accuracy = (sensitivity + specificity) / 2
-        print(fmt.format(balanced_accuracy * 100))
+        print(percentage.format(balanced_accuracy * 100))
 
 
 def main() -> None:
