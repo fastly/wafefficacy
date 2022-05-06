@@ -1,11 +1,12 @@
 #!/bin/bash
 
-while getopts ht:p:c:w:b:r: flag
+while getopts ht:k:p:c:w:b:r: flag
 do
     case "${flag}" in
         h)
             echo """Usage: $0
             -t  (required) url/host to test against
+            -k  (optional) number of decimal places in percentages
             -p  (optional) report directory, defaults to ./reports
             -c  (optional) nuclei config, defaults to nuclei/config.yaml
             -w  (optional) waf version, used for reporting
@@ -13,6 +14,7 @@ do
             -r  (optional) custom waf response, defaults to 406 Not Acceptable"""
             exit 0;;
         t) target=${OPTARG};;
+        k) precision=${OPTARG};;
         p) reportPath=${OPTARG};;
         c) config=${OPTARG};;
         w) wafVersion=${OPTARG};;
@@ -26,6 +28,9 @@ then
     echo "-t <url/host> is required"
     exit 1
 fi
+
+# sets the precision of percentages in output (default: 1)
+precision=${precision:-1}
 
 SRCDIR="$(cd "$(dirname $0)"; pwd)"
 
@@ -65,9 +70,9 @@ else
 fi
 
 if [ "$wafResponse" ]; then
-    python3 "${SRCDIR}"/score.py -f $filename -r "$wafResponse"
+    python3 "${SRCDIR}"/score.py -f $filename -k $precision -r "$wafResponse"
 else
-    python3 "${SRCDIR}"/score.py -f $filename
+    python3 "${SRCDIR}"/score.py -f $filename -k $precision
 fi
 
 # upload to GCS
