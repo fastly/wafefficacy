@@ -1,6 +1,7 @@
 #!/bin/bash
+set -x
 
-while getopts ht:k:p:c:w:b:r: flag
+while getopts ht:k:o:m:p:c:w:b:r: flag
 do
     case "${flag}" in
         h)
@@ -11,6 +12,8 @@ do
             -c  (optional) nuclei config, defaults to nuclei/config.yaml
             -w  (optional) waf version, used for reporting
             -b  (optional) google cloud storage bucket name
+            -m  (optional) input file for minimum efficacy for each attack type
+            -o  (optional) output file for efficacy for each attack type
             -r  (optional) custom waf response, defaults to 406 Not Acceptable"""
             exit 0;;
         t) target=${OPTARG};;
@@ -19,6 +22,8 @@ do
         c) config=${OPTARG};;
         w) wafVersion=${OPTARG};;
         b) bucket=${OPTARG};;
+        o) outputPath=${OPTARG};;
+        m) minimaPath=${OPTARG};;
         r) wafResponse=${OPTARG};;
     esac
 done
@@ -48,6 +53,18 @@ config=${config:=nuclei/config.yaml}
 # sets the report directory, defaults to ./reports
 reportPath=${reportPath:=reports}
 
+# sets the short report filename, if any
+if test "$outputPath"
+then
+    outputPathOpt="-o$outputPath"
+fi
+
+# sets the minima input filename, if any
+if test "$minimaPath"
+then
+    minimaPathOpt="-m$minimaPath"
+fi
+
 # set default for wafVersion is not specific by user
 wafVersion=${wafVersion:"0"}
 
@@ -70,9 +87,9 @@ else
 fi
 
 if [ "$wafResponse" ]; then
-    python3 "${SRCDIR}"/score.py -f $filename -k $precision -r "$wafResponse"
+    python3 "${SRCDIR}"/score.py -f $filename -k $precision $outputPathOpt $minimaPathOpt -r "$wafResponse"
 else
-    python3 "${SRCDIR}"/score.py -f $filename -k $precision
+    python3 "${SRCDIR}"/score.py -f $filename -k $precision $outputPathOpt $minimaPathOpt
 fi
 
 # upload to GCS
