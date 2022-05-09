@@ -27,11 +27,14 @@ This will display help for the tool. Here are all the arguments it supports:
 ```yaml
 Usage: ./run.sh
           -t  (required) url/host to test against
+          -k  (optional) number of decimal places in percentages
           -p  (optional) report directory, defaults to ./reports
           -c  (optional) nuclei config, defaults to nuclei/config.yaml
           -w  (optional) waf version, used for reporting
           -b  (optional) google cloud storage bucket name
-          -r  (optional) custom waf response, defaults to 406 Not Acceptable
+          -m  (optional) input file for minimum efficacy for each attack type
+          -o  (optional) output file for efficacy for each attack type
+          -r  (optional) custom waf response, defaults to 406 Not Acceptable"""
 ```
 Only `-t`  is required which is the url/host to test against. 
 
@@ -169,6 +172,20 @@ requests:
         status:
           - 1
         negative: true
+```
+
+## Using as regression test
+
+To see if future runs of your efficacy test regress, use e.g. -o efficacy.json
+to save the current efficacy percentages to a json file.
+
+Then pass that file to future runs with the -m parameter, e.g. -m efficacy.json,
+to abort if efficacy for any attack type (or overall) falls below that in the file.
+
+Example file:
+
+```json
+{"cmdexe": 0.60, "sqli": 0.70, "traversal": 0.80, "xss": 0.90, "overall": 0.75}
 ```
 
 ## Improvements & Considerations

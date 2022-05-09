@@ -7,14 +7,13 @@ class WAFEfficacy:
     """
     Calculates WAF Efficacy Score
     """
-    def __init__(self, filename: str, waf_response: str, attack_types: List[str], precision: int, outfile: str, minima: str) -> None:
+    def __init__(self, filename: str, waf_response: str, attack_types: List[str], precision: int, outfile: str) -> None:
         with open(filename, 'r') as f:
             self.results = [json.loads(line) for line in f]
         self.attack_types = attack_types if attack_types else ['cmdexe', 'sqli', 'traversal', 'xss']
         self.waf_response = waf_response if waf_response else "406 Not Acceptable"
         self.precision = precision if precision else 1
         self.outfile = outfile if outfile else ""
-        self.minima = minima if minima else ""
     
     def __true_positives_false_negatives(self, attack_type: str) -> Tuple[int, int]:
         true_positives = 0
@@ -48,7 +47,7 @@ class WAFEfficacy:
 
         percentage = "{0:." + str(self.precision) + "f}%"
 
-        efficacy = {}
+        self.efficacy = {}
         for attack_type in self.attack_types:
             tp, fn = self.__true_positives_false_negatives(attack_type)
             tn, fp = self.__true_negatives_false_positives(attack_type)
@@ -64,7 +63,7 @@ class WAFEfficacy:
             sensitivity = tp / (tp + fn)
             specificity = tn / (tn + fp)
             balanced_accuracy = (sensitivity + specificity) / 2
-            efficacy[attack_type]=balanced_accuracy
+            self.efficacy[attack_type]=balanced_accuracy
             print("Efficacy", percentage.format(balanced_accuracy * 100))
         
         print("------------- WAF Efficacy -------------" )
@@ -72,21 +71,22 @@ class WAFEfficacy:
         specificity = true_negatives / (true_negatives + false_positives)
         balanced_accuracy = (sensitivity + specificity) / 2
         print(percentage.format(balanced_accuracy * 100))
-        efficacy["overall"]=balanced_accuracy
+        self.efficacy["overall"]=balanced_accuracy
 
         if self.outfile != "":
             with open(self.outfile, 'w') as fp:
-                json.dump(efficacy, fp)
+                json.dump(self.efficacy, fp)
                 fp.write("\n")
 
-        if self.minima != "":
+    def efficacy_assertions(self, minima_file: str) -> None:
+        if minima_file != "":
             failed = False
-            with open(self.minima, 'r') as fp:
+            with open(minima_file, 'r') as fp:
                     minima = json.load(fp)
                     for attack_type, want in minima.items():
                         # avoid exact comparisons on floats, they're potentially flaky
                         epsilon = 0.0000001
-                        got = efficacy[attack_type]
+                        got = self.efficacy[attack_type]
                         if got < want - epsilon:
                             failed = True
                             print("FAIL: wafefficacy_%s: want >= %f, got %f" % (attack_type, want, got))
@@ -104,8 +104,9 @@ def main() -> None:
     parser.add_argument('-o', '--output', dest='outfile', required=False, help='output file for efficacy for each attack time', type=str)
     args = parser.parse_args()
     
-    waf_efficacy = WAFEfficacy(args.filename, args.waf_response, args.attack_types, args.precision, args.outfile, args.minima)
+    waf_efficacy = WAFEfficacy(args.filename, args.waf_response, args.attack_types, args.precision, args.outfile)
     waf_efficacy.score()
+    waf_efficacy.efficacy_assertions(args.minima)
 
 if __name__ == '__main__':
     sys.exit(main())
