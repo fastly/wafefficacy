@@ -13,7 +13,7 @@ Before performing an efficacy test you’ll need to ensure the WAF you’re test
 
 ## Dependencies
 
-* [Nuclei 2.5.3](https://nuclei.projectdiscovery.io/)
+* [Nuclei](https://nuclei.projectdiscovery.io/)
 * [python3](https://www.python.org/downloads/)
 * [gsutil (optional)](https://cloud.google.com/storage/docs/gsutil_install)
 
