@@ -1,25 +1,30 @@
 #!/bin/bash
 
-while getopts ht:k:p:c:w:b:r: flag
+while getopts ht:b:c:i:k:o:p:r:w: flag
 do
     case "${flag}" in
         h)
             echo """Usage: $0
             -t  (required) url/host to test against
-            -k  (optional) number of decimal places in percentages
-            -p  (optional) report directory, defaults to ./reports
-            -c  (optional) nuclei config, defaults to nuclei/config.yaml
-            -w  (optional) waf version, used for reporting
             -b  (optional) google cloud storage bucket name
-            -r  (optional) custom waf response, defaults to 406 Not Acceptable"""
+            -c  (optional) nuclei config, defaults to nuclei/config.yaml
+            -i  (optional) input json file with efficacy assertions for each attack type
+            -k  (optional) number of decimal places in percentages
+            -o  (optional) output json file with efficacy scores
+            -p  (optional) report directory, defaults to ./reports
+            -r  (optional) custom waf response, defaults to 406 Not Acceptable
+            -w  (optional) waf version, used for reporting"""
             exit 0;;
         t) target=${OPTARG};;
-        k) precision=${OPTARG};;
-        p) reportPath=${OPTARG};;
-        c) config=${OPTARG};;
-        w) wafVersion=${OPTARG};;
         b) bucket=${OPTARG};;
+        c) config=${OPTARG};;
+        i) assertions=${OPTARG};;
+        k) precision=${OPTARG};;
+        o) outfile=${OPTARG};;
+        p) reportPath=${OPTARG};;
         r) wafResponse=${OPTARG};;
+        w) wafVersion=${OPTARG};;
+        *) exit 1;;
     esac
 done
 
@@ -49,7 +54,19 @@ config=${config:=nuclei/config.yaml}
 reportPath=${reportPath:=reports}
 
 # set default for wafVersion is not specific by user
-wafVersion=${wafVersion:"0"}
+wafVersion=${wafVersion:="0"}
+
+wafResponse=${wafResponse:="406 Not Acceptable"}
+
+if test $assertions
+then
+  assertionsOpt="-i $assertions"
+fi
+
+if test $outfile
+then
+    outfileOpt="-o $outfile"
+fi
 
 # create the report directory
 directory=${reportPath%/*}
@@ -69,11 +86,7 @@ else
     sed -i '' 's/}$/,"wafVersion":"'${wafVersion}'","nucleiVersion":"'${nucleiVersion}'","payloadVersion":"'${payloadVersion:="0"}'"}/g' $filename
 fi
 
-if [ "$wafResponse" ]; then
-    python3 "${SRCDIR}"/score.py -f $filename -k $precision -r "$wafResponse"
-else
-    python3 "${SRCDIR}"/score.py -f $filename -k $precision
-fi
+python3 "${SRCDIR}"/score.py -f $filename -k $precision -r "$wafResponse" $assertionsOpt $outfileOpt
 
 # upload to GCS
 if [ $bucket ]; then
