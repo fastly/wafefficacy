@@ -24,6 +24,7 @@ do
         p) reportPath=${OPTARG};;
         r) wafResponse=${OPTARG};;
         w) wafVersion=${OPTARG};;
+        *) exit 1;;
     esac
 done
 
