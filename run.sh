@@ -85,7 +85,10 @@ else
     sed -i '' 's/}$/,"wafVersion":"'${wafVersion}'","nucleiVersion":"'${nucleiVersion}'","payloadVersion":"'${payloadVersion:="0"}'"}/g' $filename
 fi
 
-python3 "${SRCDIR}"/score.py -f $filename -k $precision -r "$wafResponse" $assertionsOpt $outfileOpt
+if ! python3 "${SRCDIR}"/score.py -f $filename -k $precision -r "$wafResponse" $assertionsOpt $outfileOpt
+then
+    exit 1
+fi
 
 # upload to GCS
 if [ $bucket ]; then
