@@ -69,13 +69,12 @@ then
 fi
 
 # create the report directory
-directory=${reportPath%/*}
-if [[ ! -e $directory ]]; then
-    mkdir -p $directory
+if ! test -d $reportPath; then
+    mkdir -p $reportPath
 fi
 
 # add timestamp to filename
-filename=$directory"/report_$(date +%s).json"
+filename="$reportPath/report_$(date +%s).json"
 
 nuclei -no-interactsh -disable-update-check -config $config -u $target -irr -json > $filename
 
