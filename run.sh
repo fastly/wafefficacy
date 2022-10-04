@@ -78,7 +78,7 @@ fi
 # add timestamp to filename
 filename="$reportPath/report_$(date +%s).json"
 
-nuclei -no-interactsh -disable-update-check -config $config -u $target -irr -json $verbose > $filename
+nuclei -no-interactsh -disable-update-check -stats -config $config -u $target -irr -json $verbose > $filename
 
 # check if using GNU sed, if not then -i requires passing an empty extension
 if sed v < /dev/null 2> /dev/null;  then
