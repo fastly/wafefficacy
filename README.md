@@ -35,6 +35,7 @@ Usage: ./run.sh
             -p  (optional) report directory, defaults to ./reports
             -r  (optional) custom waf response, defaults to 406 Not Acceptable
             -w  (optional) waf version, used for reporting
+            -v  (optional) verbose output, shows current test
 ```
 Only `-t`  is required which is the url/host to test against. 
 

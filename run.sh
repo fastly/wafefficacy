@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while getopts ht:b:c:i:k:o:p:r:w: flag
+while getopts ht:b:c:i:k:o:p:r:w:v flag
 do
     case "${flag}" in
         h)
@@ -13,7 +13,8 @@ do
             -o  (optional) output json file with efficacy scores
             -p  (optional) report directory, defaults to ./reports
             -r  (optional) custom waf response, defaults to 406 Not Acceptable
-            -w  (optional) waf version, used for reporting"""
+            -w  (optional) waf version, used for reporting
+            -v  (optional) verbose output, shows current test"""
             exit 0;;
         t) target=${OPTARG};;
         b) bucket=${OPTARG};;
@@ -24,6 +25,7 @@ do
         p) reportPath=${OPTARG};;
         r) wafResponse=${OPTARG};;
         w) wafVersion=${OPTARG};;
+        v) verbose='-v';;
         *) exit 1;;
     esac
 done
@@ -76,7 +78,7 @@ fi
 # add timestamp to filename
 filename="$reportPath/report_$(date +%s).json"
 
-nuclei -no-interactsh -disable-update-check -config $config -u $target -irr -json > $filename
+nuclei -no-interactsh -disable-update-check -stats -config $config -u $target -irr -json $verbose > $filename
 
 # check if using GNU sed, if not then -i requires passing an empty extension
 if sed v < /dev/null 2> /dev/null;  then
