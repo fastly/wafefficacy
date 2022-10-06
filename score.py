@@ -7,11 +7,14 @@ class WAFEfficacy:
     """
     Calculates WAF Efficacy Score
     """
-    def __init__(self, filename: str, waf_response: str = "406 Not Acceptable", 
-                 attack_types: List[str] = ['cmdexe', 'sqli', 'traversal', 'xss'], precision: int = 1, outfile: str = None) -> None:
+    def __init__(self, filename: str, waf_response: str = "406 Not Acceptable", precision: int = 1, outfile: str = None) -> None:
         with open(filename, 'r') as f:
             self.results = [json.loads(line) for line in f]
-        self.attack_types = attack_types
+        self.attack_types = []
+        for line in self.results:
+            template_id = line['template-id'].rsplit('-', 2)
+            if not template_id[0] in self.attack_types:
+                self.attack_types.append(template_id[0])
         self.waf_response = waf_response
         self.percentage = "{0:." + f"{precision}" + "f}%"
         self.efficacy_scores = {}
@@ -98,7 +101,6 @@ class WAFEfficacy:
 
 def main() -> None:
     parser = argparse.ArgumentParser(prog='score')
-    parser.add_argument('-a', '--attack-types', dest='attack_types', required=False, help='list of one or more attack types', nargs='+', type=str, default=['cmdexe', 'sqli', 'traversal', 'xss'])
     parser.add_argument('-f', '--filename', dest='filename', required=True, help='filename of json formatted waf efficacy results', type=str)
     parser.add_argument('-i', '--input-assertions', dest='assertions', required=False, help='input json file with efficacy assertions for each attack type', type=str, default="")
     parser.add_argument('-k', '--precision', dest='precision', required=False, help='number of decimal places in percentages', type=int, default=1)
@@ -106,7 +108,7 @@ def main() -> None:
     parser.add_argument('-r', '--waf-response', dest='waf_response', required=False, help='HTTP status code the WAF uses for blocking requests', type=str, default="406 Not Acceptable")
     args = parser.parse_args()
     
-    waf_efficacy = WAFEfficacy(args.filename, args.waf_response, args.attack_types, args.precision, args.outfile)
+    waf_efficacy = WAFEfficacy(args.filename, args.waf_response, args.precision, args.outfile)
     waf_efficacy.score()
     waf_efficacy.efficacy_assertions(args.assertions)
 
