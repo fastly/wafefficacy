@@ -15,6 +15,7 @@ class WAFEfficacy:
             template_id = line['template-id'].rsplit('-', 2)
             if not template_id[0] in self.attack_types:
                 self.attack_types.append(template_id[0])
+        self.attack_types.sort()
         self.waf_response = waf_response
         self.percentage = "{0:." + f"{precision}" + "f}%"
         self.efficacy_scores = {}
