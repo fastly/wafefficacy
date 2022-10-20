@@ -82,9 +82,9 @@ nuclei -no-interactsh -disable-update-check -stats -config $config -u $target -i
 
 # check if using GNU sed, if not then -i requires passing an empty extension
 if sed v < /dev/null 2> /dev/null;  then
-    sed -i 's/}$/,"wafVersion":"'${wafVersion}'","nucleiVersion":"'${nucleiVersion}'","payloadVersion":"'${payloadVersion:="0"}'"}/g' $filename
+    sed -i "s/}$/,\"wafVersion\":\"${wafVersion}\",\"nucleiVersion\":\"${nucleiVersion}\",\"payloadVersion\":\"${payloadVersion:=\"0\"}\"}/g" $filename
 else
-    sed -i '' 's/}$/,"wafVersion":"'${wafVersion}'","nucleiVersion":"'${nucleiVersion}'","payloadVersion":"'${payloadVersion:="0"}'"}/g' $filename
+    sed -i '' "s/}$/,\"wafVersion\":\"${wafVersion}\",\"nucleiVersion\":\"${nucleiVersion}\",\"payloadVersion\":\"${payloadVersion:=\"0\"}\"}/g" $filename
 fi
 
 if ! python3 "${SRCDIR}"/score.py -f $filename -k $precision -r "$wafResponse" $assertionsOpt $outfileOpt
