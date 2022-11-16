@@ -9,15 +9,15 @@ info:
 requests:
   - payloads:
       cmdexe: nuclei/payloads/cmdexe/true-positives.txt
-      
+
     raw:
       - |
-        GET /?p={{url_encode(cmdexe)}} HTTP/1.1
+        GET /anything?p={{url_encode(cmdexe)}} HTTP/1.1
         Host: {{Hostname}}
         Connection: close
 
       - |
-        POST / HTTP/1.1
+        POST /anything HTTP/1.1
         Host: {{Hostname}}
         Content-Type: application/x-www-form-urlencoded
         Connection: close
