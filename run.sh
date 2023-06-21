@@ -1,5 +1,7 @@
 #!/bin/bash
 
+command -v nuclei >/dev/null 2>&1 || { echo >&2 "error: nuclei is required, but was not found."; exit 1; }
+
 while getopts ht:b:c:i:k:o:p:r:w:v flag
 do
     case "${flag}" in
