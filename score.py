@@ -70,6 +70,13 @@ class WAFEfficacy:
             self.efficacy_scores[attack_type] = efficacy_score
             print("Efficacy", self.percentage.format(efficacy_score))
         
+        if (true_positives + false_negatives) == 0:
+            # avoid dividing by zero
+            false_negatives = 1
+        if (true_negatives + false_positives) == 0:
+            # avoid dividing by zero
+            false_positives = 1
+
         print("------------- WAF Efficacy -------------" )
         sensitivity = true_positives / (true_positives + false_negatives)
         specificity = true_negatives / (true_negatives + false_positives)
