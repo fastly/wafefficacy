@@ -141,14 +141,22 @@ jobs:
         if: matrix.goos == 'windows'
         run: mv wafefficacy-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.goarm }} wafefficacy-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.goarm }}.exe
 
+      - name: Build release zip
+        run: |
+          mkdir wafefficacy-release/
+          mv -v ./wafefficacy-${{ matrix.goos }}-* wafefficacy-release/wafefficacy
+          cp -v LICENSE *.md run.sh score.py  wafefficacy-release/
+          cp -vr nuclei/ wafefficacy-release/nuclei/
+          zip -r wafefficacy-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.goarm }}${{ matrix.gomips }}.zip wafefficacy-release/
+
       - name: Upload files to Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: wafefficacy-${{ matrix.goos }}-${{ matrix.goarch }}${{ matrix.goarm }}${{ matrix.gomips }}
-          path: ./wafefficacy-*
+          path: ./wafefficacy-*.zip
 
       - name: Release builds on tag
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ./wafefficacy-${{ matrix.goos }}-*
+          files: ./wafefficacy-*.zip
