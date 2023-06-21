@@ -65,10 +65,11 @@ class WAFEfficacy:
             print("False Positives", fp)
             sensitivity = tp / (tp + fn)
             specificity = tn / (tn + fp)
+            total = tp + fn + tn + fp
             balanced_accuracy = (sensitivity + specificity) / 2
             efficacy_score = balanced_accuracy * 100
             self.efficacy_scores[attack_type] = efficacy_score
-            print("Efficacy", self.percentage.format(efficacy_score))
+            print("Efficacy", self.percentage.format(efficacy_score), "over", total, "tests.")
         
         if (true_positives + false_negatives) == 0:
             # avoid dividing by zero
@@ -82,8 +83,9 @@ class WAFEfficacy:
         specificity = true_negatives / (true_negatives + false_positives)
         balanced_accuracy = (sensitivity + specificity) / 2
         efficacy_score = balanced_accuracy * 100
+        total = true_positives + false_negatives + true_negatives + false_positives
         self.efficacy_scores['overall'] = efficacy_score
-        print(self.percentage.format(efficacy_score))
+        print(self.percentage.format(efficacy_score), "over", total, "tests.")
         
         if self.outfile:
             with open(self.outfile, 'w') as fp:
