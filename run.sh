@@ -4,7 +4,7 @@ while getopts ht:b:c:i:k:o:p:r:w:v flag
 do
     case "${flag}" in
         h)
-            echo """Usage: $0
+            echo "Usage: $0
             -t  (required) url/host to test against
             -b  (optional) google cloud storage bucket name
             -c  (optional) nuclei config, defaults to nuclei/config.yaml
@@ -14,7 +14,7 @@ do
             -p  (optional) report directory, defaults to ./reports
             -r  (optional) custom waf response, defaults to 406 Not Acceptable
             -w  (optional) waf version, used for reporting
-            -v  (optional) verbose output, shows current test"""
+            -v  (optional) verbose output, shows current test"
             exit 0;;
         t) target=${OPTARG};;
         b) bucket=${OPTARG};;
@@ -42,12 +42,17 @@ precision=${precision:-1}
 SRCDIR="$(cd "$(dirname $0)"; pwd)"
 
 # sets the payload version which corresponds to the release version of the repository, defaults to 0 if not set. 
-payloadVersion=`git describe --abbrev=0 2>/dev/null | sed s'/v//'`
-payloadVersion=${payloadVersion:="0"}
+git describe --abbrev=0 || true
+payloadVersion=0
+if git describe --abbrev=0 2>/dev/null | sed s'/v//' > payloadVersion.tmp
+then
+	payloadVersion=$(cat payloadVersion.tmp)
+	rm payloadVersion.tmp
+fi
 
 # sets the nuclei version
-nucleiVersion=`nuclei -version 2>&1 | sed -n -e 's/^.*Version: //p'`
-nucleiVersion=${nucleiVersion:="0"}
+nuclei -version
+nucleiVersion=$(nuclei -version 2>&1 | sed -n -e 's/^.*Version: //p')
 
 # sets the nuclei config, defaults to nuclei/config.yaml
 config=${config:=nuclei/config.yaml}
