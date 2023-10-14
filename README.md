@@ -119,11 +119,8 @@ info:
   severity: info
   tags: ssrf,true-positive
 
-requests:
-  - payloads:
-      ssrf: nuclei/payloads/ssrf/true-positives.txt
-
-    raw:
+http:
+  - raw:
       - |
         GET /anything?p={{url_encode(ssrf)}} HTTP/1.1
         Host: {{Hostname}}
@@ -136,6 +133,9 @@ requests:
         Connection: close
 
         p={{url_encode(ssrf)}}
+    
+    payloads:
+      ssrf: helpers/payloads/ssrf/true-positives.txt
 ```
 In order to validate tests, Nuclei makes use of something called matchers. Matchers allow for flexible comparison of responses that determine whether a test passed or failed. However, for our purposes we want to match everything. This is because the Nuclei logs include request/response pairs and additional metadata. So in our use case, we’ll match every request that doesn’t contain a status code of 1. Since 1 is not a valid server response code we’ll never receive that response, and as a result match every request. 
 
@@ -150,11 +150,8 @@ info:
   severity: info
   tags: ssrf,true-positive
 
-requests:
-  - payloads:
-      ssrf: nuclei/payloads/ssrf/true-positives.txt
-
-    raw:
+http:
+  - raw:
       - |
         GET /anything?p={{url_encode(ssrf)}} HTTP/1.1
         Host: {{Hostname}}
@@ -167,6 +164,9 @@ requests:
         Connection: close
 
         p={{url_encode(ssrf)}}
+
+    payloads:
+      ssrf: helpers/payloads/ssrf/true-positives.txt
 
     matchers:
       - type: status

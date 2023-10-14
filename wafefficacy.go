@@ -27,13 +27,12 @@ func GetNucleiVersion() (string, error) {
 }
 
 // RunNuclei runs Nuclei with the given config, and returns a stream of its output.
-func RunNuclei(config string, target string, verbose bool) (r io.Reader, err error) {
+func RunNuclei(config string, target string, templateDir string, verbose bool) (r io.Reader, err error) {
 	args := []string{
-		"-no-interactsh",
+		"-duc",
+		"-ud", templateDir,
 		"-config", config,
 		"-u", target,
-		"-irr",
-		"-json",
 	}
 	if verbose {
 		// TODO: figure out where the verbose output goes... probably stderr, which we don't capture
@@ -159,10 +158,8 @@ func (nr *NucleiResults) PrintScore() {
 	}
 
 	fmt.Println("------------- WAF Efficacy -------------")
-	sensitivity := float64(truePositives) / float64(truePositives+falseNegatives)
-	specificity := float64(trueNegatives) / float64(trueNegatives+falsePositives)
-	balanced_accuracy := (sensitivity + specificity) / 2
-	efficacyScore := balanced_accuracy * 100
+	recall := float64(truePositives) / float64(truePositives+falseNegatives)
+	efficacyScore := recall * 100
 	fmt.Printf("Overall efficacy: %.3f\n", efficacyScore)
 }
 

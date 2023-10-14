@@ -1,18 +1,18 @@
-id: sqli-false-positive
+id: cmdexe-true-positive
 
 info:
-  name: SQL Injection (SQLi)
+  name: Command Execution
   author: wafefficacy
   severity: info
-  tags: sqli,false-positive
+  tags: cmdexe,true-positive
 
-requests:
+http:
   - payloads:
-      sqli: nuclei/payloads/sqli/false-positives.txt
-      
+      cmdexe: helpers/payloads/cmdexe/true-positives.txt
+
     raw:
       - |
-        GET /anything?p={{url_encode(sqli)}} HTTP/1.1
+        GET /anything?p={{url_encode(cmdexe)}} HTTP/1.1
         Host: {{Hostname}}
         Connection: close
 
@@ -22,7 +22,7 @@ requests:
         Content-Type: application/x-www-form-urlencoded
         Connection: close
 
-        p={{url_encode(sqli)}}
+        p={{url_encode(cmdexe)}}
 
     matchers:
       - type: status

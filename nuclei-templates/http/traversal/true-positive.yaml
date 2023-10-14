@@ -1,28 +1,28 @@
-id: cmdexe-false-positive
+id: traversal-true-positive
 
 info:
-  name: Command Execution
+  name: Traversal
   author: wafefficacy
   severity: info
-  tags: cmdexe,false-positive
+  tags: traversal,true-positive
 
-requests:
+http:
   - payloads:
-      cmdexe: nuclei/payloads/cmdexe/false-positives.txt
+      traversal: helpers/payloads/traversal/true-positives.txt
 
     raw:
       - |
-        GET /anything?p={{url_encode(cmdexe)}} HTTP/1.1
+        GET /anything?p={{url_encode(traversal)}} HTTP/1.1
         Host: {{Hostname}}
         Connection: close
-
+      
       - |
         POST /anything HTTP/1.1
         Host: {{Hostname}}
         Content-Type: application/x-www-form-urlencoded
         Connection: close
 
-        p={{url_encode(cmdexe)}}
+        p={{url_encode(traversal)}}
 
     matchers:
       - type: status
