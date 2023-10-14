@@ -137,6 +137,7 @@ func (nr *NucleiResults) PrintScore() {
 	falseNegatives := 0
 	trueNegatives := 0
 	falsePositives := 0
+	efficacyScores := make(map[string]float64)
 
 	for _, attackType := range nr.attackTypes {
 		tp, fn := nr.truePositivesFalseNegatives(attackType)
@@ -154,12 +155,16 @@ func (nr *NucleiResults) PrintScore() {
 		specificity := float64(tn) / float64(tn+fp)
 		balanced_accuracy := (sensitivity + specificity) / 2
 		efficacyScore := balanced_accuracy * 100
+		efficacyScores[attackType] = efficacyScore
 		fmt.Printf("Efficacy %.3f\n", efficacyScore)
 	}
 
 	fmt.Println("------------- WAF Efficacy -------------")
-	recall := float64(truePositives) / float64(truePositives+falseNegatives)
-	efficacyScore := recall * 100
+	total := 0.0
+	for _, v := range efficacyScores {
+		total += v
+	}
+	efficacyScore := total / float64(len(efficacyScores))
 	fmt.Printf("Overall efficacy: %.3f\n", efficacyScore)
 }
 

@@ -71,8 +71,7 @@ class WAFEfficacy:
             print("Efficacy", self.percentage.format(efficacy_score))
         
         print("------------- WAF Efficacy -------------" )
-        recall = true_positives / (true_positives + false_negatives)
-        efficacy_score = recall * 100
+        efficacy_score = sum(self.efficacy_scores.values()) / len(self.efficacy_scores)
         self.efficacy_scores['overall'] = efficacy_score
         print(self.percentage.format(efficacy_score))
         
