@@ -6,11 +6,8 @@ info:
   severity: info 
   tags: xss,true-positive
 
-requests:
-  - payloads:
-      xss: nuclei/payloads/xss/true-positives.txt
-
-    raw:
+http:
+  - raw:
       - |
         GET /anything?p={{url_encode(xss)}} HTTP/1.1
         Host: {{Hostname}}
@@ -23,6 +20,9 @@ requests:
         Connection: close
 
         p={{url_encode(xss)}}
+    
+    payloads:
+      xss: helpers/payloads/xss/true-positives.txt
       
     matchers:
       - type: status

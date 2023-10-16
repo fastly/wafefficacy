@@ -1,0 +1,22 @@
+# maximum number of templates to be executed in parallel
+concurrency: 4
+# custom headers to include in all http request
+header:
+  - 'X-Hacker: hacker'
+  - 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36'
+  - 'Accept: */*'
+# list of templatex or template directory to run
+templates:
+  - http
+# templates to run based on tags 
+tags: false-positive,true-positive
+# write output in jsonl(ines) format
+jsonl: true
+# include request/response pairs in jsonl
+include-rr: true
+# disable interactsh server for oast testing, exclude oast based templates
+no-interactsh: true
+# display statistics about the running scan
+stats: true
+# display statistics in jsonl(ines) format
+stats-json: true

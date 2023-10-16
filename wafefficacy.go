@@ -27,13 +27,12 @@ func GetNucleiVersion() (string, error) {
 }
 
 // RunNuclei runs Nuclei with the given config, and returns a stream of its output.
-func RunNuclei(config string, target string, verbose bool) (r io.Reader, err error) {
+func RunNuclei(config string, target string, templateDir string, verbose bool) (r io.Reader, err error) {
 	args := []string{
-		"-no-interactsh",
+		"-duc",
+		"-ud", templateDir,
 		"-config", config,
 		"-u", target,
-		"-irr",
-		"-json",
 	}
 	if verbose {
 		// TODO: figure out where the verbose output goes... probably stderr, which we don't capture
@@ -138,6 +137,7 @@ func (nr *NucleiResults) PrintScore() {
 	falseNegatives := 0
 	trueNegatives := 0
 	falsePositives := 0
+	efficacyScores := make(map[string]float64)
 
 	for _, attackType := range nr.attackTypes {
 		tp, fn := nr.truePositivesFalseNegatives(attackType)
@@ -155,14 +155,16 @@ func (nr *NucleiResults) PrintScore() {
 		specificity := float64(tn) / float64(tn+fp)
 		balanced_accuracy := (sensitivity + specificity) / 2
 		efficacyScore := balanced_accuracy * 100
+		efficacyScores[attackType] = efficacyScore
 		fmt.Printf("Efficacy %.3f\n", efficacyScore)
 	}
 
 	fmt.Println("------------- WAF Efficacy -------------")
-	sensitivity := float64(truePositives) / float64(truePositives+falseNegatives)
-	specificity := float64(trueNegatives) / float64(trueNegatives+falsePositives)
-	balanced_accuracy := (sensitivity + specificity) / 2
-	efficacyScore := balanced_accuracy * 100
+	total := 0.0
+	for _, v := range efficacyScores {
+		total += v
+	}
+	efficacyScore := total / float64(len(efficacyScores))
 	fmt.Printf("Overall efficacy: %.3f\n", efficacyScore)
 }
 

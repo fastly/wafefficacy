@@ -7,7 +7,7 @@ do
             echo """Usage: $0
             -t  (required) url/host to test against
             -b  (optional) google cloud storage bucket name
-            -c  (optional) nuclei config, defaults to nuclei/config.yaml
+            -c  (optional) nuclei config, defaults to config.yaml
             -i  (optional) input json file with efficacy assertions for each attack type
             -k  (optional) number of decimal places in percentages
             -o  (optional) output json file with efficacy scores
@@ -38,26 +38,19 @@ fi
 
 # sets the precision of percentages in output (default: 1)
 precision=${precision:-1}
-
 SRCDIR="$(cd "$(dirname $0)"; pwd)"
-
 # sets the payload version which corresponds to the release version of the repository, defaults to 0 if not set. 
 payloadVersion=`git describe --abbrev=0 2>/dev/null | sed s'/v//'`
 payloadVersion=${payloadVersion:="0"}
-
 # sets the nuclei version
 nucleiVersion=`nuclei -version 2>&1 | sed -n -e 's/^.*Version: //p'`
 nucleiVersion=${nucleiVersion:="0"}
-
 # sets the nuclei config, defaults to nuclei/config.yaml
-config=${config:=nuclei/config.yaml}
-
+config=${config:=config.yaml}
 # sets the report directory, defaults to ./reports
 reportPath=${reportPath:=reports}
-
 # set default for wafVersion is not specific by user
 wafVersion=${wafVersion:="0"}
-
 wafResponse=${wafResponse:="406 Not Acceptable"}
 
 if test $assertions
@@ -78,7 +71,8 @@ fi
 # add timestamp to filename
 filename="$reportPath/report_$(date +%s).json"
 
-nuclei -no-interactsh -disable-update-check -stats -config $config -u $target -irr -jsonl $verbose > $filename
+#run nuclei
+nuclei -duc -ud "nuclei-templates" -config $config -u $target $verbose > $filename
 
 # check if using GNU sed, if not then -i requires passing an empty extension
 if sed v < /dev/null 2> /dev/null;  then
@@ -87,13 +81,19 @@ else
     sed -i '' "s/}$/,\"wafVersion\":\"${wafVersion}\",\"nucleiVersion\":\"${nucleiVersion}\",\"payloadVersion\":\"${payloadVersion:=\"0\"}\"}/g" $filename
 fi
 
-if ! python3 "${SRCDIR}"/score.py -f $filename -k $precision -r "$wafResponse" $assertionsOpt $outfileOpt
-then
-    exit 1
-fi
+# check if file is not empty
+if [[ -s $filename ]]; then
+    if ! python3 "${SRCDIR}"/score.py -f $filename -k $precision -r "$wafResponse" $assertionsOpt $outfileOpt
+    then
+        exit 1
+    fi
 
-# upload to GCS
-if [ $bucket ]; then
-    gzip $report --force
-    gsutil cp $filename".gz" gs://$bucket
+    # upload to GCS
+    if [ $bucket ]; then
+        gzip $report --force
+        gsutil cp $filename".gz" gs://$bucket
+    fi
+else
+    # remove empty file
+    rm -f $filename
 fi

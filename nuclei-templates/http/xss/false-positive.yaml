@@ -1,28 +1,29 @@
-id: cmdexe-true-positive
+id: xss-false-positive
 
 info:
-  name: Command Execution
+  name: Cross Site Scripting (XSS)
   author: wafefficacy
   severity: info
-  tags: cmdexe,true-positive
+  tags: xss,false-positive
 
-requests:
-  - payloads:
-      cmdexe: nuclei/payloads/cmdexe/true-positives.txt
+http:
 
-    raw:
+  - raw:
       - |
-        GET /anything?p={{url_encode(cmdexe)}} HTTP/1.1
+        GET /anything?p={{url_encode(xss)}} HTTP/1.1
         Host: {{Hostname}}
         Connection: close
-
+      
       - |
         POST /anything HTTP/1.1
         Host: {{Hostname}}
         Content-Type: application/x-www-form-urlencoded
         Connection: close
 
-        p={{url_encode(cmdexe)}}
+        p={{url_encode(xss)}}
+
+    payloads:
+      xss: helpers/payloads/xss/false-positives.txt
 
     matchers:
       - type: status

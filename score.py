@@ -71,10 +71,7 @@ class WAFEfficacy:
             print("Efficacy", self.percentage.format(efficacy_score))
         
         print("------------- WAF Efficacy -------------" )
-        sensitivity = true_positives / (true_positives + false_negatives)
-        specificity = true_negatives / (true_negatives + false_positives)
-        balanced_accuracy = (sensitivity + specificity) / 2
-        efficacy_score = balanced_accuracy * 100
+        efficacy_score = sum(self.efficacy_scores.values()) / len(self.efficacy_scores)
         self.efficacy_scores['overall'] = efficacy_score
         print(self.percentage.format(efficacy_score))
         
