@@ -14,8 +14,7 @@ Before performing an efficacy test you’ll need to ensure the WAF you’re test
 ## Dependencies
 
 * [Nuclei](https://nuclei.projectdiscovery.io/)
-* [python3](https://www.python.org/downloads/)
-* [gsutil (optional)](https://cloud.google.com/storage/docs/gsutil_install)
+* [Go](https://go.dev/doc/install)
 
 ## Usage
 
@@ -184,4 +183,4 @@ Example file:
 
 ## Improvements & Considerations
 
-For historical comparisons and insights we recommend exporting the results to a backend of your choice. We've included a command line argument to upload your results to a Google Cloud Storage (GCS) bucket. Results can be uploaded and a table can be created in BigQuery. You can then connect your dataset to Data Studio and generate informative dashboards and reports. If you'd like to learn more you can follow the documentation on [visualizing BigQuery data using Data Studio](https://cloud.google.com/bigquery/docs/visualize-data-studio). 
+For historical comparisons and insights we recommend exporting the results to a backend of your choice.
