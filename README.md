@@ -14,38 +14,29 @@ Before performing an efficacy test you’ll need to ensure the WAF you’re test
 ## Dependencies
 
 * [Nuclei](https://nuclei.projectdiscovery.io/)
-* [python3](https://www.python.org/downloads/)
-* [gsutil (optional)](https://cloud.google.com/storage/docs/gsutil_install)
+* [Go](https://go.dev/doc/install)
 
 ## Usage
 
-```sh
-./run.sh -h
+Build the project using the go build command. This command will compile your Go code into an executable binary.
+
+```bash
+go build
 ```
-This will display help for the tool. Here are all the arguments it supports:
 
-```yaml
-Usage: ./run.sh
-            -t  (required) url/host to test against
-            -b  (optional) google cloud storage bucket name
-            -c  (optional) nuclei config, defaults to nuclei/config.yaml
-            -i  (optional) input json file with efficacy assertions for each attack type
-            -k  (optional) number of decimal places in percentages
-            -o  (optional) output json file with efficacy scores
-            -p  (optional) report directory, defaults to ./reports
-            -r  (optional) custom waf response, defaults to 406 Not Acceptable
-            -w  (optional) waf version, used for reporting
-            -v  (optional) verbose output, shows current test
+```bash
+Usage:
+  wafefficacy run [flags]
+
+Flags:
+      --attacks strings       list of attack types (default [cmdexe,sqli,traversal,xss])
+  -c, --config string         path to the nuclei configuration file (default "config.yaml")
+  -h, --help                  help for run
+  -r, --response string       WAF response for blocked requests (default "406 Not Acceptable")
+  -u, --target string         target URL/host to scan
+  -t, --template-dir string   path to the nuclei template directory (default "nuclei-templates")
+  -v, --verbose               verbose
 ```
-Only `-t`  is required which is the url/host to test against. 
-
-This project tracks the payload version, waf version, and nuclei version used during an assessment. These underlying dependencies can also affect score results so it's import to track them to help provide context as to why a score might have increased or decreased.
-
-`payload version` - This corresponds to the release version of this repository, defaults to 0 if not set. We suggest creating a new release version every time you add or remove test payloads.
-
-`waf version` - This corresponds to vendor versioning and/or when changes have been made to your WAF. This is a user supplied argument (cli argument -w) and is specific to your setup. We recommend tracking this in which ever way best suits your needs.   
-
-`nuclei version` - This corresponds to the version of nuclei used when the test is performed. 
 
 ## How it works
 
@@ -72,23 +63,23 @@ The results are then calculated to provide efficacy scores for each attack type 
 
 ## Adding a New Attack Type
 
-If you would like to add a new attack type to the testing framework you can start by creating new subdirectory with the abbreviated attack name under `nuclei/templates` and `nuclei/payloads`. 
+If you would like to add a new attack type to the testing framework you can start by creating new subdirectory with the abbreviated attack name under `nuclei-templates/http` and `nuclei-templates/helpers/payloads`. 
 
 For instance if you want to include tests for Server-side request forgery (SSRF) you'll add `ssrf` as a sub directory.
 
 ```
-mkdir nuclei/templates/ssrf && mkdir nuclei/payloads/ssrf
+mkdir nuclei-templates/http/ssrf && mkdir nuclei-templates/helpers/payloads/ssrf
 ```
 Then create and populate two lists of attack payloads, one for true positives and false positives.
 
 ```
-touch nuclei/payloads/ssrf/true-positives.txt && touch nuclei/payloads/ssrf/false-positives.txt
+touch nuclei-templates/helpers/payloads/ssrf/true-positives.txt && touch nuclei-templates/helpers/payloads/ssrf/false-positives.txt
 ```
 
 Then create two nuclei templates, one for true positives and false positives.
 
 ```
-touch nuclei/templates/ssrf/true-positives.yaml && touch nuclei/templates/ssrf/false-positives.yaml
+touch nuclei-templates/http/ssrf/true-positives.yaml && touch nuclei-templates/http/ssrf/false-positives.yaml
 ```
 
 Each template has a template ID which is a unique ID used to specify the template name for a request type. We use the naming convention of attack type followed by the name of the test type. In our case we define a SSRF true positive template id as followed:
@@ -192,4 +183,4 @@ Example file:
 
 ## Improvements & Considerations
 
-For historical comparisons and insights we recommend exporting the results to a backend of your choice. We've included a command line argument to upload your results to a Google Cloud Storage (GCS) bucket. Results can be uploaded and a table can be created in BigQuery. You can then connect your dataset to Data Studio and generate informative dashboards and reports. If you'd like to learn more you can follow the documentation on [visualizing BigQuery data using Data Studio](https://cloud.google.com/bigquery/docs/visualize-data-studio). 
+For historical comparisons and insights we recommend exporting the results to a backend of your choice.
