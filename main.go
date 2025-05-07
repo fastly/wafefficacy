@@ -8,15 +8,23 @@ import (
 )
 
 func main() {
-	var rootCmd = &cobra.Command{Use: "wafefficacy"}
+	rootCmd := &cobra.Command{Use: "wafefficacy"}
 
 	var target string
-	var verbose bool
 	var templateDir string
-	var config string
-	var blockedResponse string
+	var verbose bool
 
-	attackTypes := []string{"cmdexe", "sqli", "traversal", "xss"}
+	attackTypes := []string{"cmdexe", "log4shell", "sqli", "traversal", "xss"}
+	blockedResponses := []string{"403", "406"}
+	concurrency := 1
+	headers := []string{}
+	nodates := false
+	nonum := false
+	outJSON := ""
+	outText := "-"
+	retries := 5
+	suffix := ""
+	timeout := 20
 
 	cmd := &cobra.Command{
 		Use:   "run",
@@ -26,47 +34,68 @@ func main() {
 				fmt.Println("Error: must specify target URL/host to scan")
 				os.Exit(1)
 			}
-
-			nucleiVersion, err := GetNucleiVersion()
-			if err != nil {
-				fmt.Println("Can't find nuclei", err)
-				os.Exit(1)
-			}
-
-			fmt.Println("Running efficacy tests using Nuclei version", nucleiVersion)
-			nucleiOutput, err := RunNuclei(config, target, templateDir, verbose)
+			nr, err := RunNuclei(target, templateDir, blockedResponses, attackTypes, headers, suffix, concurrency, retries, timeout, nodates, verbose)
 			if err != nil {
 				fmt.Println(err)
 				os.Exit(1)
 			}
 
-			nr, err := ReadResults(nucleiOutput, blockedResponse, attackTypes)
-			if err != nil {
-				fmt.Println(err)
-				os.Exit(1)
+			switch outText {
+			case "-":
+				nr.PrintResultsText(os.Stdout, true, nonum)
+			case "":
+			default:
+				f, err := os.Create(outText)
+				if err != nil {
+					fmt.Println(err)
+					os.Exit(1)
+				}
+				defer f.Close()
+				err = nr.PrintResultsText(f, true, nonum)
+				if err != nil {
+					fmt.Println(err)
+					os.Exit(1)
+				}
 			}
 
-			nr.PrintScore()
-
-			err = nr.PrintJSONResults()
-			if err != nil {
-				fmt.Println(err)
-				os.Exit(1)
+			switch outJSON {
+			case "-":
+				nr.PrintResultsJSON(os.Stdout, true)
+			case "":
+			default:
+				f, err := os.Create(outJSON)
+				if err != nil {
+					fmt.Println(err)
+					os.Exit(1)
+				}
+				defer f.Close()
+				err = nr.PrintResultsJSON(f, true)
+				if err != nil {
+					fmt.Println(err)
+					os.Exit(1)
+				}
 			}
 		},
 	}
 
-	cmd.PersistentFlags().StringVarP(&target, "target", "u", "", "target URL/host to scan")
-	cmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "verbose")
+	cmd.PersistentFlags().StringSliceVar(&attackTypes, "attacks", attackTypes, "which attack types to run")
+	cmd.PersistentFlags().StringSliceVarP(&blockedResponses, "response", "r", blockedResponses, "WAF responses for blocked requests")
+	cmd.PersistentFlags().IntVarP(&concurrency, "concurrency", "c", concurrency, "concurrency")
+	cmd.PersistentFlags().IntVarP(&retries, "retries", "", retries, "number of times to retry a failed request")
+	cmd.PersistentFlags().IntVarP(&timeout, "timeout", "", timeout, "time to wait in seconds before giving up on a connection")
+	cmd.PersistentFlags().StringSliceVarP(&headers, "headers", "H", nil, "Add a header")
+	cmd.PersistentFlags().StringVarP(&outJSON, "reportJson", "j", outJSON, "where to write json report; - for stdout")
+	cmd.PersistentFlags().StringVarP(&outText, "report", "o", outText, "where to write text report; - for stdout")
+	cmd.PersistentFlags().StringVarP(&suffix, "suffix", "", suffix, "extra get/post params, e.g. --suffix '&Submit=Submit'")
+	cmd.PersistentFlags().StringVarP(&target, "url", "u", "", "target URL to scan")
 	cmd.PersistentFlags().StringVarP(&templateDir, "template-dir", "t", "nuclei-templates", "path to the nuclei template directory")
-	cmd.PersistentFlags().StringVarP(&config, "config", "c", "config.yaml", "path to the nuclei configuration file")
-	cmd.PersistentFlags().StringVarP(&blockedResponse, "response", "r", "406 Not Acceptable", "WAF response for blocked requests")
-	cmd.PersistentFlags().StringSliceVar(&attackTypes, "attacks", attackTypes, "list of attack types")
+	cmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "verbose")
+	cmd.PersistentFlags().BoolVarP(&nodates, "nodates", "", false, "replace Date headers in json output with Jan 1, 1970")
+	cmd.PersistentFlags().BoolVarP(&nonum, "nonum", "n", false, "don't number detailed results")
 
 	rootCmd.AddCommand(cmd)
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-
 }

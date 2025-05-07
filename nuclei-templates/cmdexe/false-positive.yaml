@@ -8,21 +8,22 @@ info:
 
 http:
   - payloads:
-      cmdexe: helpers/payloads/cmdexe/false-positives.txt
+      cmdexe: false-positives.txt.encoded
 
     raw:
-      - |
-        GET /anything?p={{url_encode(cmdexe)}} HTTP/1.1
-        Host: {{Hostname}}
-        Connection: close
+# GET doesn't add much value in this benchmark
+#      - |
+#        GET /vulnerabilities/exec/?ip={{cmdexe}}{{suffix}} HTTP/1.1
+#        Host: {{Hostname}}
+#        Connection: close
 
       - |
-        POST /anything HTTP/1.1
+        POST /vulnerabilities/exec/ HTTP/1.1
         Host: {{Hostname}}
         Content-Type: application/x-www-form-urlencoded
         Connection: close
 
-        p={{url_encode(cmdexe)}}
+        ip={{cmdexe}}{{suffix}}
 
     matchers:
       - type: status

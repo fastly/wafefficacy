@@ -1,3 +1,0 @@
-\..\WINDOWS\win.ini
-../../../etc/passwd
-../../boot.ini

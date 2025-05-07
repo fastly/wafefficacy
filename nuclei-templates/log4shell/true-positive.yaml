@@ -1,0 +1,32 @@
+id: log4shell-true-positive
+
+info:
+  name: Command Execution
+  author: wafefficacy
+  severity: info
+  tags: log4shell,true-positive
+
+http:
+  - payloads:
+      log4shell: true-positives.txt
+
+    raw:
+# GET doesn't add much value in this benchmark
+#      - |
+#        GET /vulnerabilities/exec/?ip={{url_encode(log4shell)}}{{suffix}} HTTP/1.1
+#        Host: {{Hostname}}
+#        Connection: close
+
+      - |
+        POST /vulnerabilities/exec/ HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/x-www-form-urlencoded
+        Connection: close
+
+        ip={{url_encode(log4shell)}}{{suffix}}
+
+    matchers:
+      - type: status
+        status:
+          - 1
+        negative: true

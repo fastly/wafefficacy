@@ -8,21 +8,22 @@ info:
 
 http:
   - payloads:
-      sqli: helpers/payloads/sqli/false-positives.txt
-      
+      sqli: false-positives.txt.encoded
+
     raw:
-      - |
-        GET /anything?p={{url_encode(sqli)}} HTTP/1.1
-        Host: {{Hostname}}
-        Connection: close
+# GET doesn't add much value in this benchmark
+#      - |
+#        GET /vulnerabilities/sqli/?id={{sqli}}{{suffix}} HTTP/1.1
+#        Host: {{Hostname}}
+#        Connection: close
 
       - |
-        POST /anything HTTP/1.1
+        POST /vulnerabilities/sqli/ HTTP/1.1
         Host: {{Hostname}}
         Content-Type: application/x-www-form-urlencoded
         Connection: close
 
-        p={{url_encode(sqli)}}
+        id={{sqli}}{{suffix}}
 
     matchers:
       - type: status

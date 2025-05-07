@@ -1,0 +1,32 @@
+id: xss-true-positive
+
+info:
+  name: Cross Site Scripting (XSS)
+  author: wafefficacy
+  severity: info
+  tags: xss,true-positive
+
+http:
+  - payloads:
+      xss: true-positives.txt
+
+    raw:
+# GET doesn't add much value in this benchmark
+#      - |
+#        GET /vulnerabilities/xss_r/?name={{url_encode(xss)}}{{suffix}} HTTP/1.1
+#        Host: {{Hostname}}
+#        Connection: close
+
+      - |
+        POST /vulnerabilities/xss_r/ HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/x-www-form-urlencoded
+        Connection: close
+
+        name={{url_encode(xss)}}{{suffix}}
+
+    matchers:
+      - type: status
+        status:
+          - 1
+        negative: true

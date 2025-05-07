@@ -7,23 +7,23 @@ info:
   tags: xss,false-positive
 
 http:
+  - payloads:
+      xss: false-positives.txt.encoded
 
-  - raw:
+    raw:
+# GET doesn't add much value in this benchmark
+#      - |
+#        GET /vulnerabilities/xss_r/?name={{xss}}{{suffix}} HTTP/1.1
+#        Host: {{Hostname}}
+#        Connection: close
+
       - |
-        GET /anything?p={{url_encode(xss)}} HTTP/1.1
-        Host: {{Hostname}}
-        Connection: close
-      
-      - |
-        POST /anything HTTP/1.1
+        POST /vulnerabilities/xss_r/ HTTP/1.1
         Host: {{Hostname}}
         Content-Type: application/x-www-form-urlencoded
         Connection: close
 
-        p={{url_encode(xss)}}
-
-    payloads:
-      xss: helpers/payloads/xss/false-positives.txt
+        name={{xss}}{{suffix}}
 
     matchers:
       - type: status

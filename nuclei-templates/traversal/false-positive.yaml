@@ -8,21 +8,22 @@ info:
 
 http:
   - payloads:
-      traversal: helpers/payloads/traversal/false-positives.txt
+      traversal: false-positives.txt.encoded
 
     raw:
-      - |
-        GET /anything?p={{url_encode(traversal)}} HTTP/1.1
-        Host: {{Hostname}}
-        Connection: close
+# GET doesn't add much value in this benchmark
+#      - |
+#        GET /vulnerabilities/fi/?page={{traversal}}{{suffix}} HTTP/1.1
+#        Host: {{Hostname}}
+#        Connection: close
       
       - |
-        POST /anything HTTP/1.1
+        POST /vulnerabilities/fi/ HTTP/1.1
         Host: {{Hostname}}
         Content-Type: application/x-www-form-urlencoded
         Connection: close
 
-        p={{url_encode(traversal)}}
+        page={{traversal}}{{suffix}}
 
     matchers:
       - type: status
