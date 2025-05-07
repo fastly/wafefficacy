@@ -1,3 +1,0 @@
-Space ($2)
-select x from y where
-Mark, 'Call me when you get to the gate and I'll come out and open it up'

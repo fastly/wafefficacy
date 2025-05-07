@@ -1,0 +1,79 @@
+.-../../.-././/-/..../../...
+.-../././- -.-/./-.--/..--.. -././...-/./.-. ...././.-/.-./-.. ---/..-. ../-/.-.-.- .-../..-/-.-./-.-/../.-../-.-- -/...././.-././.----./... .-/.-../.../--- ./--/.-/-.-./.../.----./... --/-....-/-..- ..-/-./--/---/.-./..././-....-/.-././--./../---/-. -.-./---/--/--/.-/-./-../.-.-.-/.-.-.-/.-.-.-
+.-/.-../.-..//-.--/---/..-//-./././-..//../...//-././..-/./.-.//..-./---/.-./--././-/-/../-./--.//...././.----./...//.../..-/.--./.--./---/..././-..//-/---//.../-/---/.--.//-/...././/-.../.-/.-../.-..//..-./.-./---/--//--./---/../-./--.//../-./-/---//-/...././/-././-////
+.................................................../////////...................
+.................................//////////............/////////...............
+...............////////////////
+......../////////..................////////....../////////////////////////.....
+.....//.//..and still needed her mommy.
+..../////////////////////////......////////................../////////.........
+../////    ..||||
+./index.php
+.\index.php
+"~" is the same as "/home/Shohsav" in this case. the absolute path with "cd /proc" or relative path that leads there like "cd ../../proc".
+"lol wassup....////////////nnnnnnnnnnnnnnnnnmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm ok now ur just being obnoxius with ur lettr requirements lllllllllmmmmmmmmmmmmm................lol ok good enuf?  hit me up!"
+[...///////////////////............](http://img-cache.cdn.gaiaonline.com/9106ca62303311a15eeff699e810dc30/http://i736.photobucket.com/albums/xx5/Twittyx3/Gifs%20Pics%20Memes/okay_face_Highest_Rated_Post_Ever-s251x239-156794-535.jpg)
+[http://www.cisco.com/c/en/us/support/docs/.......](http://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls.html)
+* Because installing stuff to /usr/... fights with his distribution package manager.
+* Grep through all those for strings like "apache" or "httpd" ("grep -Rni -e 'apache' -e 'httpd' /etc/phppgadmin/...").
+/ / .) .) )     ../////      _____________
+///eye///fail/////two../////seee/////?///////u//////did//////their///
+/admin/install.php
+/admin/login.php
+/api/api/v1
+/config.asp
+/foo/bar/       ./hi/../../baz  /foo/baz
+/index.html
+/index.php
+/public/jquery.js
+000000P;;././///m
+a url similar to http://.../wp-content/plugins/... . Particularly if you have any .htaccess redirecting stuff.
+and/or
+Apache (back then) had a directory traversal security exploit. If you added a bunch of "/../../" to a URL, it would traverse the entire directory tree on the system instead of limiting to the DocumentRoot.
+arcgis.com/home/.....
+Avoid UUoC (Useless Use of Cat): cat /etc/passwd | grep john
+Bitfinder :/....already sent an email for a refund....heard Windows defender does a legit enough job
+Can you do a fsck -t ext3/ext4/... /dev/sda3 if that is his root filesystem partition?
+Chuck Norris jokes are so overrated.  He's really not that powe 4958Q#$%^&amp;*34  .....................................................////////
+database.js
+db.php
+Depends on the application.  Some of the dynamic ones have hidden capabilities such as trusting input in paths such as "/../../badinfo.oops" when making requests.  IMO if it is sensitive, don't have a user/password.  Have the web handler for the application authenticate using standard OS protocols.  (this depends on shared environment/dedicated servers/etc).
+DEVICESCAN -R 5 -R 187 -R 188 -R 197 -R 198 -s (S/../../6/01|L/../.1/./02) -m my@email -M test
+Directory /home/jon/.//../.. ls
+Do you have java installed? Maybe you just have winrar set as default... try open with C:/Program(86)/java/jre.../bin/java
+For example if his web server's root is /var/www, going to http://mydomain.com/../ should not be allowed to go to /var.
+http://login.example.com/api/api/v1
+I don't even..../////....///
+I don't know :/.. I used the search engine on windows and just made a copy of every .bsp my computer could find into a single folder.
+I have an issue with my password
+I thought about http://windows.microsoft.com/en-us/windows/using-internet-connection-Some routers can be made into repeaters (with openWRT/tomato/...).
+I tried windows 10 and when I saw the Windows 8-y looking wifi menu I uninstalled it :/.. Dafuk are they thinking.. :/
+If I pull a MAX/tank/lib/...  now and die, we'll have 1 less force multiplier on the next base.
+If I was born on November 4, that means I'm the...//////////////////////////////////////////////////////////////////////////////////////
+im new to cs go. i hit ,/./././?./,,/,/,./?/.,,.., every round still
+in /binpatchng/work-binpatch60-amd64/src/lib/libcrypto/crypto/../../libssl/src/crypto/dh/dh_lib.c
+In linux, every folder has two links in it, '.' and '..'.  '.' is the current directory, so '/r/./' is the same as '/r/'.  (try it, go to https://reddit.com/r/./././explainlikeimfive)
+In order to allow my new admin account to SSH in, I need to edit the /etc/passwd file.
+install.php
+Installing these to the default 'c:/Program Files/...' directory structure. I used 'C:/Games/Mod Organizer/...' and 'C:/Games/LOOT/...' and have encountered no difficulties.)
+let me know about the laundry../bin & cleaning supplies
+logs/access.log
+Nah you can do path/to/my/file_store/../../something_the_user_shouldnt_have_access_to
+nothing to do here...////////////////////////////////
+So if you do a "cd /usr/share" first to go to /usr/share and then a "cd .." you will end up in /usr." If starting in /usr/share and doing a "cd ../.." you end up in /. If you instead do a "cd ../bin" you end up in /usr/bin (one level above /usr/share...then to the bin folder).
+so many features: db.get('/etc/shadow')
+Stuff like a mouse, hub, usb-to-ethernet thing, displayport to HDMI/DVI/... , etc, ...
+sys.path.append(os.path.abspath( script_path + '/../../'))
+the path being '~/.vim/after/ftplugin/...' (exclamation point toggles) in his '~/.vim/ftplugin/tex.vim' file
+This actually works on IIS 4.0/5.0. It's called the IIS 4.0/5.0 extended Unicode directory traversal vulnerability. Only instead of typing /../../ (which IIS checks for) you type /..%c0%af../ (with %c0%af being the extend Unicode representation of "/")
+This is wrong. Its trivial to break chroot as an unprivileged user with help from outside, using fchdir and passing dir fds over sockets (easier than it sounds thanks to abstract Unix domain socket namespace in Linux). E.g. if you can SSH to a box under chroot and run CGI as unchrooted Apache, you can use this to get unchrooted shell. It used to be true, and may still be, that repeated chdir to /../../ in a particular way would break you out. Linux has filesystem namespaces now, these are the preferred approach to fs encapsulation afaik
+This will symlink it into ~/.config/.........
+To all the people too goddamned tired toooooooooooooooooooooooooooooooooooooooooooooo.../////
+To the extent that they have local users in /etc/passwd, they should be emergency accounts.
+use Ansible to work on (and create for you) '/etc/php5/conf.d/99_upload_max.ini'
+vry gud ji 22ji............../////////
+Wall, wall never changes ...../////
+What are you trying to say about me?????/??//././/,.;_;
+Who wouldn't wanna be hiss ..././// forever
+Yeah, /etc/hosts is typically so small
+YourOrg.maps.arcgis.com/home/.....

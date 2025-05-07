@@ -1,3 +1,0 @@
-;netstat -a;
-& ping -i 30 127.0.0.1 &
-cat /etc/passwd

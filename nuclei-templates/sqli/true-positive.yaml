@@ -1,29 +1,28 @@
-id: xss-false-positive
+id: sqli-true-positive
 
 info:
-  name: Cross Site Scripting (XSS)
+  name: SQL Injection (SQLi)
   author: wafefficacy
   severity: info
-  tags: xss,false-positive
+  tags: sqli,true-positive
 
 http:
+  - payloads:
+      sqli: sqli-true-positives.txt
 
-  - raw:
+    raw:
       - |
-        GET /anything?p={{url_encode(xss)}} HTTP/1.1
+        GET /vulnerabilities/sqli/?id={{url_encode(sqli)}}{{suffix}} HTTP/1.1
         Host: {{Hostname}}
         Connection: close
-      
+
       - |
-        POST /anything HTTP/1.1
+        POST /vulnerabilities/sqli/ HTTP/1.1
         Host: {{Hostname}}
         Content-Type: application/x-www-form-urlencoded
         Connection: close
 
-        p={{url_encode(xss)}}
-
-    payloads:
-      xss: helpers/payloads/xss/false-positives.txt
+        id={{url_encode(sqli)}}{{suffix}}
 
     matchers:
       - type: status

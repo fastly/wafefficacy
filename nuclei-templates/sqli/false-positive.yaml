@@ -1,28 +1,28 @@
-id: traversal-true-positive
+id: sqli-false-positive
 
 info:
-  name: Traversal
+  name: SQL Injection (SQLi)
   author: wafefficacy
   severity: info
-  tags: traversal,true-positive
+  tags: sqli,false-positive
 
 http:
   - payloads:
-      traversal: helpers/payloads/traversal/true-positives.txt
+      sqli: sqli-false-positives.txt
 
     raw:
       - |
-        GET /anything?p={{url_encode(traversal)}} HTTP/1.1
+        GET /vulnerabilities/sqli/?id={{url_encode(sqli)}}{{suffix}} HTTP/1.1
         Host: {{Hostname}}
         Connection: close
-      
+
       - |
-        POST /anything HTTP/1.1
+        POST /vulnerabilities/sqli/ HTTP/1.1
         Host: {{Hostname}}
         Content-Type: application/x-www-form-urlencoded
         Connection: close
 
-        p={{url_encode(traversal)}}
+        id={{url_encode(sqli)}}{{suffix}}
 
     matchers:
       - type: status
