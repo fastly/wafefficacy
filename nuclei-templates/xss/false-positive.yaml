@@ -7,9 +7,12 @@ info:
   tags: xss,false-positive
 
 http:
-  - raw:
+  - payloads:
+      xss: false-positives.txt
+
+    raw:
       - |
-        GET /vulnerabilities/xss_r/?p={{url_encode(xss)}}{{suffix}} HTTP/1.1
+        GET /vulnerabilities/xss_r/?name={{url_encode(xss)}}{{suffix}} HTTP/1.1
         Host: {{Hostname}}
         Connection: close
 
@@ -19,10 +22,7 @@ http:
         Content-Type: application/x-www-form-urlencoded
         Connection: close
 
-        p={{url_encode(xss)}{{suffix}}}
-
-    payloads:
-      xss: xss-false-positives.txt
+        name={{url_encode(xss)}{{suffix}}}
 
     matchers:
       - type: status

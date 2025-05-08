@@ -8,7 +8,7 @@ info:
 
 http:
   - payloads:
-      cmdexe: cmdexe-true-positives.txt
+      cmdexe: true-positives.txt
 
     raw:
       - |

