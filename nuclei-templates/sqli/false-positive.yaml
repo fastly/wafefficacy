@@ -8,7 +8,7 @@ info:
 
 http:
   - payloads:
-      sqli: sqli-false-positives.txt
+      sqli: false-positives.txt
 
     raw:
       - |
