@@ -21,6 +21,7 @@ func main() {
 	outText := "-"
 	outJSON := ""
 	concurrency := 1
+	nonum := false
 
 	cmd := &cobra.Command{
 		Use:   "run",
@@ -30,7 +31,6 @@ func main() {
 				fmt.Println("Error: must specify target URL/host to scan")
 				os.Exit(1)
 			}
-
 			nr, err := RunNuclei(target, templateDir, blockedResponses, attackTypes, headers, suffix, concurrency, verbose)
 			if err != nil {
 				fmt.Println(err)
@@ -40,7 +40,7 @@ func main() {
 			switch outText {
 			case "":
 			case "-":
-				nr.PrintResultsText(os.Stdout, true)
+				nr.PrintResultsText(os.Stdout, true, nonum)
 			default:
 				f, err := os.Create(outText)
 				if err != nil {
@@ -48,7 +48,7 @@ func main() {
 					os.Exit(1)
 				}
 				defer f.Close()
-				err = nr.PrintResultsText(f, true)
+				err = nr.PrintResultsText(f, true, nonum)
 				if err != nil {
 					fmt.Println(err)
 					os.Exit(1)
@@ -85,6 +85,7 @@ func main() {
 	cmd.PersistentFlags().StringVarP(&target, "url", "u", "", "target URL to scan")
 	cmd.PersistentFlags().StringVarP(&templateDir, "template-dir", "t", "nuclei-templates", "path to the nuclei template directory")
 	cmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "verbose")
+	cmd.PersistentFlags().BoolVarP(&nonum, "nonum", "n", false, "don't number detailed results")
 
 	rootCmd.AddCommand(cmd)
 	if err := rootCmd.Execute(); err != nil {
