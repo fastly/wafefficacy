@@ -153,8 +153,9 @@ func (nr *NucleiResults) CalculateScore() {
 }
 
 // PrintResultsText prints scores, both overall and by attack type, to the given Writer
-func (nr *NucleiResults) PrintResultsText(w io.Writer, details bool) (err error) {
+func (nr *NucleiResults) PrintResultsText(w io.Writer, details, nonum bool) (err error) {
 	_, err = fmt.Fprintf(w, "Fastly wafefficacy results for %s\n\n", nr.target)
+
 	_, err = fmt.Fprintf(w, "overall efficacy: %.3f%%\n", nr.AvgScore)
 	if err != nil {
 		return err
@@ -180,7 +181,11 @@ func (nr *NucleiResults) PrintResultsText(w io.Writer, details bool) (err error)
 			for _, result := range nr.E {
 				if result.TemplateID == attackType+"-false-positive" && nr.isBlocked(result.Response) {
 					m, p := nr.extractPayload(result.Request)
-					fmt.Fprintf(w, " %3d  %-9s  %7s  %s\n", i, AttackType, m, p)
+					if nonum {
+						fmt.Fprintf(w, " %-9s  %7s  %s\n", AttackType, m, p)
+					} else {
+						fmt.Fprintf(w, " %3d  %-9s  %7s  %s\n", i, AttackType, m, p)
+					}
 					i++
 				}
 			}
@@ -195,7 +200,11 @@ func (nr *NucleiResults) PrintResultsText(w io.Writer, details bool) (err error)
 			for _, result := range nr.E {
 				if result.TemplateID == attackType+"-true-positive" && !nr.isBlocked(result.Response) {
 					m, p := nr.extractPayload(result.Request)
-					fmt.Fprintf(w, " %3d  %-9s  %7s  %s\n", i, AttackType, m, p)
+					if nonum {
+						fmt.Fprintf(w, " %-9s  %7s  %s\n", AttackType, m, p)
+					} else {
+						fmt.Fprintf(w, " %3d  %-9s  %7s  %s\n", i, AttackType, m, p)
+					}
 					i++
 				}
 			}
