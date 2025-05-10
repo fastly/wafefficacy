@@ -167,7 +167,7 @@ func (nr *NucleiResults) PrintResultsText(w io.Writer, details, nonum bool) (err
 		AttackType := strings.ToUpper(attackType)
 		s := nr.Scores[attackType]
 		fmt.Fprintf(w, "\n")
-		fmt.Fprintf(w, "%-9s                         blocked           not blocked\n", "")
+		fmt.Fprintf(w, "%-9s                          blocked            not blocked\n", "")
 		fmt.Fprintf(w, "%-9s attacks:    true positives: %4d  false negatives: %4d\n", AttackType, s.tp, s.fn)
 		fmt.Fprintf(w, "%-9s innocent:  false positives: %4d   true negatives: %4d\n", AttackType, s.fp, s.tn)
 		fmt.Fprintf(w, "%-9s balanced accuracy %.3f%%\n", AttackType, s.Efficacy)

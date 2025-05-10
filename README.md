@@ -13,33 +13,30 @@ to date is crucial to avoid vulnerabilities.
 
 But according to security standards like
 [PCI DSS 4.0](https://www.fastly.com/resources/datasheets/security/addressing-pci-dss-4-0-and-requirement-6-4-2),
-that's not enough by itself; Web Application Firewalls (WAFs) are
-now required by PCI as an additional layer of defense.
+that's not enough by itself; PCI now requires Web Application Firewalls (WAFs)
+as an additional layer of defense.
 
-When comparing WAFs, it's good to have an objective benchmark test that measures how well they work.
+Which raises the question: how well does your WAF (or the ones you're considering) work?
 
-How well WAFs work is usually expressed as "[balanced accuracy](https://en.wikipedia.org/wiki/Precision_and_recall#Imbalanced_data)," a number between 0% and 100%.
-The higher the balanced accuracy, the closer a WAF is to the ideal of blocking bad requests while letting good requests through.
+The answer is often expressed as
+"[balanced accuracy](https://en.wikipedia.org/wiki/Precision_and_recall#Imbalanced_data),"
+a number between 0% and 100%.  The higher the balanced accuracy,
+the closer a WAF is to the ideal of blocking bad requests while
+letting good requests through.
 
-Fastly's open source WAFefficacy tool gives a quick estimate of a
-WAF's efficacy by sending a barrage of simulated malicious requests
-along with simulated normal traffic, then displaying the WAF's
-balanced accuracy and a list of the individual mistakes it made.
+One quick way to estimate it is by running Fastly's open source
+WAFefficacy tool.  WAFefficacy probes the WAF using thousands of
+simulated malicious requests, then displays the WAF's balanced
+accuracy and a list of the individual mistakes it made.
 
-WAFefficacy now comes preloaded with a reasonable set of simulated
-requests, and can be extended by adding additional payloads and
-attack types.
-
-## Included attack types
-
-The payloads supplied with WAFefficacy cover these four attack types:
+The payloads supplied with WAFefficacy cover four attack types from OWASP's [Top 10 list](https://owasp.org/Top10/):
 
 - [CWE-78](https://cwe.mitre.org/data/definitions/78.html) CMDEXE (OS command injection)
 - [CWE-89](https://cwe.mitre.org/data/definitions/89.html) SQLI (SQL injection)
 - [CWE-22](https://cwe.mitre.org/data/definitions/22.html) TRAVERSAL (using OS paths to access sensitive information)
 - [CWE-79](https://cwe.mitre.org/data/definitions/89.html) XSS (Cross-site scripting)
 
-These are all part of OWASP's [Top 10 list](https://owasp.org/Top10/).
+You can add more attacks or attack types if you like; see the Appendix below.
 
 ## Quick Start
 
@@ -64,13 +61,13 @@ $ go build
 ```
 
 Finally, run WAFefficacy against your WAF:
+```
 $ ./wafefficacy -u http://localhost:8080
 ```
 
 To provide a progress indicator, WAFefficacy will periodically show
-how many attacks it has sent so far in the lower left corner of the window.
-
-After about two minutes, results will appear.
+how many attacks it has sent so far in the lower left corner of the window;
+after about 7654 attacks, it will output sorted results.
 
 Here's what results might look like for a hypothetical near-ideal WAF:
 
@@ -79,22 +76,22 @@ WAFefficacy results for http://localhost:8080/
 
 overall balanced accuracy: 99.98%
 
-                                  blocked           not blocked
-CMDEXE    attacks:    true positives:  500  false negatives:    1
-CMDEXE    innocent:  false positives:    1   true negatives:  150
+                                   blocked            not blocked
+CMDEXE    attacks:    true positives:  499  false negatives:    1
+CMDEXE    innocent:  false positives:    1   true negatives:  149
 CMDEXE    balanced accuracy 99.9%
 
-                                  blocked           not blocked
+                                   blocked            not blocked
 SQLI      attacks:    true positives:  140  false negatives:    0
 SQLI      innocent:  false positives:    0   true negatives:   70
 SQLI      balanced accuracy 100.0%
 
-                                  blocked           not blocked
+                                   blocked            not blocked
 TRAVERSAL attacks:    true positives: 5000  false negatives:    0
 TRAVERSAL innocent:  false positives:    0   true negatives:  150
 TRAVERSAL balanced accuracy 100.0%
 
-                                  blocked           not blocked
+                                   blocked            not blocked
 XSS       attacks:    true positives: 1500  false negatives:    0
 XSS       innocent:  false positives:    0   true negatives:   34
 XSS       balanced accuracy 100.0%
@@ -126,6 +123,7 @@ Flags:
   -c, --concurrency int       concurrency (default 1)
   -H, --headers strings       Add a header
   -h, --help                  help for run
+  -n, --nonum                 don't number detailed results
   -o, --report string         where to write text report; - for stdout (default "-")
   -j, --reportJson string     where to write json report; - for stdout
   -r, --response strings      WAF responses for blocked requests (default [403,406])
@@ -182,16 +180,16 @@ if they don't, that's interesting, and worth investigating.
 
 ## Provenance of test data
 
-Test data was curated to include a representative variety of attacks
-and false positives while attempting to maintain impartial, i.e.
-not favor any specific WAF.
+Test data was curated to include a representative variety of true
+and false positives, to keep benchmark runtime short, and
+to make sure attacks actually worked.
 
 In the interest of keeping runtimes against vulnerable servers
 short, we shortened sleep times in the attacks to one second.
 
 The true positive payload files mostly come from the fabulous
 [mgm-sp/WAF-Payload-Collection](https://github.com/mgm-sp/WAF-Payload-Collection),
-which graciously collected MIT- and GNU-licensed payloads from
+whose authors graciously collected MIT- and GNU-licensed payloads from
 across the web and formatted them for use with WAFefficacy.
 
 We also added a few true positives found by running SQLI attack tools
@@ -199,11 +197,12 @@ We also added a few true positives found by running SQLI attack tools
 [ghauri](https://github.com/r0oth3x49/ghauri) against DVWA.
 (We also ran commix, but its attacks already seemed to be in cmdexe/true-positives.txt.)
 
-True positive payloads were sent to an internal
-very very vulnerable server running on a Linux box using a variety
-of DMBS servers
+For this version of WAFefficacy, true positive payloads were vetted
+using an internal very very vulnerable server running on a Linux
+box using a variety of DMBS servers
 (including [MS SQL](https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-setup)).
 Payloads that didn't work on that service were omitted.
+Thus Powershell attacks are mostly absent from cmdexe/true-positives.txt.
 
 The false positive payload files also came from the mgm-sp collection,
 augmented with a few tests from the [OWASP CRS project](https://coreruleset.org)
@@ -262,7 +261,7 @@ code of 1 in our templates; responses never have a status code of
 
 For more information on the template language, see https://docs.projectdiscovery.io/templates/introduction
 
-## Appendix 3: Testing with DVWA 
+## Appendix 3: Testing with DVWA
 
 One good way to test a WAF is to use it to protect a real but very
 vulnerable server, then see if attack tools like SQLmap can bypass the WAF.

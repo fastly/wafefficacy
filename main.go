@@ -38,9 +38,9 @@ func main() {
 			}
 
 			switch outText {
-			case "":
 			case "-":
 				nr.PrintResultsText(os.Stdout, true, nonum)
+			case "":
 			default:
 				f, err := os.Create(outText)
 				if err != nil {
@@ -56,9 +56,9 @@ func main() {
 			}
 
 			switch outJSON {
-			case "":
 			case "-":
 				nr.PrintResultsJSON(os.Stdout, true)
+			case "":
 			default:
 				f, err := os.Create(outJSON)
 				if err != nil {
