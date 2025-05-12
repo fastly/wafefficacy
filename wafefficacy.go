@@ -12,6 +12,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"regexp"
 	"sort"
 	"strings"
 
@@ -23,7 +24,7 @@ import (
 )
 
 // RunNuclei runs Nuclei with the given config, and returns results.
-func RunNuclei(target string, templateDir string, blockedResponses []string, attackTypes, headers []string, suffix string, concurrency int, verbose bool) (nr NucleiResults, err error) {
+func RunNuclei(target string, templateDir string, blockedResponses []string, attackTypes, headers []string, suffix string, concurrency, retries, timeout int, nodates bool, verbose bool) (nr NucleiResults, err error) {
 	nr.attackTypes = attackTypes
 	nr.blockedResponses = blockedResponses
 	nr.suffix = suffix
@@ -41,6 +42,10 @@ func RunNuclei(target string, templateDir string, blockedResponses []string, att
 			ProbeConcurrency:              1,
 			TemplateConcurrency:           concurrency,
 			TemplatePayloadConcurrency:    1,
+		}),
+		nuclei.WithNetworkConfig(nuclei.NetworkConfig{
+			Retries: retries,
+			Timeout: timeout,
 		}),
 		nuclei.WithVerbosity(nuclei.VerbosityOptions{
 			Verbose:       verbose,
@@ -67,6 +72,10 @@ func RunNuclei(target string, templateDir string, blockedResponses []string, att
 			}
 			fmt.Printf("\n%s: blocked %v; penetrated %v\n%s\n%s\n",
 				re.TemplateID, nr.isBlocked(re.Response), nr.isPenetrated(re.Response), re.CURLCommand, re.Response[:rlen])
+		}
+		if nodates {
+			re.Response = sanitizeDates(re.Response)
+			re.Request = sanitizeDates(re.Request)
 		}
 		nr.E = append(nr.E, *re)
 		if isatty.IsTerminal(os.Stderr.Fd()) && len(nr.E)%10 == 0 {
@@ -96,6 +105,17 @@ func RunNuclei(target string, templateDir string, blockedResponses []string, att
 	nr.CalculateScore()
 
 	return nr, nil
+}
+
+// Date: Fri, 09 May 2025 03:35:19 GMT\r\n
+var reDate = regexp.MustCompile(`Date: ..., \d\d ... \d\d\d\d \d\d:\d\d:\d\d ...`)
+
+// sanitizeDates replaces all dates with the epoch
+// Useful for making the diff of two runs more meaningful
+func sanitizeDates(s string) string {
+	// $ date -u -R -r 0
+	// Thu, 01 Jan 1970 00:00:00 +0000
+	return reDate.ReplaceAllString(s, "Date: Thu, 01 Jan 1970 00:00:00 GMT")
 }
 
 func (nr *NucleiResults) getCondensed() (s NucleiResultsSubset) {
@@ -128,7 +148,7 @@ func (s *Score) CalculateEfficacy() {
 	sensitivity := float64(s.tp) / float64(s.tp+s.fn)
 	specificity := float64(s.tn) / float64(s.tn+s.fp)
 	balanced_accuracy := (sensitivity + specificity) / 2
-	s.Efficacy = balanced_accuracy * 100
+	s.Efficacy = float32(balanced_accuracy * 100)
 }
 
 // CalculateScore calculates and saves the score in the result struct
@@ -149,10 +169,10 @@ func (nr *NucleiResults) CalculateScore() {
 		nr.overall.fp += s.fp
 		nr.overall.tn += s.tn
 		nr.overall.fn += s.fn
-		avg += s.Efficacy
+		avg += float64(s.Efficacy)
 	}
-	nr.overall.CalculateEfficacy()              // sensitive to test case misbalance; interesting but probably not useful.
-	nr.AvgScore = avg / float64(len(nr.Scores)) // more balanced than nr.overall.Efficacy
+	nr.overall.CalculateEfficacy()                       // sensitive to test case misbalance; interesting but probably not useful.
+	nr.AvgScore = float32(avg / float64(len(nr.Scores))) // more balanced than nr.overall.Efficacy
 }
 
 // PrintResultsText prints scores, both overall and by attack type, to the given Writer
@@ -370,7 +390,7 @@ type Report struct {
 	suffix           string
 	attackTypes      []string
 	blockedResponses []string
-	AvgScore         float64 `json:"overall"` // for compatibility with old version
+	AvgScore         float32 `json:"overall"` // avoid noise in low bits of float64
 	overall          Score
 	Scores           map[string]Score
 }
@@ -388,5 +408,5 @@ type ResultEventSubset struct {
 
 type Score struct {
 	tp, tn, fp, fn int
-	Efficacy       float64
+	Efficacy       float32
 }

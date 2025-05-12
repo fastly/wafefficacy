@@ -115,6 +115,8 @@ users won't need anything more than -u and maybe -j.
 ```bash
 $ ./wafefficacy run --help
 
+Run WAF Efficacy Tests
+
 Usage:
   wafefficacy run [flags]
 
@@ -123,6 +125,7 @@ Flags:
   -c, --concurrency int       concurrency (default 1)
   -H, --headers strings       Add a header
   -h, --help                  help for run
+      --nodates               replace Date headers in json output with Jan 1, 1970
   -n, --nonum                 don't number detailed results
   -o, --report string         where to write text report; - for stdout (default "-")
   -j, --reportJson string     where to write json report; - for stdout
