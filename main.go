@@ -14,7 +14,7 @@ func main() {
 	var templateDir string
 	var verbose bool
 
-	attackTypes := []string{"cmdexe", "sqli", "traversal", "xss"}
+	attackTypes := []string{"cmdexe", "log4shell", "sqli", "traversal", "xss"}
 	blockedResponses := []string{"403", "406"}
 	concurrency := 1
 	headers := []string{}

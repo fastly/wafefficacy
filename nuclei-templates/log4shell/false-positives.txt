@@ -1,0 +1,11 @@
+${ is an indicator of compromise.
+${lower:${lower:h}}${lower:${upper:i}}${lower:D}e would be logged as the word hide.
+Attackers can use a Context Lookup (for example, $${ctx:loginId}) or a Thread Context Map pattern (%X, %mdc, or %MDC) to craft malicious input data using a JNDI Lookup pattern.
+Attacks start with ${jndi, continue with :ldap://, and end with ATTACKERCONTROLLEDHOST}.
+Obfuscation looks like this: ${ followed by ${::-j}${::-n}${::-d}${::-i}:${::-r}${::-m}${::-i}:, then a malicious URI, usually followed by a closing }.
+One particular evasion that's become popular ${${::-j}${::-n}${::-d}${::-i.
+We can tell them to wake up and smell the java
+We need to secure our LDAP: server
+jndi: "this is just a test. nothing to see here."
+let's get us some java
+now our team at rmi helps smart companies to lower their java consume

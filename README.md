@@ -36,6 +36,9 @@ The payloads supplied with WAFefficacy cover four attack types from OWASP's [Top
 - [CWE-22](https://cwe.mitre.org/data/definitions/22.html) TRAVERSAL (using OS paths to access sensitive information)
 - [CWE-79](https://cwe.mitre.org/data/definitions/89.html) XSS (Cross-site scripting)
 
+as well as the infamous log4shell from CISA.GOV's Known Exploited Vulnerablities catalog:
+- [CWE-917](https://cwe.mitre.org/data/definitions/917.html) [CVE-2021-44228](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=cve-2021-44228)
+
 You can add more attacks or attack types if you like; see the Appendix below.
 
 ## Quick Start
@@ -169,10 +172,24 @@ The results are combined to provide balanced accuracy scores
 for each attack type, and then those scores are averaged to get an
 overall balanced accuracy score.
 
+## Overall Score
+
+All the attack types' balanced accuracy scores are averaged to form
+a final overall score.
+
+This makes sense for the CMDEXE, SQLI, TRAVERSAL, and XSS attack
+types, which are all arguably of roughly equal importance.
+
+Does it make sense for the log4shell attack type?  Perhaps, since it's such
+a severe problem, and vulnerable versions of log4j are still being downloaded.
+Since it's not clear how to weigh it correctly, WAFefficacy simply
+treats it as of equal importance as the other four attack types.
+
 ## Note about comparing results with those of other WAF benchmarking tools
 
 The balanced accuracy reported by a WAF benchmark tool like WAFefficacy
-depends strongly on the attacks and normal traffic it generates.
+depends strongly on the attacks and normal traffic it generates,
+and how it calculates its overall score.
 It's possible for the same WAF to get very different scores from
 different benchmark tools.
 
@@ -183,9 +200,9 @@ if they don't, that's interesting, and worth investigating.
 
 ## Provenance of test data
 
-Test data was curated to include a representative variety of true
-and false positives, to keep benchmark runtime short, and
-to make sure attacks actually worked.
+Test data was curated to include a variety of true and false
+positives, to keep benchmark runtime short, and to avoid using
+broken attacks as "true positives".
 
 In the interest of keeping runtimes against vulnerable servers
 short, we shortened sleep times in the attacks to one second.
@@ -212,6 +229,20 @@ augmented with a few tests from the [OWASP CRS project](https://coreruleset.org)
 test suite and bug tracker, plus a few phrases from
 [ancient reddit posts](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/)
 that look like, but are not, working attacks.
+
+The log4shell true positives mostly came from the mgm-sp collection,
+minus a few that were incomplete, two that can't yet be sent properly
+by WAFefficacy because they require a different content type, two
+that look like they mean to use Turkish i's but used the digit 1
+instead, and two that look like broken bash commands.
+Those were augmented by one from https://www.mdpi.com/2079-9292/12/14/3177
+and one from https://securitylabs.datadoghq.com/articles/the-gift-that-keeps-on-giving-a-new-opportunistic-log4j-campaign/
+They were then URL decoded once, since WAFefficacy url encodes what
+it sends.
+
+The log4shell false positives also came from mgm-sp, augmented by
+a few phrases from documents about the vulnerability and a few
+incomplete attacks.
 
 ## Improvements
 
@@ -249,8 +280,8 @@ $ touch nuclei-templates/ssrf/false-positives.txt
 and two nuclei templates, one for true positives and false positives; it's probably easiest to copy existing ones and edit them slightly, e.g.
 
 ```
-$ sed 's/cmdexe/ssrv/g' < nuclei-templates/cmdexe/true-positives.yaml > nuclei-templates/ssrf/true-positives.yaml
-$ sed 's/cmdexe/ssrv/g' < nuclei-templates/cmdexe/false-positives.yaml > nuclei-templates/ssrf/false-positives.yaml
+$ sed 's/cmdexe/ssrv/g' < nuclei-templates/cmdexe/true-positive.yaml > nuclei-templates/ssrf/true-positive.yaml
+$ sed 's/cmdexe/ssrv/g' < nuclei-templates/cmdexe/false-positive.yaml > nuclei-templates/ssrf/false-positive.yaml
 ```
 
 Then edit the new templates and add the correct long names and authors.
