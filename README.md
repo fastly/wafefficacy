@@ -139,6 +139,11 @@ Flags:
   -v, --verbose               verbose
 ```
 
+```--nonum``` is handy if you want to diff two log files.
+
+```--nodates -H "User-Agent: wafefficacy"``` is handy if you want to diff two json files.
+
+
 ## How it works
 
 This project uses the [Nuclei](https://nuclei.projectdiscovery.io/)
