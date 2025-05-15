@@ -75,3 +75,4 @@ var=hello; time he came
 watch /r/nba flip that as a flop
 While this is a challenging time for us all, we are busy helping customers manage playout infrastructure in ways that were just dreams only a couple of years ago.
 whois /u/africa2moon **?**
+what does /dev/null do?
