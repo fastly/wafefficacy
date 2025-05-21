@@ -16,3 +16,26 @@ x --> y
 Германия. 23. Реквием / Автор сценария С.
 абвгдеёжзийклмнопрстуфхцчшщъыэюя
 являются не
+decorators are, to me at least, most useful when i have a particular "thing" i want to do to a lot of functions or methods; the decorator provides a way to abstract that thing out into one definition, and apply it in many places. this keeps my code cleaner and more maintainable, because it keeps each piece of logic in one place, making changes far simpler and easier (if i decide i don't want to modify a particular function/method, i can just drop the decorator line above it; if i want the decorator to behave differently, i just change its code and every decorated function updates automatically).
+I agree. When posting this [musical interlude](http://reddit.com/info/wsy9/comments) it took me 3 attempts. Hey Reddit, we are human beings!
+I followed the link you provided and found this [spreadsheet](http://www.bra.se/extra/measurepoint/?module_instance=4&amp;name=Reported%20offences,%201950-2005&amp;url=/dynamaster/file_archive/061003/c80a5a8db7032bd225e103d2ade13634/Reported%2520offences%25201950%252d2005.xls). The second tab is "Reported offences per 100 000 of mean population, 1950-2005".
+in coq, the focus is on proving theorems, and the way you do that is by treating a proposition as a type, and a proof as a lambda term of that type. since what you care about is provability, the specific lambda term you find (ie, the specific program) is not that important. as long as you can find it, it's good. for example, if you want to prove that lists can be sorted, any sorting algorithm and correctness proof will do - a bubble sort and quick sort are just as good. as a result, most of the work you do in coq is using and writing programs (tactics) that automate searching for lambda terms well-typed in the calculus of constructions.
+personally i think if blizzard released a native linux client for wow and valve released a native linux client for cs/steam then you would soon see hardware companies releasing linux drivers on a regular basis. it's basically just computer games that are holding linux back (yes i realise gameing on linux can be done).
+Surprisingly, I do not find myself [made senseless, groggy, or dizzy by or as if by a blow](http://www.m-w.com/dictionary/stun) upon reading this article. Shame. I was looking forward to the experience.
+The internet stopped being interesting today. As evinced by the reddit hot page at this moment, we have to dig up from our trenches of saved stories and repost them over and over again. In due time, we can probably switch over to to this [way](http://reddit.com/info/6xmp/comments/c6yjk).
+Well was it any benefit for us keeping this [piece of living history](http://en.wikipedia.org/wiki/Manuel_Noriega)? Alive? Yes. Talking? Never. We'll see what happens to prisoner ID # 38699-079 after September 7th 2007.
+&lt;/sarcasm&gt;
+&lt;/snarky&gt;
+&lt;quote&gt; “If people freak at evolution, etc.,” he wrote in an e-mail message, “how much more will they freak if scientists and philosophers tell them they are nothing more than sophisticated meat machines, and is that conclusion now clearly warranted or is it premature?” &lt;/quote&gt;
+&lt;sarcasm&gt;
+Hasn't happened to me in about a year and a half.&lt;/anecdote&gt;
+I submitted a comment on his site, but I'll submit it here to because it's really a better way to debug javascript:
+I suppose there are people out there that hate &lt;canvas&gt;, CSS2 &amp; 3, SVG...
+I was put up to this by one of your compatriots and have grown bored with it. There are 2 hints in these posts that should answer who put me up to it. &lt;h1&gt;Unsubscribe.&lt;/h1&gt;
+Ok, you don't &lt;b&gt;know&lt;/b&gt;, you &lt;b&gt;guess&lt;/b&gt;. But, there's a reason why this link was posted: it's evidence that contradicts your guesses. You've completely ignored Gabriel's experience and re-asserted the very thing that lispers have been asserting for decades.
+\t\tMap&lt;String, Double&gt; env = new ...;
+emails += "&lt;/ol&gt;"
+emails += "&lt;li&gt;"+a.Body.Contacts[i].Email+"&lt;/li&gt;";
+emails = "&lt;ol&gt;"
+it's just a typo - probably a copy/paste error... view the source and look for the "tag" tag... he/she has used &amp; lt; etc. correctly but then left the tag in afterwards the with real &lt; and &gt; signs.
+ちょっとこの記事はどうかなあ。個人のblogならともかく、こういう記事にするなら消費電流と電源容量の考察(使うダイオードの定格も)とか誘導性負荷をつなぐ場合の一般的注意なんかを「最初」に触れて欲しかった。最後にちょろっと測ってるけどおまけみたいな扱いだし。

