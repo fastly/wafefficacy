@@ -145,8 +145,14 @@ func (nr *NucleiResults) CondenseResultEvent(i output.ResultEvent) (s ResultEven
 }
 
 func (s *Score) CalculateEfficacy() {
-	sensitivity := float64(s.tp) / float64(s.tp+s.fn)
-	specificity := float64(s.tn) / float64(s.tn+s.fp)
+	sensitivity := 0.0
+	if s.tp > 0 {
+		sensitivity = float64(s.tp) / float64(s.tp+s.fn)
+	}
+	specificity := 0.0
+	if s.tn > 0 {
+		specificity = float64(s.tn) / float64(s.tn+s.fp)
+	}
 	balanced_accuracy := (sensitivity + specificity) / 2
 	s.Efficacy = float32(balanced_accuracy * 100)
 }
@@ -248,7 +254,6 @@ func (nr *NucleiResults) PrintResultsJSON(w io.Writer, details bool) (err error)
 		_, err = fmt.Fprintf(w, "%s\n", string(b))
 		return err
 	}
-	panic("A")
 
 	b, err := json.Marshal(nr.Report)
 	if err != nil {
