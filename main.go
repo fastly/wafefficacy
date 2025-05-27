@@ -11,6 +11,7 @@ func main() {
 	rootCmd := &cobra.Command{Use: "wafefficacy"}
 
 	var target string
+	var wafname string
 	var templateDir string
 	var verbose bool
 
@@ -34,7 +35,7 @@ func main() {
 				fmt.Println("Error: must specify target URL/host to scan")
 				os.Exit(1)
 			}
-			nr, err := RunNuclei(target, templateDir, blockedResponses, attackTypes, headers, suffix, concurrency, retries, timeout, nodates, verbose)
+			nr, err := RunNuclei(target, wafname, templateDir, blockedResponses, attackTypes, headers, suffix, concurrency, retries, timeout, nodates, verbose)
 			if err != nil {
 				fmt.Println(err)
 				os.Exit(1)
@@ -87,6 +88,7 @@ func main() {
 	cmd.PersistentFlags().StringVarP(&outJSON, "reportJson", "j", outJSON, "where to write json report; - for stdout")
 	cmd.PersistentFlags().StringVarP(&outText, "report", "o", outText, "where to write text report; - for stdout")
 	cmd.PersistentFlags().StringVarP(&suffix, "suffix", "", suffix, "extra get/post params, e.g. --suffix '&Submit=Submit'")
+	cmd.PersistentFlags().StringVarP(&wafname, "wafname", "w", "waf", "name of waf (e.g. crs3")
 	cmd.PersistentFlags().StringVarP(&target, "url", "u", "", "target URL to scan")
 	cmd.PersistentFlags().StringVarP(&templateDir, "template-dir", "t", "nuclei-templates", "path to the nuclei template directory")
 	cmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "verbose")

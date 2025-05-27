@@ -16,19 +16,21 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/fastly/wafefficacy/lib"
+
 	"github.com/mattn/go-isatty"
 	nuclei "github.com/projectdiscovery/nuclei/v3/lib"
 	"github.com/projectdiscovery/nuclei/v3/pkg/catalog/config"
-	"github.com/projectdiscovery/nuclei/v3/pkg/model"
 	"github.com/projectdiscovery/nuclei/v3/pkg/output"
 )
 
 // RunNuclei runs Nuclei with the given config, and returns results.
-func RunNuclei(target string, templateDir string, blockedResponses []string, attackTypes, headers []string, suffix string, concurrency, retries, timeout int, nodates bool, verbose bool) (nr NucleiResults, err error) {
-	nr.attackTypes = attackTypes
-	nr.blockedResponses = blockedResponses
-	nr.suffix = suffix
-	nr.target = target
+func RunNuclei(target, wafname string, templateDir string, blockedResponses []string, attackTypes, headers []string, suffix string, concurrency, retries, timeout int, nodates bool, verbose bool) (nr NucleiResults, err error) {
+	nr.AttackTypes = attackTypes
+	nr.BlockedResponses = blockedResponses
+	nr.Suffix = suffix
+	nr.Target = target
+	nr.WAFName = wafname
 
 	// Add options to those in the config file
 	config.DefaultConfig.DisableUpdateCheck()
@@ -78,14 +80,13 @@ func RunNuclei(target string, templateDir string, blockedResponses []string, att
 			re.Request = sanitizeDates(re.Request)
 		}
 		nr.E = append(nr.E, *re)
-		if isatty.IsTerminal(os.Stderr.Fd()) && len(nr.E)%10 == 0 {
-			fmt.Fprintf(os.Stderr, "\r%d ", len(nr.E))
+		if isatty.IsTerminal(os.Stderr.Fd()) && len(nr.E)%100 == 0 {
+			fmt.Fprintf(os.Stderr, "\r%6d ", len(nr.E))
 		}
 	}
 	ctx := context.TODO()
-	fmt.Fprintf(os.Stderr, "\n")
 	err = nuc.ExecuteCallbackWithCtx(ctx, cb)
-	fmt.Fprintf(os.Stderr, "\n")
+	fmt.Fprintf(os.Stderr, "\n%6d responses received from waf %s at %s\n", len(nr.E), nr.WAFName, nr.Target)
 	if err != nil {
 		return nr, err
 	}
@@ -118,11 +119,13 @@ func sanitizeDates(s string) string {
 	return reDate.ReplaceAllString(s, "Date: Thu, 01 Jan 1970 00:00:00 GMT")
 }
 
-func (nr *NucleiResults) getCondensed() (s NucleiResultsSubset) {
-	s.target = nr.target
-	s.attackTypes = nr.attackTypes
-	s.blockedResponses = nr.blockedResponses
+func (nr *NucleiResults) getCondensed() (s lib.NucleiResultsSubset) {
+	s.Target = nr.Target
+	s.WAFName = nr.WAFName
+	s.AttackTypes = nr.AttackTypes
+	s.BlockedResponses = nr.BlockedResponses
 	s.AvgScore = nr.AvgScore
+	s.Overall = nr.Overall
 	s.Scores = nr.Scores
 	for _, e := range nr.E {
 		// Only export the failed tests for now
@@ -134,9 +137,8 @@ func (nr *NucleiResults) getCondensed() (s NucleiResultsSubset) {
 	return s
 }
 
-func (nr *NucleiResults) CondenseResultEvent(i output.ResultEvent) (s ResultEventSubset) {
+func (nr *NucleiResults) CondenseResultEvent(i output.ResultEvent) (s lib.ResultEventSubset) {
 	s.TemplateID = i.TemplateID
-	s.Info = i.Info
 	s.Request = i.Request
 	s.Response = i.Response
 	s.CURLCommand = i.CURLCommand
@@ -144,70 +146,57 @@ func (nr *NucleiResults) CondenseResultEvent(i output.ResultEvent) (s ResultEven
 	return s
 }
 
-func (s *Score) CalculateEfficacy() {
-	sensitivity := 0.0
-	if s.tp > 0 {
-		sensitivity = float64(s.tp) / float64(s.tp+s.fn)
-	}
-	specificity := 0.0
-	if s.tn > 0 {
-		specificity = float64(s.tn) / float64(s.tn+s.fp)
-	}
-	balanced_accuracy := (sensitivity + specificity) / 2
-	s.Efficacy = float32(balanced_accuracy * 100)
-}
-
 // CalculateScore calculates and saves the score in the result struct
 func (nr *NucleiResults) CalculateScore() {
-	nr.Scores = make(map[string]Score)
+	nr.Scores = make(map[string]lib.Score)
 
-	for _, attackType := range nr.attackTypes {
-		var s Score
-		s.tp, s.fn = nr.truePositivesFalseNegatives(attackType)
-		s.tn, s.fp = nr.trueNegativesFalsePositives(attackType)
+	for _, attackType := range nr.AttackTypes {
+		var s lib.Score
+		s.Tp, s.Fn = nr.truePositivesFalseNegatives(attackType)
+		s.Tn, s.Fp = nr.trueNegativesFalsePositives(attackType)
 		(&s).CalculateEfficacy()
 		nr.Scores[attackType] = s
 	}
 	avg := 0.0
 	for _, s := range nr.Scores {
 		// Update global counts because report wants them
-		nr.overall.tp += s.tp
-		nr.overall.fp += s.fp
-		nr.overall.tn += s.tn
-		nr.overall.fn += s.fn
+		nr.Overall.Tp += s.Tp
+		nr.Overall.Fp += s.Fp
+		nr.Overall.Tn += s.Tn
+		nr.Overall.Fn += s.Fn
 		avg += float64(s.Efficacy)
 	}
-	nr.overall.CalculateEfficacy()                       // sensitive to test case misbalance; interesting but probably not useful.
-	nr.AvgScore = float32(avg / float64(len(nr.Scores))) // more balanced than nr.overall.Efficacy
+	nr.Overall.CalculateEfficacy()
+	nr.AvgScore = lib.RoundedFloat64(avg / float64(len(nr.Scores))) // like nr.Overall.Efficacy, but avoids bias from different sized attack type corpora?
 }
 
 // PrintResultsText prints scores, both overall and by attack type, to the given Writer
 func (nr *NucleiResults) PrintResultsText(w io.Writer, details, nonum bool) (err error) {
-	_, err = fmt.Fprintf(w, "WAFefficacy results for %s\n\n", nr.target)
+	_, err = fmt.Fprintf(w, "WAFefficacy results for %s\n\n", nr.Target)
 	if err != nil {
 		return err
 	}
 
-	fmt.Fprintf(w, "overall balanced accuracy: %.3f%%\n", nr.AvgScore)
-	for _, attackType := range nr.attackTypes {
+	fmt.Fprintf(w, "overall balanced accuracy: %.3f%%\n", nr.AvgScore*100)
+	for _, attackType := range nr.AttackTypes {
 		AttackType := strings.ToUpper(attackType)
 		s := nr.Scores[attackType]
 		fmt.Fprintf(w, "\n")
 		fmt.Fprintf(w, "%-9s                          blocked            not blocked\n", "")
-		fmt.Fprintf(w, "%-9s attacks:    true positives: %4d  false negatives: %4d\n", AttackType, s.tp, s.fn)
-		fmt.Fprintf(w, "%-9s innocent:  false positives: %4d   true negatives: %4d\n", AttackType, s.fp, s.tn)
-		fmt.Fprintf(w, "%-9s balanced accuracy %.3f%%\n", AttackType, s.Efficacy)
+		fmt.Fprintf(w, "%-9s attacks:    true positives: %4d  false negatives: %4d\n", AttackType, s.Tp, s.Fn)
+		fmt.Fprintf(w, "%-9s innocent:  false positives: %4d   true negatives: %4d\n", AttackType, s.Fp, s.Tn)
+		fmt.Fprintf(w, "%-9s balanced accuracy %.3f%%\n", AttackType, s.Efficacy*100)
 	}
 
 	if !details {
 		return nil
 	}
 
-	fmt.Fprintf(w, "\n%d innocent requests were blocked (aka false positives):\n", nr.overall.fp)
+	fmt.Fprintf(w, "\n%d innocent requests were blocked (aka false positives):\n", nr.Overall.Fp)
 	i := 1
-	for _, attackType := range nr.attackTypes {
+	for _, attackType := range nr.AttackTypes {
 		AttackType := strings.ToUpper(attackType)
-		if nr.Scores[attackType].fp > 0 {
+		if nr.Scores[attackType].Fp > 0 {
 			for _, result := range nr.E {
 				if result.TemplateID == attackType+"-false-positive" && nr.isBlocked(result.Response) {
 					m, p := nr.extractPayload(result.Request)
@@ -225,11 +214,11 @@ func (nr *NucleiResults) PrintResultsText(w io.Writer, details, nonum bool) (err
 		}
 	}
 
-	fmt.Fprintf(w, "\n%d malicious requests were not blocked (aka false negatives):\n", nr.overall.fn)
+	fmt.Fprintf(w, "\n%d malicious requests were not blocked (aka false negatives):\n", nr.Overall.Fn)
 	i = 1
-	for _, attackType := range nr.attackTypes {
+	for _, attackType := range nr.AttackTypes {
 		AttackType := strings.ToUpper(attackType)
-		if nr.Scores[attackType].fn > 0 {
+		if nr.Scores[attackType].Fn > 0 {
 			for _, result := range nr.E {
 				if result.TemplateID == attackType+"-true-positive" && !nr.isBlocked(result.Response) {
 					m, p := nr.extractPayload(result.Request)
@@ -253,12 +242,7 @@ func (nr *NucleiResults) PrintResultsText(w io.Writer, details, nonum bool) (err
 func (nr *NucleiResults) PrintResultsJSON(w io.Writer, details bool) (err error) {
 	if details {
 		report := nr.getCondensed()
-		b, err := json.MarshalIndent(report, "", " ")
-		if err != nil {
-			return err
-		}
-		_, err = fmt.Fprintf(w, "%s\n", string(b))
-		return err
+		return report.ToFile(w)
 	}
 
 	b, err := json.Marshal(nr.Report)
@@ -303,7 +287,7 @@ func (nr *NucleiResults) trueNegativesFalsePositives(attackType string) (trueNeg
 //
 // Used to compute waf efficacy.
 func (nr *NucleiResults) isBlocked(response string) bool {
-	for _, r := range nr.blockedResponses {
+	for _, r := range nr.BlockedResponses {
 		if strings.Contains(response, "HTTP/1.1 "+r) {
 			return true
 		}
@@ -380,44 +364,12 @@ func (nr *NucleiResults) extractPayload(raw string) (method, payload string) {
 		payload = encPayload // return something rather than panic?!
 	}
 	// Then remove any suffix we added
-	payload, _ = strings.CutSuffix(payload, nr.suffix)
+	payload, _ = strings.CutSuffix(payload, nr.Suffix)
 	return req.Method, payload
 }
 
 // NucleiResults holds the results of a Nuclei run
 type NucleiResults struct {
-	Report
+	lib.Report
 	E []output.ResultEvent
-}
-
-// NucleiResultsSubset holds just the interesting part of the results of a Nuclei run
-type NucleiResultsSubset struct {
-	Report
-	E []ResultEventSubset // just the failures
-}
-
-type Report struct {
-	target           string
-	suffix           string
-	attackTypes      []string
-	blockedResponses []string
-	AvgScore         float32 `json:"overall"` // avoid noise in low bits of float64
-	overall          Score
-	Scores           map[string]Score
-}
-
-// ResultEventSubset is the set of fields of ResultEvent we want in our detailed report
-type ResultEventSubset struct {
-	TemplateID  string     `json:"template-id"`
-	Info        model.Info `json:"info,inline"`
-	Method      string     `json:"method"`  // nuclei doesn't provide this?!
-	Payload     string     `json:"payload"` // nuclei doesn't provide this?!
-	Request     string     `json:"request"`
-	Response    string     `json:"response"`
-	CURLCommand string     `json:"curl-command"`
-}
-
-type Score struct {
-	tp, tn, fp, fn int
-	Efficacy       float32
 }
